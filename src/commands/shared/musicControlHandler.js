@@ -13,7 +13,7 @@ export default {
 
 		if (!queue) {
 			await interaction.followUp({
-				content: '❌ No active queue in this server.',
+				content: '<a:Emo_Loading:1566551264924405931> No active queue in this server.',
 				ephemeral: true
 			}).catch(() => {});
 			return;
@@ -21,7 +21,7 @@ export default {
 
 		if (!queue.player) {
 			await interaction.followUp({
-				content: '❌ Player is not active.',
+				content: '<a:Emo_Loading:1566551264924405931> Player is not active.',
 				ephemeral: true
 			}).catch(() => {});
 			return;
@@ -44,7 +44,7 @@ export default {
 						}).catch(() => {});
 					} else {
 						await interaction.followUp({
-							content: '❌ No track currently playing.',
+							content: '<a:Emo_Loading:1566551264924405931> No track currently playing.',
 							ephemeral: true
 						}).catch(() => {});
 					}
@@ -72,7 +72,7 @@ export default {
 				case 'next': {
 					if (queue.tracks.size === 0) {
 						await interaction.followUp({
-							content: '❌ No tracks in queue to skip to.',
+							content: '<a:Emo_Loading:1566551264924405931> No tracks in queue to skip to.',
 							ephemeral: true
 						}).catch(() => {});
 						return;
@@ -88,14 +88,14 @@ export default {
 
 				default:
 					await interaction.followUp({
-						content: '❌ Unknown music control action.',
+						content: '<a:Emo_Loading:1566551264924405931> Unknown music control action.',
 						ephemeral: true
 					}).catch(() => {});
 			}
 		} catch (error) {
 			console.error('Error in music control handler:', error);
 			await interaction.followUp({
-				content: '❌ Failed to execute music control.',
+				content: '<a:Emo_Loading:1566551264924405931> Failed to execute music control.',
 				ephemeral: true
 			}).catch(() => {});
 		}

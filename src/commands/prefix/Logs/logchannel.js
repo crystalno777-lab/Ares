@@ -173,7 +173,7 @@ async function showChannelList(message, guildData) {
 
 	const container = new ContainerBuilder();
 	container.addTextDisplayComponents((textDisplay) =>
-		textDisplay.setContent(`# 📁 Log Channel Configuration`)
+		textDisplay.setContent(`# <:emoji_5:1566528650411647178> Log Channel Configuration`)
 	);
 	container.addSeparatorComponents((separator) =>
 		separator.setSpacing(SeparatorSpacingSize.Small)

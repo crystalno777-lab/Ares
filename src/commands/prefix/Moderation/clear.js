@@ -126,7 +126,7 @@ export default {
 			const guildData = await client.db.findOne({ guildId: message.guildId });
 
 			let countToClear = 0;
-			const typeDisplay = clearType === 'warnings' ? '⚠️ Warnings' : clearType === 'crimefiles' ? '🕵️ Crime Files' : '📋 Mod History';
+			const typeDisplay = clearType === 'warnings' ? '⚠️ Warnings' : clearType === 'crimefiles' ? '🕵️ Crime Files' : '<:emoji_9:1566528847464108183> Mod History';
 
 			if (clearType === 'warnings') {
 				if (guildData?.moderation?.warnings) {

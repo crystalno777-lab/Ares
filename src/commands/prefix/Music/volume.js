@@ -11,7 +11,7 @@ export default {
 	async execute(message, args, client) {
 		if (!message.member?.voice.channel) {
 			return message.reply({
-				content: '❌ You must be in a voice channel to use this command.',
+				content: '<a:Emo_Loading:1566551264924405931> You must be in a voice channel to use this command.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -20,14 +20,14 @@ export default {
 
 		if (!queue || !queue.player || !queue.tracks || queue.tracks.size === 0) {
 			return message.reply({
-				content: '❌ I\'m not playing any music.',
+				content: '<a:Emo_Loading:1566551264924405931> I\'m not playing any music.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
 
 		if (message.member.voice.channelId !== queue.voiceChannel.id) {
 			return message.reply({
-				content: '❌ You must be in the same voice channel as me.',
+				content: '<a:Emo_Loading:1566551264924405931> You must be in the same voice channel as me.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -52,7 +52,7 @@ export default {
 	if (isNaN(volume) || volume < 1 || volume > 100) {
 		const container = new ContainerBuilder();
 		container.addTextDisplayComponents((textDisplay) =>
-			textDisplay.setContent(`# ${EMOJIS.error || '❌'} Invalid Volume`)
+			textDisplay.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid Volume`)
 		);
 		container.addSeparatorComponents((separator) =>
 			separator.setSpacing(SeparatorSpacingSize.Small)
@@ -81,7 +81,7 @@ export default {
 		} catch (error) {
 			console.error('Error in volume command:', error);
 			message.reply({
-				content: '❌ An error occurred while adjusting the volume.',
+				content: '<a:Emo_Loading:1566551264924405931> An error occurred while adjusting the volume.',
 				allowedMentions: { repliedUser: false }
 			});
 		}

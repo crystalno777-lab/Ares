@@ -15,7 +15,7 @@ async function execute(message, args, client) {
 	const isBotOwner = client.application?.owner?.id === message.author.id || (client.ownerIds || client.config?.ownerIds || []).includes(message.author.id);
 
 	if (!isOwner && !isAdmin && !isBotOwner) {
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Permission Denied**`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Permission Denied**`));
 		container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 		container.addTextDisplayComponents(td => td.setContent('You need **Administrator** permission, or be the **Server/Bot Owner** to use this command.'));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -33,7 +33,7 @@ async function execute(message, args, client) {
 		}
 
         if (bio.length > 190) {
-             container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Too Long**`));
+             container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Too Long**`));
              container.addTextDisplayComponents(td => td.setContent('Bio must be under 190 characters.'));
              return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
         }
@@ -48,7 +48,7 @@ async function execute(message, args, client) {
 
 	} catch (err) {
 		console.error('ServerBio Error:', err);
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Failed**`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Failed**`));
         if (err.code === 50035) {
              container.addTextDisplayComponents(td => td.setContent('Invalid bio (too long or unsupported format).'));
         } else {

@@ -6,21 +6,21 @@ const aliases = ['set-xp'];
 
 async function execute(message, args, client) {
 	if (!message.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
-		return message.reply({ content: '❌ You need **Manage Server** permission.', allowedMentions: { repliedUser: false } });
+		return message.reply({ content: '<a:Emo_Loading:1566551264924405931> You need **Manage Server** permission.', allowedMentions: { repliedUser: false } });
 	}
 
 	const leveling = await ensureLevelingConfig(client.db, message.guildId);
-	if (!leveling.enabled) return message.reply({ content: '❌ Leveling is disabled.', allowedMentions: { repliedUser: false } });
+	if (!leveling.enabled) return message.reply({ content: '<a:Emo_Loading:1566551264924405931> Leveling is disabled.', allowedMentions: { repliedUser: false } });
 
 	const userId = args[0]?.replace(/\D/g, '');
 	const amount = parseInt(args[1], 10);
 
 	if (!userId || isNaN(amount) || amount < 0) {
-		return message.reply({ content: '❌ Usage: `setxp <@user> <amount>`', allowedMentions: { repliedUser: false } });
+		return message.reply({ content: '<a:Emo_Loading:1566551264924405931> Usage: `setxp <@user> <amount>`', allowedMentions: { repliedUser: false } });
 	}
 
 	const member = await message.guild.members.fetch(userId).catch(() => null);
-	if (!member) return message.reply({ content: '❌ Member not found.', allowedMentions: { repliedUser: false } });
+	if (!member) return message.reply({ content: '<a:Emo_Loading:1566551264924405931> Member not found.', allowedMentions: { repliedUser: false } });
 
 	const state = getMemberSnapshot(leveling, userId);
 	const oldXp = state.xp;

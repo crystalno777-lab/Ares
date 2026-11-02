@@ -12,7 +12,7 @@ export default {
 		if (!message.member.permissions.has('ManageGuild')) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Permission Denied`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -31,7 +31,7 @@ export default {
 		if (!args.length) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Missing Arguments`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Arguments`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -98,7 +98,7 @@ export default {
 				console.error('Error viewing detain messages:', error);
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Error`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -117,7 +117,7 @@ export default {
 			if (!type || !messageContent) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Missing Arguments`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Arguments`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -140,7 +140,7 @@ export default {
 			if (!validTypes.includes(type)) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Invalid Type`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Invalid Type`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -210,7 +210,7 @@ export default {
 				console.error('Error updating detain message:', error);
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Error`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -254,7 +254,7 @@ export default {
 				console.error('Error resetting detain messages:', error);
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Error`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -272,7 +272,7 @@ export default {
 		} else {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Invalid Action`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Invalid Action`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)

@@ -166,7 +166,7 @@ const components = [
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
@@ -277,7 +277,7 @@ async function execute(message, args, client) {
 	} catch (error) {
 		console.error('[Monthly] Error:', error);
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} An error occurred while fetching monthly stats.`
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} An error occurred while fetching monthly stats.`
 		));
 	}
 

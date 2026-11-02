@@ -11,7 +11,17 @@ export default function registerInteractionHandler(discordClient) {
 			}
 
 			try {
-				await command.execute(interaction);
+				const musicCommands = ['play'];
+
+            if (musicCommands.includes(interaction.commandName)) {
+                await interaction.reply({
+                    content: 'Coming soon.',
+                    ephemeral: true
+                });
+                return;
+            }
+
+            await command.execute(interaction, discordClient);
 			} catch (error) {
 				console.error(`Error executing /${interaction.commandName}:`, error);
 

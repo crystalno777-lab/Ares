@@ -12,7 +12,7 @@ async function execute(message, args, client) {
 	const input = args.join(' ');
 	if (!input) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Please provide options separated by | (e.g. \`.choose Pizza | Burger\`)`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please provide options separated by | (e.g. \`.choose Pizza | Burger\`)`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -21,7 +21,7 @@ async function execute(message, args, client) {
 
 	if (options.length < 2) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Please provide at least two options separated by |`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please provide at least two options separated by |`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -29,7 +29,7 @@ async function execute(message, args, client) {
 	const choice = options[Math.floor(Math.random() * options.length)];
 
 	container.addTextDisplayComponents(td =>
-		td.setContent(`**🤔 I choose...**\n\n✨ **${choice}**`)
+		td.setContent(`**🤔 I choose...**\n\n<:emoji_6:1566530216359108629> **${choice}**`)
 	);
 
 	return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });

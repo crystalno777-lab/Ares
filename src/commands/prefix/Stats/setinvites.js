@@ -13,13 +13,13 @@ const aliases = ['setinvite'];
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} You need **Administrator** permission to use this command.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Administrator** permission to use this command.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
@@ -62,13 +62,13 @@ async function execute(message, args, client) {
 
 	if (!['regular', 'left', 'fake', 'bonus'].includes(type)) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Invalid type. Use: \`regular\`, \`left\`, \`fake\`, or \`bonus\``));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid type. Use: \`regular\`, \`left\`, \`fake\`, or \`bonus\``));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (isNaN(amount) || amount < 0) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Please provide a valid positive number.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please provide a valid positive number.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
@@ -106,7 +106,7 @@ async function execute(message, args, client) {
 	} catch (error) {
 		console.error('[SetInvites] Error:', error);
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} An error occurred while setting invite data.`
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} An error occurred while setting invite data.`
 		));
 	}
 

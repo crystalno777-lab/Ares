@@ -43,7 +43,7 @@ async function execute(message, args, client) {
 
 	if (!user1 || !user2) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Could not resolve one of the users.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Could not resolve one of the users.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}

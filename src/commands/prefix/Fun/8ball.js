@@ -34,7 +34,7 @@ async function execute(message, args, client) {
 
 	if (!args.length) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You need to ask a question!`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need to ask a question!`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}

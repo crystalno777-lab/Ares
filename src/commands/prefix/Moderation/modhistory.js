@@ -16,11 +16,11 @@ const getActionEmoji = (type) => {
     ban: '🔨',
     mute: '🔇',
     unmute: '🔊',
-    unban: '📋',
+    unban: '<:emoji_9:1566528847464108183>',
     softban: '🔨',
     tempban: '⏰'
   };
-  return emojiMap[type] || '📋';
+  return emojiMap[type] || '<:emoji_9:1566528847464108183>';
 };
 
 export default {
@@ -37,7 +37,7 @@ export default {
     if (!canUse.allowed) {
       const container = new ContainerBuilder();
       container.addTextDisplayComponents((textDisplay) =>
-        textDisplay.setContent(`# ❌ Permission Denied`)
+        textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
       );
       container.addSeparatorComponents((separator) =>
         separator.setSpacing(SeparatorSpacingSize.Small)
@@ -56,7 +56,7 @@ export default {
     if (!args.length) {
       const container = new ContainerBuilder();
       container.addTextDisplayComponents((textDisplay) =>
-        textDisplay.setContent(`# ❌ Missing Arguments`)
+        textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Arguments`)
       );
       container.addSeparatorComponents((separator) =>
         separator.setSpacing(SeparatorSpacingSize.Small)
@@ -77,7 +77,7 @@ export default {
     if (!moderator) {
       const container = new ContainerBuilder();
       container.addTextDisplayComponents((textDisplay) =>
-        textDisplay.setContent(`# ❌ Moderator Not Found`)
+        textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Moderator Not Found`)
       );
       container.addSeparatorComponents((separator) =>
         separator.setSpacing(SeparatorSpacingSize.Small)
@@ -97,7 +97,7 @@ export default {
       if (!client.db) {
         const container = new ContainerBuilder();
         container.addTextDisplayComponents((textDisplay) =>
-          textDisplay.setContent(`# ❌ Error`)
+          textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
         );
         container.addSeparatorComponents((separator) =>
           separator.setSpacing(SeparatorSpacingSize.Small)
@@ -118,7 +118,7 @@ export default {
       if (!guildData || !guildData.moderation || !guildData.moderation.actions) {
         const container = new ContainerBuilder();
         container.addTextDisplayComponents((textDisplay) =>
-          textDisplay.setContent(`# 📋 No History`)
+          textDisplay.setContent(`# <:emoji_9:1566528847464108183> No History`)
         );
         container.addSeparatorComponents((separator) =>
           separator.setSpacing(SeparatorSpacingSize.Small)
@@ -140,7 +140,7 @@ export default {
       if (!modActions.length) {
         const container = new ContainerBuilder();
         container.addTextDisplayComponents((textDisplay) =>
-          textDisplay.setContent(`# 📋 No History`)
+          textDisplay.setContent(`# <:emoji_9:1566528847464108183> No History`)
         );
         container.addSeparatorComponents((separator) =>
           separator.setSpacing(SeparatorSpacingSize.Small)
@@ -173,7 +173,7 @@ export default {
 
         const container = new ContainerBuilder();
         container.addTextDisplayComponents((textDisplay) =>
-          textDisplay.setContent(`📋 **MOD HISTORY: ${formatUserDisplay(moderator.user)}**`)
+          textDisplay.setContent(`<:emoji_9:1566528847464108183> **MOD HISTORY: ${formatUserDisplay(moderator.user)}**`)
         );
         container.addSeparatorComponents((separator) =>
           separator.setSpacing(SeparatorSpacingSize.Small)
@@ -262,7 +262,7 @@ export default {
       console.error('Error in modhistory command:', error);
       const container = new ContainerBuilder();
       container.addTextDisplayComponents((textDisplay) =>
-        textDisplay.setContent(`# ❌ Error`)
+        textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
       );
       container.addSeparatorComponents((separator) =>
         separator.setSpacing(SeparatorSpacingSize.Small)

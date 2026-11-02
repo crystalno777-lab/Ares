@@ -13,8 +13,8 @@ async function check() {
 	console.log('='.repeat(50));
 	
 	// Check environment variables
-	console.log('\n📋 Environment Variables:');
-	console.log(`   DATABASE_URL: ${process.env.DATABASE_URL ? '✅ Set' : '❌ Not set'}`);
+	console.log('\n<:emoji_9:1566528847464108183> Environment Variables:');
+	console.log(`   DATABASE_URL: ${process.env.DATABASE_URL ? '✅ Set' : '<a:Emo_Loading:1566551264924405931> Not set'}`);
 	console.log(`   DB_HOST: ${process.env.DB_HOST || '(not set)'}`);
 	
 	// Import and initialize database manager
@@ -33,7 +33,7 @@ async function check() {
 			await client.end();
 			pgAvailable = true;
 		} catch (error) {
-			console.log(`   PostgreSQL: ❌ Failed - ${error.message}`);
+			console.log(`   PostgreSQL: <a:Emo_Loading:1566551264924405931> Failed - ${error.message}`);
 		}
 	} else {
 		console.log('   PostgreSQL: ⏭️ Skipped (no DATABASE_URL)');
@@ -62,7 +62,7 @@ async function check() {
 			sqliteAvailable = true; // Module is available
 		}
 	} catch (error) {
-		console.log(`   SQLite: ❌ Not available - ${error.message}`);
+		console.log(`   SQLite: <a:Emo_Loading:1566551264924405931> Not available - ${error.message}`);
 	}
 	
 	// Test JSON
@@ -82,7 +82,7 @@ async function check() {
 			console.log('   JSON: ⚪ File not found (will be created on first use)');
 		}
 	} catch (error) {
-		console.log(`   JSON: ❌ Error - ${error.message}`);
+		console.log(`   JSON: <a:Emo_Loading:1566551264924405931> Error - ${error.message}`);
 	}
 	
 	console.log('\n' + '='.repeat(50));
@@ -96,7 +96,7 @@ async function check() {
 		console.log('   🔷 JSON file (fallback)');
 	}
 	
-	console.log('\n💡 To force SQLite:');
+	console.log('\n<a:1202lightyellowcrown:1566531939752747078> To force SQLite:');
 	console.log('   1. Remove DATABASE_URL from .env');
 	console.log('   2. Restart the bot');
 }

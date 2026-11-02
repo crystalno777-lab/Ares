@@ -168,7 +168,7 @@ export default function registerAntiraidHandler(client) {
                     lockedCount = await lockAllChannels(member.guild, client);
                 }
 
-                await logAction(member.guild, config, '🚨 RAID DETECTED',
+                await logAction(member.guild, config, '<:emoji_1:1566528388733337600> RAID DETECTED',
                     `**Threshold Exceeded:** ${recentJoins.length} joins in 10 seconds\n` +
                     `**Action:** Raid mode activated\n` +
                     `${lockedCount > 0 ? `**Channels Locked:** ${lockedCount}\n` : ''}` +

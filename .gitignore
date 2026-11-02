@@ -22,3 +22,20 @@ verify-*.ps1
 
 # Artifacts
 *.vsix
+
+.env
+.env.*
+*.backup
+*.tick-backup
+*.cross-backup
+*.pre-*
+.*backup*/
+node_modules/
+data/*.db*
+data/sessions/
+
+*.before-*
+*.backup
+*.tick-backup
+*.cross-backup
+*.pre-*

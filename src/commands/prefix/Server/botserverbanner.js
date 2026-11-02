@@ -15,7 +15,7 @@ async function execute(message, args, client) {
 	const isBotOwner = client.application?.owner?.id === message.author.id || (client.ownerIds || client.config?.ownerIds || []).includes(message.author.id);
 
 	if (!isOwner && !isAdmin && !isBotOwner) {
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Permission Denied**`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Permission Denied**`));
 		container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 		container.addTextDisplayComponents(td => td.setContent('You need **Administrator** permission, or be the **Server/Bot Owner** to use this command.'));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -36,7 +36,7 @@ async function execute(message, args, client) {
         const validExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.webp'];
         const cleanUrl = bannerURL.split('?')[0].toLowerCase();
         if (!validExtensions.some(ext => cleanUrl.endsWith(ext))) {
-             container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Invalid Image**`));
+             container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Invalid Image**`));
              container.addTextDisplayComponents(td => td.setContent('Please provide a valid image URL (PNG, JPG, GIF, WebP).'));
              return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
         }
@@ -49,7 +49,7 @@ async function execute(message, args, client) {
             buffer = Buffer.from(arrayBuffer);
         } catch (fetchErr) {
              console.error('Fetch Error:', fetchErr);
-             container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Fetch Failed**`));
+             container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Fetch Failed**`));
              container.addTextDisplayComponents(td => td.setContent('Could not download the image. Check the URL.'));
              return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
         }
@@ -64,7 +64,7 @@ async function execute(message, args, client) {
 
 	} catch (err) {
 		console.error('ServerBanner Error:', err);
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Failed**`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Failed**`));
         if (err.code === 50013) {
              container.addTextDisplayComponents(td => td.setContent('I lack permissions to change my banner in this server.'));
         } else if (err.code === 50035) {

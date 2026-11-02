@@ -6,7 +6,7 @@ const MODULES = {
     ban: { name: 'Anti Ban', description: 'Prevents mass banning of members', emoji: '🔨' },
     kick: { name: 'Anti Kick', description: 'Prevents mass kicking of members', emoji: '👢' },
     role: { name: 'Anti Role', description: 'Prevents mass deletion/creation of roles', emoji: '🎭' },
-    channel: { name: 'Anti Channel', description: 'Prevents mass deletion/creation of channels', emoji: '📁' },
+    channel: { name: 'Anti Channel', description: 'Prevents mass deletion/creation of channels', emoji: '<:emoji_5:1566528650411647178>' },
     webhook: { name: 'Anti Webhook', description: 'Prevents mass creation of webhooks', emoji: '🪝' },
     emoji: { name: 'Anti Emoji', description: 'Prevents mass deletion of emojis', emoji: '😀' },
     botadd: { name: 'Anti Bot', description: 'Prevents unauthorized bot additions', emoji: '🤖' },
@@ -83,7 +83,7 @@ const buildWizardContainer = (guildData, viewMode = null, disabled = false) => {
         td.setContent(`# ${EMOJIS.antinukeemoji || '🛡️'} Antinuke Setup Wizard${disabled ? ' (Expired)' : ''}\n` +
             `${disabled ? '⏰ **This wizard has expired. Run the command again to create a new one.**\n\n' : ''}` +
             `Configure your server's protection system with ease.\n\n` +
-            `**Current Status:** ${status ? `${EMOJIS.success || '✅'} Enabled` : `${EMOJIS.error || '❌'} Disabled`}\n` +
+            `**Current Status:** ${status ? `${EMOJIS.success || '✅'} Enabled` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Disabled`}\n` +
             `**Active Modules:** ${enabledModules}/${totalModules}\n` +
             `**Punishment:** ${guildData.antinuke?.defaultPunishment || 'ban'}\n` +
             `**Threshold:** ${guildData.antinuke?.defaultThreshold || 3} actions`)
@@ -148,7 +148,7 @@ const buildWizardContainer = (guildData, viewMode = null, disabled = false) => {
         new ButtonBuilder()
             .setCustomId('antinuke_preset_strict')
             .setLabel('Strict')
-            .setEmoji('🔒')
+            .setEmoji('<:emoji_12:1566529085235134695>')
             .setStyle(currentPreset === 'strict' ? ButtonStyle.Success : ButtonStyle.Danger)
             .setDisabled(disabled || currentPreset === 'strict'),
         new ButtonBuilder()
@@ -189,7 +189,7 @@ const buildWizardContainer = (guildData, viewMode = null, disabled = false) => {
         new ButtonBuilder()
             .setCustomId('antinuke_whitelist_view')
             .setLabel('Whitelist')
-            .setEmoji('📋')
+            .setEmoji('<:emoji_9:1566528847464108183>')
             .setStyle(ButtonStyle.Secondary)
             .setDisabled(disabled),
         new ButtonBuilder()
@@ -688,9 +688,9 @@ export default {
 
         const disabledModules = Object.keys(MODULES)
             .filter(name => !modules[name]?.enabled)
-            .map(name => `${EMOJIS.error || '❌'} **${MODULES[name].name}**`);
+            .map(name => `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **${MODULES[name].name}**`);
 
-        let content = `**Status:** ${guildData.antinuke?.enabled ? `${EMOJIS.success || '✅'} Enabled` : `${EMOJIS.error || '❌'} Disabled`}\n`;
+        let content = `**Status:** ${guildData.antinuke?.enabled ? `${EMOJIS.success || '✅'} Enabled` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Disabled`}\n`;
         content += `**Default Punishment:** ${guildData.antinuke?.defaultPunishment || 'ban'}\n`;
         content += `**Default Threshold:** ${guildData.antinuke?.defaultThreshold || 3}\n\n`;
 
@@ -710,7 +710,7 @@ export default {
         const an = guildData.antinuke || {};
         const modules = an.modules || {};
 
-        let content = `**System Status:** ${an.enabled ? `${EMOJIS.success || '✅'} Active` : `${EMOJIS.error || '❌'} Inactive`}\n`;
+        let content = `**System Status:** ${an.enabled ? `${EMOJIS.success || '✅'} Active` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Inactive`}\n`;
         content += `**Log Channel:** ${an.logChannel ? `<#${an.logChannel}>` : 'Not set'}\n`;
         content += `**Protocol Role (legacy):** ${an.quarantineRole ? `<@&${an.quarantineRole}>` : 'Not used'}\n\n`;
 
@@ -725,7 +725,7 @@ export default {
             if (config?.enabled) {
                 content += `${EMOJIS.success || '✅'} **${info.name}** - T:${config.threshold} | P:${config.punishment}\n`;
             } else {
-                content += `${EMOJIS.error || '❌'} **${info.name}**\n`;
+                content += `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **${info.name}**\n`;
             }
         }
 
@@ -736,7 +736,7 @@ export default {
         content += `• Whitelisted: ${(an.whitelist || []).length}\n\n`;
 
         content += `**Bot Protection:**\n`;
-        content += `• Strict Bot Verification: ${an.strictBotVerification !== false ? '✅ Enabled' : '❌ Disabled'}`;
+        content += `• Strict Bot Verification: ${an.strictBotVerification !== false ? '✅ Enabled' : '<a:Emo_Loading:1566551264924405931> Disabled'}`;
 
         return this.sendInfo(message, 'Full Configuration', content);
     },
@@ -1052,7 +1052,7 @@ Confirm to proceed.`
 
             let content = `**Module:** ${moduleInfo.emoji} ${moduleInfo.name}\n`;
             content += `**Description:** ${moduleInfo.description}\n`;
-            content += `**Status:** ${config?.enabled ? `${EMOJIS.success || '✅'} Enabled` : `${EMOJIS.error || '❌'} Disabled`}\n`;
+            content += `**Status:** ${config?.enabled ? `${EMOJIS.success || '✅'} Enabled` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Disabled`}\n`;
 
             if (config?.enabled) {
                 content += `**Threshold:** ${config.threshold} actions\n`;
@@ -1207,7 +1207,7 @@ Confirm to proceed.`
         if (!action || !['on', 'off', 'enable', 'disable', 'status'].includes(action)) {
             const currentStatus = guildData.antinuke?.strictBotVerification !== false;
             return this.sendInfo(message, 'Strict Bot Verification',
-                `**Current Status:** ${currentStatus ? '✅ Enabled' : '❌ Disabled'}\n\n` +
+                `**Current Status:** ${currentStatus ? '✅ Enabled' : '<a:Emo_Loading:1566551264924405931> Disabled'}\n\n` +
                 `When enabled, ALL unverified bots will be kicked automatically, even if added by whitelisted users, admins, or extra owners.\n\n` +
                 `**Discord Verified Bots:**\n` +
                 `• Have a checkmark badge\n` +
@@ -1222,7 +1222,7 @@ Confirm to proceed.`
         if (action === 'status') {
             const currentStatus = guildData.antinuke?.strictBotVerification !== false;
             return this.sendInfo(message, 'Strict Bot Verification Status',
-                `**Status:** ${currentStatus ? '✅ Enabled' : '❌ Disabled'}\n\n` +
+                `**Status:** ${currentStatus ? '✅ Enabled' : '<a:Emo_Loading:1566551264924405931> Disabled'}\n\n` +
                 `${currentStatus ?
                     '⚠️ Only Discord-verified bots can be added.\nEven admins and whitelisted users cannot add unverified bots.' :
                     'ℹ️ Unverified bots can be added by whitelisted users and admins.\nOnly non-whitelisted users are restricted by the Anti-Bot module.'}`);
@@ -1325,7 +1325,7 @@ Confirm to proceed.`
 
     sendError(message, title, description) {
         const container = new ContainerBuilder();
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} ${title}`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} ${title}`));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(description));
         return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { parse: [], users: [], roles: [], repliedUser: false } });

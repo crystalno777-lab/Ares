@@ -19,7 +19,7 @@ async function execute(message, args, client) {
 
 	if (!hasPerms(message.member, PermissionFlagsBits.MoveMembers)) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You need **Move Members** permission to use this command.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Move Members** permission to use this command.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -27,7 +27,7 @@ async function execute(message, args, client) {
 	const destinationChannel = message.member.voice.channel;
 	if (!destinationChannel) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You need to be in a voice channel to pull someone.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need to be in a voice channel to pull someone.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -50,28 +50,28 @@ async function execute(message, args, client) {
 
 	if (!targetMember) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Please specify a valid member to pull.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please specify a valid member to pull.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (!targetMember.voice.channel) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} **${targetMember.user.username}** is not in a voice channel.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **${targetMember.user.username}** is not in a voice channel.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (targetMember.voice.channel.id === destinationChannel.id) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} **${targetMember.user.username}** is already in your channel.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **${targetMember.user.username}** is already in your channel.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (targetMember.id === message.guild.ownerId && message.author.id !== message.guild.ownerId) {
 		 container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You cannot pull the server owner.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You cannot pull the server owner.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -79,7 +79,7 @@ async function execute(message, args, client) {
 	 if (message.author.id !== message.guild.ownerId &&
 		message.member.roles.highest.position <= targetMember.roles.highest.position) {
 		 container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You cannot pull this member due to role hierarchy.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You cannot pull this member due to role hierarchy.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -96,7 +96,7 @@ async function execute(message, args, client) {
 	} catch (error) {
 		console.error(error);
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Failed to pull member.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Failed to pull member.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}

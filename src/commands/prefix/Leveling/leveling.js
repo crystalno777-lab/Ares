@@ -32,7 +32,7 @@ export const buildDashboard = (leveling, authorId) => {
 	container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.tada || '🎉'} Leveling`));
 	container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 	container.addTextDisplayComponents(td => td.setContent(
-		`**Status:** ${leveling.enabled ? '✅ Enabled' : '❌ Disabled'}\n` +
+		`**Status:** ${leveling.enabled ? '✅ Enabled' : '<a:Emo_Loading:1566551264924405931> Disabled'}\n` +
 		`**Announce:** ${leveling.announce?.mode || 'context'}${leveling.announce?.mode === 'channel' && leveling.announce?.channelId ? ` → <#${leveling.announce.channelId}>` : ''}`
 	));
 
@@ -67,9 +67,9 @@ export const buildDashboard = (leveling, authorId) => {
 	);
 
 	const navRow = new ActionRowBuilder().addComponents(
-		new ButtonBuilder().setCustomId(`leveling_nav_settings:${authorId}`).setLabel('⚙️ XP Settings').setStyle(ButtonStyle.Secondary),
+		new ButtonBuilder().setCustomId(`leveling_nav_settings:${authorId}`).setLabel('<a:gears:1566530875879989289> XP Settings').setStyle(ButtonStyle.Secondary),
 		new ButtonBuilder().setCustomId(`leveling_nav_message:${authorId}`).setLabel('📝 Level Up Message').setStyle(ButtonStyle.Secondary),
-		new ButtonBuilder().setCustomId(`leveling_nav_rewards:${authorId}`).setLabel('🎁 Rewards').setStyle(ButtonStyle.Secondary),
+		new ButtonBuilder().setCustomId(`leveling_nav_rewards:${authorId}`).setLabel('<:emoji_29:1566533478902800464> Rewards').setStyle(ButtonStyle.Secondary),
 		new ButtonBuilder().setCustomId(`leveling_nav_ignores:${authorId}`).setLabel('🚫 No XP').setStyle(ButtonStyle.Secondary),
 		new ButtonBuilder().setCustomId(`leveling_nav_cleanup:${authorId}`).setLabel('🧹 Auto Cleanup').setStyle(ButtonStyle.Secondary)
 	);
@@ -87,7 +87,7 @@ export const buildSettings = (leveling, authorId) => {
 	const container = new ContainerBuilder();
 	const xp = leveling.xp || {};
 
-	container.addTextDisplayComponents(td => td.setContent(`# ⚙️ XP Settings`));
+	container.addTextDisplayComponents(td => td.setContent(`# <a:gears:1566530875879989289> XP Settings`));
 	container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
 	const textXp = xp.text || { enabled: true, minXp: 15, maxXp: 25 };
@@ -294,7 +294,7 @@ export const buildWizard = (leveling, authorId) => {
 	container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
 	container.addTextDisplayComponents(td => td.setContent(
-		`**Current Status:** ${leveling.enabled ? '✅ Enabled' : '❌ Disabled'}\n` +
+		`**Current Status:** ${leveling.enabled ? '✅ Enabled' : '<a:Emo_Loading:1566551264924405931> Disabled'}\n` +
 		`**XP Rate:** x${formatNumber(leveling.xp?.multiplier || 1)} • **Cooldown:** ${(leveling.xp?.cooldownMs || 0) / 1000}s\n` +
 		`**Cleanup:** Leave: ${leveling.autoCleanup?.leave ? '🟢' : '⚪'} • Kick: ${leveling.autoCleanup?.kick ? '🟢' : '⚪'} • Ban: ${leveling.autoCleanup?.ban ? '🟢' : '⚪'}`
 	));
@@ -445,11 +445,11 @@ const requireManageGuild = (member) =>
 
 async function handleDashboard(interaction, authorId) {
 	if (interaction.user.id !== authorId) {
-		await interaction.reply({ content: '❌ This panel is locked to the command invoker.', ephemeral: true });
+		await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> This panel is locked to the command invoker.', ephemeral: true });
 		return null;
 	}
 	if (!requireManageGuild(interaction.member)) {
-		await interaction.reply({ content: '❌ Manage Server is required.', ephemeral: true });
+		await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Manage Server is required.', ephemeral: true });
 		return null;
 	}
 	const leveling = await ensureLevelingConfig(interaction.client.db, interaction.guildId);
@@ -796,7 +796,7 @@ const components = [
 		customId: /^leveling_reward_pick:(\d+)$/,
 		execute: async (interaction) => {
 			const [, authorId] = interaction.customId.match(/^leveling_reward_pick:(\d+)$/) || [];
-			if (interaction.user.id !== authorId) return interaction.reply({ content: '❌ Locked to the invoker.', ephemeral: true });
+			if (interaction.user.id !== authorId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Locked to the invoker.', ephemeral: true });
 			const roleId = interaction.values?.[0];
 			if (!roleId) return;
 			const modal = new ModalBuilder()
@@ -880,7 +880,7 @@ const components = [
 		customId: /^leveling_msg_(content|title|body|footer|thumbnail|image):(\d+)$/,
 		execute: async (interaction) => {
 			const [, field, authorId] = interaction.customId.match(/^leveling_msg_(content|title|body|footer|thumbnail|image):(\d+)$/) || [];
-			if (interaction.user.id !== authorId) return interaction.reply({ content: '❌ Locked to the invoker.', ephemeral: true });
+			if (interaction.user.id !== authorId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Locked to the invoker.', ephemeral: true });
 
 			const leveling = await ensureLevelingConfig(interaction.client.db, interaction.guildId);
 			const msg = leveling.announce?.message || {};
@@ -1043,7 +1043,7 @@ const components = [
 async function execute(message, args, client) {
 	if (!requireManageGuild(message.member)) {
 		const container = new ContainerBuilder();
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Manage Server required.`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Manage Server required.`));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 

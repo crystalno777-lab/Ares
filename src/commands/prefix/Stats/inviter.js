@@ -12,7 +12,7 @@ const aliases = ['whoinvited', 'invitedby'];
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
@@ -63,7 +63,7 @@ async function execute(message, args, client) {
 		));
 	} else {
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} Could not find who invited **${targetUser.username}**.\n\n` +
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Could not find who invited **${targetUser.username}**.\n\n` +
 			`*This user may have joined before invite tracking was enabled, or used a vanity URL.*`
 		));
 	}

@@ -93,7 +93,7 @@ export default {
 
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
-        let statusText = `**Status:** ${config.enabled ? '✅ Enabled' : '❌ Disabled'}\n`;
+        let statusText = `**Status:** ${config.enabled ? '✅ Enabled' : '<a:Emo_Loading:1566551264924405931> Disabled'}\n`;
         statusText += `**Channel:** ${config.channel ? `<#${config.channel}>` : 'Not Set'}\n`;
         statusText += `**Auto-Lock:** ${config.autoLock ? 'Enabled' : 'Disabled'}\n`;
         statusText += `**Auto-Clean:** ${config.autoClean ? 'Enabled' : 'Disabled'}`;
@@ -318,7 +318,7 @@ export default {
             const currentStatus = guildData.bumpReminder.autoLock ? 'Enabled' : 'Disabled';
             return message.reply({
                 components: [buildNotice(
-                    `# 🔒 Auto-Lock Status`,
+                    `# <:emoji_12:1566529085235134695> Auto-Lock Status`,
                     `**Current Status:** ${currentStatus}\n\nUsage: .bumpreminder autolock <on|off>`
                 )],
                 flags: MessageFlags.IsComponentsV2,

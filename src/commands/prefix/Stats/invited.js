@@ -29,7 +29,7 @@ function buildInvitedPanel(guild, user, invitedUsers, authorId, botName, page = 
 	if (slice.length > 0) {
 		const list = slice.map((inv, i) => {
 			const rank = currentPage * PER_PAGE + i + 1;
-			const status = inv.left ? '❌' : '✅';
+			const status = inv.left ? '<a:Emo_Loading:1566551264924405931>' : '✅';
 			return `**#${rank}** ${status} <@${inv.userId}> — <t:${Math.floor(inv.ts / 1000)}:R>`;
 		}).join('\n');
 		container.addTextDisplayComponents(td => td.setContent(list));
@@ -59,7 +59,7 @@ function buildInvitedPanel(guild, user, invitedUsers, authorId, botName, page = 
 	}
 
 	container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
-	container.addTextDisplayComponents(td => td.setContent(`${botName} • ✅ = Still in server, ❌ = Left`));
+	container.addTextDisplayComponents(td => td.setContent(`${botName} • ✅ = Still in server, <a:Emo_Loading:1566551264924405931> = Left`));
 
 	return container;
 }
@@ -85,7 +85,7 @@ const components = [
 			const page = parseInt(pageStr, 10);
 
 			if (interaction.user.id !== authorId) {
-				return interaction.reply({ content: `${EMOJIS.error || '❌'} This panel is locked to the invoker.`, ephemeral: true });
+				return interaction.reply({ content: `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This panel is locked to the invoker.`, ephemeral: true });
 			}
 
 			const invitedUsers = await getInvitedUsers(interaction.client, interaction.guildId, targetUserId);
@@ -101,7 +101,7 @@ const components = [
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 

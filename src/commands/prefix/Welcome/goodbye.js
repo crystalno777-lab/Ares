@@ -318,7 +318,7 @@ export default {
 
     if (!subcommand || subcommand === 'show') {
       const container = new ContainerBuilder();
-      container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Goodbye Configuration`));
+      container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Goodbye Configuration`));
       container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
       container.addTextDisplayComponents(td => td.setContent(
         `**Status:** ${config.enabled ? `${EMOJIS.success} Enabled` : `${EMOJIS.error} Disabled`}\n` +
@@ -454,7 +454,7 @@ export default {
 
       const buildListContainer = (pageNum) => {
         const container = new ContainerBuilder();
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Goodbye Channels (${config.channels.length})`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Goodbye Channels (${config.channels.length})`));
         container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(`**System Status:** ${config.enabled ? `${EMOJIS.success} Enabled` : `${EMOJIS.error} Disabled`}`));
 
@@ -556,7 +556,7 @@ export default {
 
         const container = new ContainerBuilder();
         if (channelConfig.color) container.setAccentColor(channelConfig.color);
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Config for <#${channelId}>`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Config for <#${channelId}>`));
         container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
           `**Content:** ${channelConfig.content ? (channelConfig.content.length > 50 ? channelConfig.content.slice(0, 50) + '...' : channelConfig.content) : 'Not set'}\n` +

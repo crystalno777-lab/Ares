@@ -108,7 +108,7 @@ function buildTopPanel(guild, stats, data, authorId, botName, page = 'overview',
 		}
 
 		case 'msg-channels': {
-			container.addTextDisplayComponents(td => td.setContent(`### ${EMOJIS.channelstats || '📁'} Top Message Channels`));
+			container.addTextDisplayComponents(td => td.setContent(`### ${EMOJIS.channelstats || '<:emoji_5:1566528650411647178>'} Top Message Channels`));
 
 			const totalPages = Math.max(1, Math.ceil(data.topMsgChannels.length / PER_PAGE));
 			const currentPage = Math.min(Math.max(0, pageNum), totalPages - 1);
@@ -259,7 +259,7 @@ const components = [
 			const pageNum = parseInt(pageStr, 10);
 
 			if (interaction.user.id !== authorId) {
-				return interaction.reply({ content: `${EMOJIS.error || '❌'} This panel is locked to the invoker.`, ephemeral: true });
+				return interaction.reply({ content: `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This panel is locked to the invoker.`, ephemeral: true });
 			}
 
 			const data = await getTopData(interaction.client, interaction.guildId);
@@ -274,7 +274,7 @@ const components = [
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 

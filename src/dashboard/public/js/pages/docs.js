@@ -40,7 +40,7 @@ function getDocsCategories() {
       ]
     },
     {
-      id: 'antinuke', icon: '🔒', title: 'Anti-Nuke', color: '#f59e0b',
+      id: 'antinuke', icon: '<:emoji_12:1566529085235134695>', title: 'Anti-Nuke', color: '#f59e0b',
       desc: 'Advanced server protection system — monitors destructive actions like mass bans, channel deletions, role modifications, and webhook abuse in real-time.',
       commands: [
         { name: 'antinuke', aliases: ['antiwizard'], slash: true, perms: ['Administrator'], usage: '.antinuke [subcommand]', desc: 'Configure the full anti-nuke protection system with 10+ protection modules, presets, and punishments.', params: [{ n: 'subcommand', d: 'enable / disable / wizard / preset / whitelist / settings', r: false }], examples: ['.antinuke enable', '.antinuke wizard', '.antinuke preset strict', '.antinuke ban threshold 3', '.antinuke whitelist add @user'],
@@ -71,7 +71,7 @@ function getDocsCategories() {
       ]
     },
     {
-      id: 'music', icon: '🎵', title: 'Music', color: '#06b6d4',
+      id: 'music', icon: '<:emoji_12:1566529131200512120>', title: 'Music', color: '#06b6d4',
       desc: 'Lavalink-powered music system with multi-source playback, queue management, 24/7 mode, autoplay, and loop controls.',
       commands: [
         { name: 'play', aliases: ['p'], slash: true, perms: [], usage: '.play <query or URL>', desc: 'Play a song from YouTube, Spotify, SoundCloud, or a direct URL. Adds to queue if already playing.', params: [{ n: 'query', d: 'Song name, URL, or playlist link', r: true }], examples: ['.play Never Gonna Give You Up', '.play https://youtube.com/watch?v=...', '/play Despacito'] },
@@ -146,7 +146,7 @@ function getDocsCategories() {
       ]
     },
     {
-      id: 'welcome', icon: '👋', title: 'Welcome & Goodbye', color: '#22c55e',
+      id: 'welcome', icon: '<:MH_Blush:1566534747067515043>', title: 'Welcome & Goodbye', color: '#22c55e',
       desc: 'Customizable welcome and goodbye message system with multi-channel support, embed builder, and placeholder variables.',
       commands: [
         { name: 'welcome', aliases: [], slash: true, perms: ['ManageGuild'], usage: '.welcome <subcommand> [options]', desc: 'Configure multi-channel welcome messages with embeds, placeholders, and auto-send.', params: [{ n: 'subcommand', d: 'add / remove / list / config / toggle / test / reset / show', r: true }, { n: 'channel', d: 'Target channel', r: false }], examples: ['.welcome add #welcome', '.welcome config #welcome', '.welcome test', '/welcome add #channel'],
@@ -170,7 +170,7 @@ function getDocsCategories() {
       ]
     },
     {
-      id: 'config', icon: '⚙️', title: 'Server Configuration', color: '#a855f7',
+      id: 'config', icon: '<a:gears:1566530875879989289>', title: 'Server Configuration', color: '#a855f7',
       desc: 'Configure bot behavior — custom prefix, auto-responders, reaction triggers, starboard, birthdays, bump reminders, and command toggles.',
       commands: [
         { name: 'setprefix', aliases: [], slash: false, perms: ['ManageGuild'], usage: '.setprefix <new prefix>', desc: 'Change the bot\'s command prefix for your server.', params: [{ n: 'prefix', d: 'New prefix symbol', r: true }], examples: ['.setprefix !', '.setprefix $'] },
@@ -244,7 +244,7 @@ function getDocsCategories() {
       ]
     },
     {
-      id: 'misc', icon: '✨', title: 'Miscellaneous', color: '#d946ef',
+      id: 'misc', icon: '<:emoji_6:1566530216359108629>', title: 'Miscellaneous', color: '#d946ef',
       desc: 'Utility tools — emoji management, sticker tools, message sniping, embed builder, and reaction tracking.',
       commands: [
         { name: 'snipe', aliases: ['s'], slash: false, perms: [], usage: '.snipe [index]', desc: 'Recover the most recently deleted message in the channel.', params: [{ n: 'index', d: 'Message index (default: 1)', r: false }], examples: ['.snipe', '.snipe 3'] },
@@ -494,7 +494,7 @@ function renderDocsHome(categories, scrollTarget) {
 
           <!-- Info callout -->
           <div class="docs-callout docs-callout-info docs-anim-slide" style="--d:0">
-            <div class="docs-callout-icon">💡</div>
+            <div class="docs-callout-icon"><a:1202lightyellowcrown:1566531939752747078></div>
             <div>
               <strong>Default prefix:</strong> <code>.</code> — Change it with <code>.setprefix &lt;symbol&gt;</code>. Most commands also support <code>/slash</code> syntax.
             </div>

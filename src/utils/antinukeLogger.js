@@ -22,18 +22,18 @@ const EVENT_EMOJIS = {
     ban: '🔨',
     kick: '👢',
     role: '🎭',
-    channel: '📁',
+    channel: '<:emoji_5:1566528650411647178>',
     webhook: '🪝',
     emoji: '😀',
     botadd: '🤖',
     vanity: '🔗',
     prune: '✂️',
     permissions: '⚠️',
-    protocol: '🔒',
+    protocol: '<:emoji_12:1566529085235134695>',
     protocolHold: '⛓️',
     strike: '⚡',
     whitelistBypass: '✅',
-    configChange: '⚙️'
+    configChange: '<a:gears:1566530875879989289>'
 };
 
 function formatUserMention(userId, tag) {
@@ -150,14 +150,14 @@ function createMemberActionLog(emoji, eventType, color, executor, target, detail
         );
 
     if (details) {
-        embed.addFields({ name: '📋 Details', value: details, inline: false });
+        embed.addFields({ name: '<:emoji_9:1566528847464108183> Details', value: details, inline: false });
     }
 
     if (punished) {
         embed.addFields(
             {
                 name: '⚖️ Action Taken',
-                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Successfully executed' : '❌ Execution failed'}`,
+                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Successfully executed' : '<a:Emo_Loading:1566551264924405931> Execution failed'}`,
                 inline: false
             }
         );
@@ -211,14 +211,14 @@ function createRoleLog(emoji, color, executor, target, details, punishment, puni
     }
 
     if (details) {
-        embed.addFields({ name: '📋 Changes', value: details, inline: false });
+        embed.addFields({ name: '<:emoji_9:1566528847464108183> Changes', value: details, inline: false });
     }
 
     if (punished) {
         embed.addFields(
             {
                 name: '⚖️ Punishment Issued',
-                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Successfully applied' : '❌ Failed to apply'}`,
+                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Successfully applied' : '<a:Emo_Loading:1566551264924405931> Failed to apply'}`,
                 inline: false
             }
         );
@@ -263,18 +263,18 @@ function createChannelLog(emoji, color, executor, target, details, punishment, p
         );
 
     if (target) {
-        embed.addFields({ name: '📁 Affected Channel', value: target, inline: false });
+        embed.addFields({ name: '<:emoji_5:1566528650411647178> Affected Channel', value: target, inline: false });
     }
 
     if (details) {
-        embed.addFields({ name: '📋 Information', value: details, inline: false });
+        embed.addFields({ name: '<:emoji_9:1566528847464108183> Information', value: details, inline: false });
     }
 
     if (punished) {
         embed.addFields(
             {
                 name: '⚖️ Action Taken',
-                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Executed successfully' : '❌ Failed to execute'}`,
+                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Executed successfully' : '<a:Emo_Loading:1566551264924405931> Failed to execute'}`,
                 inline: false
             }
         );
@@ -319,14 +319,14 @@ function createWebhookLog(emoji, color, executor, details, punishment, punished,
         );
 
     if (details) {
-        embed.addFields({ name: '📋 Details', value: details, inline: false });
+        embed.addFields({ name: '<:emoji_9:1566528847464108183> Details', value: details, inline: false });
     }
 
     if (punished) {
         embed.addFields(
             {
                 name: '⚖️ Punishment',
-                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Applied' : '❌ Failed'}`,
+                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Applied' : '<a:Emo_Loading:1566551264924405931> Failed'}`,
                 inline: false
             }
         );
@@ -375,14 +375,14 @@ function createEmojiLog(emoji, color, executor, target, details, punishment, pun
     }
 
     if (details) {
-        embed.addFields({ name: '📋 Details', value: details, inline: false });
+        embed.addFields({ name: '<:emoji_9:1566528847464108183> Details', value: details, inline: false });
     }
 
     if (punished) {
         embed.addFields(
             {
                 name: '⚖️ Action Taken',
-                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Success' : '❌ Failed'}`,
+                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Success' : '<a:Emo_Loading:1566551264924405931> Failed'}`,
                 inline: false
             }
         );
@@ -427,14 +427,14 @@ function createBotAddLog(emoji, color, executor, target, details, punishment, pu
         );
 
     if (details) {
-        embed.addFields({ name: '📋 Information', value: details, inline: false });
+        embed.addFields({ name: '<:emoji_9:1566528847464108183> Information', value: details, inline: false });
     }
 
     if (punished) {
         embed.addFields(
             {
                 name: '⚖️ Punishment',
-                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Applied to user' : '❌ Failed to apply'}`,
+                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Applied to user' : '<a:Emo_Loading:1566551264924405931> Failed to apply'}`,
                 inline: false
             }
         );
@@ -476,7 +476,7 @@ function createServerUpdateLog(emoji, color, executor, changes, punishment, puni
         embed.addFields(
             {
                 name: '⚖️ Action Taken',
-                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Executed' : '❌ Failed'}`,
+                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Executed' : '<a:Emo_Loading:1566551264924405931> Failed'}`,
                 inline: false
             }
         );
@@ -528,7 +528,7 @@ function createPermissionLog(emoji, color, executor, target, details, punishment
         embed.addFields(
             {
                 name: '⚖️ Punishment',
-                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Applied' : '❌ Failed'}`,
+                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Applied' : '<a:Emo_Loading:1566551264924405931> Failed'}`,
                 inline: false
             }
         );
@@ -561,7 +561,7 @@ function createProtocolLog(emoji, color, executor, target, reason, timestamp, su
                 inline: true
             },
             {
-                name: '📋 Reason',
+                name: '<:emoji_9:1566528847464108183> Reason',
                 value: reason || 'Antinuke violation',
                 inline: false
             },
@@ -571,8 +571,8 @@ function createProtocolLog(emoji, color, executor, target, reason, timestamp, su
                 inline: false
             },
             {
-                name: '🔒 Status',
-                value: success ? '✅ Protocol Active' : '❌ Failed to Apply',
+                name: '<:emoji_12:1566529085235134695> Status',
+                value: success ? '✅ Protocol Active' : '<a:Emo_Loading:1566551264924405931> Failed to Apply',
                 inline: false
             }
         )
@@ -604,13 +604,13 @@ function createProtocolHoldLog(emoji, color, executor, target, punishment, times
                 inline: true
             },
             {
-                name: '📋 Violation',
+                name: '<:emoji_9:1566528847464108183> Violation',
                 value: 'Attempted to add roles to a user under protocol',
                 inline: false
             },
             {
                 name: '⚖️ Punishment',
-                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Applied' : '❌ Failed'}`,
+                value: `\`\`\`${punishment}\`\`\`\n${success ? '✅ Applied' : '<a:Emo_Loading:1566551264924405931> Failed'}`,
                 inline: false
             }
         )
@@ -644,7 +644,7 @@ function createStrikeLog(emoji, color, executor, action, details, strikes, thres
         );
 
     if (details) {
-        embed.addFields({ name: '📋 Details', value: details, inline: false });
+        embed.addFields({ name: '<:emoji_9:1566528847464108183> Details', value: details, inline: false });
     }
 
     const remaining = threshold - strikes;
@@ -680,7 +680,7 @@ function createGenericLog(emoji, color, executor, action, details, punishment, s
         );
 
     if (details) {
-        embed.addFields({ name: '📋 Details', value: details, inline: false });
+        embed.addFields({ name: '<:emoji_9:1566528847464108183> Details', value: details, inline: false });
     }
 
     if (punishment) {
@@ -723,7 +723,7 @@ function createConfigChangeLog(emoji, color, executor, action, details, changes,
         );
 
     if (details) {
-        embed.addFields({ name: '📋 Details', value: details, inline: false });
+        embed.addFields({ name: '<:emoji_9:1566528847464108183> Details', value: details, inline: false });
     }
 
     if (changes && typeof changes === 'object' && Object.keys(changes).length > 0) {

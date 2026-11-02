@@ -361,7 +361,7 @@ const execute = async (message, args, client) => {
 		));
 		container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 		container.addTextDisplayComponents(td => td.setContent(
-			'**📋 Full Template:**\n' +
+			'**<:emoji_9:1566528847464108183> Full Template:**\n' +
 			'```\n.giveaway start #giveaways 2d 1 Nitro Classic --desc Win this amazing prize! --color #8A5FFF --image https://example.com/banner.png --thumb https://example.com/icon.png --reqroles @Vip --roles @Winner --minlevel 10 --maxlevel 100 --age 30 --stay 7```'
 		));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: SAFE_MENTIONS });

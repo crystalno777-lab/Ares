@@ -9,7 +9,7 @@ export default {
 	async execute(interaction, client) {
 		if (!interaction.member?.voice.channel) {
 			return interaction.reply({
-				content: '❌ You must be in a voice channel to use this command.',
+				content: '<a:Emo_Loading:1566551264924405931> You must be in a voice channel to use this command.',
 				ephemeral: true
 			});
 		}
@@ -18,21 +18,21 @@ export default {
 
 		if (!queue || queue.stopped) {
 			return interaction.reply({
-				content: '❌ I\'m not playing any music.',
+				content: '<a:Emo_Loading:1566551264924405931> I\'m not playing any music.',
 				ephemeral: true
 			});
 		}
 
 		if (interaction.member.voice.channelId !== queue.voiceChannel.id) {
 			return interaction.reply({
-				content: '❌ You must be in the same voice channel as me.',
+				content: '<a:Emo_Loading:1566551264924405931> You must be in the same voice channel as me.',
 				ephemeral: true
 			});
 		}
 
 		if (queue.tracks.length <= 1) {
 			return interaction.reply({
-				content: '❌ The queue is already empty (only current track exists).',
+				content: '<a:Emo_Loading:1566551264924405931> The queue is already empty (only current track exists).',
 				ephemeral: true
 			});
 		}
@@ -56,7 +56,7 @@ export default {
 		} catch (error) {
 			console.error('Error in clear command:', error);
 			interaction.reply({
-				content: '❌ An error occurred while clearing the queue.',
+				content: '<a:Emo_Loading:1566551264924405931> An error occurred while clearing the queue.',
 				ephemeral: true
 			});
 		}

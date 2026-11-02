@@ -19,7 +19,7 @@ async function execute(message, args, client) {
 
 	if (!hasPerms(message.member, PermissionFlagsBits.MuteMembers)) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You need **Mute Members** permission to use this command.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Mute Members** permission to use this command.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -32,7 +32,7 @@ async function execute(message, args, client) {
 
 		if (!channel || !channel.isVoiceBased()) {
 			container.addTextDisplayComponents(td =>
-				td.setContent(`${EMOJIS.error || '❌'} Invalid voice channel ID provided.`)
+				td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid voice channel ID provided.`)
 			);
 			return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 		}
@@ -43,7 +43,7 @@ async function execute(message, args, client) {
 
 	if (!channel) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You need to be in a voice channel or provide a valid voice channel ID.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need to be in a voice channel or provide a valid voice channel ID.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -80,7 +80,7 @@ async function execute(message, args, client) {
 
 	let content = `${EMOJIS.success || '✅'} Server muted **${successCount}** members in **${channel.name}**.`;
 	if (failCount > 0) {
-		content += `\n${EMOJIS.error || '❌'} Failed to mute **${failCount}** members due to permissions/hierarchy.`;
+		content += `\n${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Failed to mute **${failCount}** members due to permissions/hierarchy.`;
 	}
 
 	container.addTextDisplayComponents(td => td.setContent(content));

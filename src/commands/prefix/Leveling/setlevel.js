@@ -8,14 +8,14 @@ const aliases = ['set-level'];
 async function execute(message, args, client) {
 	if (!message.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} You need **Manage Server** permission.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Manage Server** permission.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 
 	const leveling = await ensureLevelingConfig(client.db, message.guildId);
 	if (!leveling.enabled) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Leveling is disabled.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Leveling is disabled.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 
@@ -24,14 +24,14 @@ async function execute(message, args, client) {
 
 	if (!userId || isNaN(newLevel) || newLevel < 0 || newLevel > 1000) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Usage: \`setlevel <@user> <level>\` (0-1000)`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Usage: \`setlevel <@user> <level>\` (0-1000)`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 
 	const member = await message.guild.members.fetch(userId).catch(() => null);
 	if (!member) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Member not found.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Member not found.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 

@@ -113,7 +113,7 @@ function buildUserPanel(user, member, guild, stats, userStats, ranks, authorId, 
 
 	const activityEmoji = activityLevel === 'Super Active' ? '🔥' :
 		activityLevel === 'Very Active' ? '⚡' :
-		activityLevel === 'Active' ? '✨' :
+		activityLevel === 'Active' ? '<:emoji_6:1566530216359108629>' :
 		activityLevel === 'Moderate' ? '📊' :
 		activityLevel === 'Low' ? '💤' : '😴';
 
@@ -150,14 +150,14 @@ const components = [
 			const [, authorId, userId] = match;
 
 			if (interaction.user.id !== authorId) {
-				return interaction.reply({ content: `${EMOJIS.error || '❌'} This panel is locked to the invoker.`, ephemeral: true });
+				return interaction.reply({ content: `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This panel is locked to the invoker.`, ephemeral: true });
 			}
 
 			let user;
 			try {
 				user = await interaction.client.users.fetch(userId);
 			} catch {
-				return interaction.reply({ content: `${EMOJIS.error || '❌'} User not found.`, ephemeral: true });
+				return interaction.reply({ content: `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} User not found.`, ephemeral: true });
 			}
 
 			const member = await interaction.guild.members.fetch(userId).catch(() => null);
@@ -181,7 +181,7 @@ const components = [
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
@@ -193,7 +193,7 @@ async function execute(message, args, client) {
 			targetUser = await client.users.fetch(userId);
 		} catch {
 			const c = new ContainerBuilder();
-			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} User not found.`));
+			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} User not found.`));
 			return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 		}
 	}

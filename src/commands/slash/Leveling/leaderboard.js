@@ -9,7 +9,7 @@ export default {
 		.setDMPermission(false),
 	async execute(interaction) {
 		const leveling = await ensureLevelingConfig(interaction.client.db, interaction.guildId);
-		if (!leveling.enabled) return interaction.reply({ content: '❌ Leveling is disabled here.', ephemeral: true });
+		if (!leveling.enabled) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Leveling is disabled here.', ephemeral: true });
 		const panel = buildPage(leveling, 0, interaction.user.id);
 		await interaction.reply({ components: [panel], flags: MessageFlags.IsComponentsV2, allowedMentions: { users: [] } });
 	},

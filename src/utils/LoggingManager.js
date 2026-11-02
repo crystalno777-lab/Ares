@@ -499,7 +499,7 @@ export async function shouldIgnore(client, guildId, context) {
 }
 
 export function createLogContainer(eventType, data) {
-	const icon = EVENT_ICONS[eventType] || '📋';
+	const icon = EVENT_ICONS[eventType] || '<:emoji_9:1566528847464108183>';
 	const title = EVENT_TITLES[eventType] || 'Event Logged';
 
 	const container = new ContainerBuilder();
@@ -582,7 +582,7 @@ export function createLogContainer(eventType, data) {
 	}
 
 	if (data.caseId) {
-		infoLines.push(`**📋 Case ID:** #${data.caseId}`);
+		infoLines.push(`**<:emoji_9:1566528847464108183> Case ID:** #${data.caseId}`);
 	}
 	if (data.caseType) {
 		infoLines.push(`**📝 Case Type:** ${data.caseType}`);
@@ -599,7 +599,7 @@ export function createLogContainer(eventType, data) {
 	}
 
 	if (data.details) {
-		infoLines.push(`**📋 Details:** ${data.details}`);
+		infoLines.push(`**<:emoji_9:1566528847464108183> Details:** ${data.details}`);
 	}
 
 	if (data.duration) {
@@ -757,7 +757,7 @@ export function createLogContainer(eventType, data) {
 
 export function createLogEmbed(eventType, data) {
 	const category = getCategoryForEvent(eventType);
-	const icon = EVENT_ICONS[eventType] || '📋';
+	const icon = EVENT_ICONS[eventType] || '<:emoji_9:1566528847464108183>';
 	const title = EVENT_TITLES[eventType] || 'Event Logged';
 	const color = CATEGORY_COLORS[category] || 0x7289da;
 
@@ -1231,8 +1231,8 @@ export function formatPermissionChanges(oldPerms, newPerms) {
 		const newVal = newPerms?.[perm];
 
 		if (oldVal !== newVal) {
-			const oldStr = oldVal === true ? '✅' : oldVal === false ? '❌' : '➖';
-			const newStr = newVal === true ? '✅' : newVal === false ? '❌' : '➖';
+			const oldStr = oldVal === true ? '✅' : oldVal === false ? '<a:Emo_Loading:1566551264924405931>' : '➖';
+			const newStr = newVal === true ? '✅' : newVal === false ? '<a:Emo_Loading:1566551264924405931>' : '➖';
 			changes.push(`${perm}: ${oldStr} → ${newStr}`);
 		}
 	}

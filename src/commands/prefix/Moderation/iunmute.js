@@ -22,7 +22,7 @@ export default {
 		if (args.length < 2) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Missing Arguments`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Arguments`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -42,7 +42,7 @@ export default {
 		if (!canUse.allowed) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Permission Denied`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -62,7 +62,7 @@ export default {
 		if (!target) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ User Not Found`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> User Not Found`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -81,7 +81,7 @@ export default {
 		if (target.user.bot) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Cannot Unmute Bot`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Cannot Unmute Bot`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)

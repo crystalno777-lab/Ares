@@ -61,7 +61,7 @@ async function autoCloseTicket(client, guildData, ticket, channel, reason, panel
 		}
 
 		const container = new ContainerBuilder()
-			.addTextDisplayComponents(td => td.setContent(`# 🔒 Ticket Auto-Closed\nThis ticket was automatically closed due to **${reason === 'INACTIVITY' ? 'inactivity' : 'user leaving'}**.`))
+			.addTextDisplayComponents(td => td.setContent(`# <:emoji_12:1566529085235134695> Ticket Auto-Closed\nThis ticket was automatically closed due to **${reason === 'INACTIVITY' ? 'inactivity' : 'user leaving'}**.`))
 			.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
 		const row = new ActionRowBuilder().addComponents(
@@ -81,7 +81,7 @@ async function autoCloseTicket(client, guildData, ticket, channel, reason, panel
 			const logChannel = await channel.guild.channels.fetch(panel.config.loggingChannel).catch(() => null);
 			if (logChannel) {
 				const logContainer = new ContainerBuilder()
-					.addTextDisplayComponents(td => td.setContent(`# 🔒 Ticket Auto-Closed`))
+					.addTextDisplayComponents(td => td.setContent(`# <:emoji_12:1566529085235134695> Ticket Auto-Closed`))
 					.addTextDisplayComponents(td => td.setContent(
 						`**Ticket:** #${ticket.ticketId}\n` +
 						`**Channel:** ${channel}\n` +

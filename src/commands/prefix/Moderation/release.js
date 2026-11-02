@@ -18,7 +18,7 @@ export default {
 		if (!args.length) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Missing Arguments`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Arguments`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -38,7 +38,7 @@ export default {
 		if (!canUse.allowed) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Permission Denied`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -58,7 +58,7 @@ export default {
 		if (!target) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ User Not Found`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> User Not Found`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -82,7 +82,7 @@ export default {
 			if (!guildData || !guildData.moderation?.detains) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Not Detained`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Not Detained`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -103,7 +103,7 @@ export default {
 			if (!detainRecord) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Not Detained`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Not Detained`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -202,7 +202,7 @@ export default {
 			console.error('Error in release command:', error);
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Error`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)

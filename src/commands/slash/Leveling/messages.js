@@ -19,7 +19,7 @@ export default {
 		const leveling = await ensureLevelingConfig(interaction.client.db, interaction.guildId);
 		if (!leveling.enabled) {
 			const c = new ContainerBuilder();
-			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Leveling is disabled.`));
+			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Leveling is disabled.`));
 			return interaction.reply({ components: [c], flags: MessageFlags.Ephemeral | MessageFlags.IsComponentsV2 });
 		}
 

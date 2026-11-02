@@ -178,7 +178,7 @@ async function createTicketFromCommand(message, reason = 'No reason provided') {
 		.addTextDisplayComponents(td => td.setContent(`${mentionContent}\n\nWelcome! Support will be with you shortly.`));
 
 	const row = new ActionRowBuilder().addComponents(
-		new ButtonBuilder().setCustomId('ticket_close_ask').setLabel('Close').setStyle(ButtonStyle.Danger).setEmoji('🔒'),
+		new ButtonBuilder().setCustomId('ticket_close_ask').setLabel('Close').setStyle(ButtonStyle.Danger).setEmoji('<:emoji_12:1566529085235134695>'),
 		new ButtonBuilder().setCustomId('ticket_claim').setLabel('Claim').setStyle(ButtonStyle.Secondary).setEmoji('🙋‍♂️'),
 		new ButtonBuilder().setCustomId('ticket_rename').setLabel('Rename').setStyle(ButtonStyle.Secondary).setEmoji('✏️'),
 		new ButtonBuilder().setCustomId('ticket_adduser').setLabel('Add User').setStyle(ButtonStyle.Secondary).setEmoji('➕'),
@@ -428,7 +428,7 @@ export default {
 					.setCustomId(`ticket_confirm_close_${ticket.channelId}`)
 					.setLabel('Close Ticket')
 					.setStyle(ButtonStyle.Danger)
-					.setEmoji('🔒'),
+					.setEmoji('<:emoji_12:1566529085235134695>'),
 				new ButtonBuilder()
 					.setCustomId('ticket_cancel_close')
 					.setLabel('Cancel')
@@ -929,7 +929,7 @@ ${topStaff}
 					.setCustomId(`ticket_closerequest_deny_${ticket.channelId}`)
 					.setLabel('Keep Open')
 					.setStyle(ButtonStyle.Secondary)
-					.setEmoji('❌')
+					.setEmoji('<a:Emo_Loading:1566551264924405931>')
 			);
 			container.addActionRowComponents(row);
 

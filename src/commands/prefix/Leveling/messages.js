@@ -10,14 +10,14 @@ async function execute(message, args, client) {
 
 	if (!['enable', 'disable', 'on', 'off'].includes(setting)) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Usage: \`levels-messages <enable|disable>\``));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Usage: \`levels-messages <enable|disable>\``));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 
 	const leveling = await ensureLevelingConfig(client.db, message.guildId);
 	if (!leveling.enabled) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Leveling is disabled.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Leveling is disabled.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 

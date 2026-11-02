@@ -19,7 +19,7 @@ async function execute(message, args, client) {
 
 	if (!hasPerms(message.member, PermissionFlagsBits.MuteMembers)) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You need **Mute Members** permission to use this command.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Mute Members** permission to use this command.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -42,21 +42,21 @@ async function execute(message, args, client) {
 
 	if (!targetMember) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Please specify a valid member to kick from voice.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please specify a valid member to kick from voice.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (!targetMember.voice.channel) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} **${targetMember.user.username}** is not in a voice channel.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **${targetMember.user.username}** is not in a voice channel.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (targetMember.id === message.guild.ownerId && message.author.id !== message.guild.ownerId) {
 		 container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You cannot kick the server owner from voice.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You cannot kick the server owner from voice.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -64,7 +64,7 @@ async function execute(message, args, client) {
 	 if (message.author.id !== message.guild.ownerId &&
 		message.member.roles.highest.position <= targetMember.roles.highest.position) {
 		 container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You cannot kick this member due to role hierarchy.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You cannot kick this member due to role hierarchy.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -82,7 +82,7 @@ async function execute(message, args, client) {
 	} catch (error) {
 		console.error(error);
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Failed to kick member from voice. I might not have permission.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Failed to kick member from voice. I might not have permission.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}

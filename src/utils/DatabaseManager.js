@@ -98,7 +98,7 @@ class DatabaseManager {
 			await this.createPostgresTables();
 			return true;
 		} catch (error) {
-			console.error('❌ PostgreSQL connection failed:', error.message);
+			console.error('<a:Emo_Loading:1566551264924405931> PostgreSQL connection failed:', error.message);
 			return false;
 		}
 	}

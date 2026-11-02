@@ -14,7 +14,7 @@ const MODULES = {
     antirole: { name: 'Anti-Role Mention', description: 'Blocks mentions of large roles', emoji: '🎭', defaultPunishment: 'warn', strikes: 2 },
     antizalgo: { name: 'Anti-Zalgo', description: 'Blocks zalgo/glitched text', emoji: '👾', defaultPunishment: 'delete', strikes: 0 },
     antinewlines: { name: 'Anti-Newlines', description: 'Blocks excessive blank lines', emoji: '↕️', defaultPunishment: 'delete', strikes: 0 },
-    anticopypasta: { name: 'Anti-Copypasta', description: 'Blocks known spam copypastas', emoji: '📋', defaultPunishment: 'delete', strikes: 2 },
+    anticopypasta: { name: 'Anti-Copypasta', description: 'Blocks known spam copypastas', emoji: '<:emoji_9:1566528847464108183>', defaultPunishment: 'delete', strikes: 2 },
     antiai: { name: 'AI Toxicity', description: 'Checks messages & offensive nicknames', emoji: '🧪', defaultPunishment: 'delete', strikes: 1 }
 };
 
@@ -24,7 +24,7 @@ const PUNISHMENTS = {
     mute: { name: 'Mute', description: 'Mutes the user for 10 minutes', emoji: '🔇' },
     kick: { name: 'Kick', description: 'Kicks the user from server', emoji: '👢' },
     ban: { name: 'Ban', description: 'Bans the user from server', emoji: '🔨' },
-    protocol: { name: 'Protocol', description: 'Removes all roles and applies 28-day timeout', emoji: '🚨' }
+    protocol: { name: 'Protocol', description: 'Removes all roles and applies 28-day timeout', emoji: '<:emoji_1:1566528388733337600>' }
 };
 
 const PRESETS = {
@@ -98,7 +98,7 @@ const buildWizardContainer = (config, disabled = false, currentPage = 'main') =>
             new ButtonBuilder()
                 .setCustomId('automod_preset_strict')
                 .setLabel('Strict')
-                .setEmoji(EMOJIS.strict || '🔒')
+                .setEmoji(EMOJIS.strict || '<:emoji_12:1566529085235134695>')
                 .setStyle(activePreset === 'strict' ? ButtonStyle.Success : ButtonStyle.Secondary)
                 .setDisabled(disabled || activePreset === 'strict'),
             new ButtonBuilder()
@@ -157,7 +157,7 @@ const buildWizardContainer = (config, disabled = false, currentPage = 'main') =>
             new ButtonBuilder()
                 .setCustomId('automod_logchannel')
                 .setLabel('Log Channel')
-                .setEmoji(EMOJIS.enabledisablelogging || '📋')
+                .setEmoji(EMOJIS.enabledisablelogging || '<:emoji_9:1566528847464108183>')
                 .setStyle(ButtonStyle.Secondary)
                 .setDisabled(disabled),
             new ButtonBuilder()
@@ -368,7 +368,7 @@ const buildModuleIgnorePage = (config, selectedModule, disabled = false) => {
     const mod = MODULES[selectedModule];
 
     if (!mod) {
-        container.addTextDisplayComponents(td => td.setContent(`❌ **Error:** Invalid module configuration.`));
+        container.addTextDisplayComponents(td => td.setContent(`<a:Emo_Loading:1566551264924405931> **Error:** Invalid module configuration.`));
         container.addActionRowComponents(new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('automod_page_ignore')
@@ -500,7 +500,7 @@ const buildStrikesPage = (config, disabled = false) => {
         td.setContent(
             `⚠️ **STRIKE SYSTEM**\n` +
             `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-            `**Status:** ${strikesEnabled ? '✅ Enabled' : '❌ Disabled'}\n\n` +
+            `**Status:** ${strikesEnabled ? '✅ Enabled' : '<a:Emo_Loading:1566551264924405931> Disabled'}\n\n` +
             `Strikes accumulate per user. Actions trigger at thresholds.\n\n` +
             `**Expiry:** ${config.strikeExpiry || 24} hours\n\n` +
             `**Current Actions:**\n${actionsText}`
@@ -712,7 +712,7 @@ export default {
         if (!modName) {
             let content = '**Available Modules:**\n\n';
             for (const [key, mod] of Object.entries(MODULES)) {
-                const status = config.modules[key]?.enabled ? EMOJIS.success || '✅' : EMOJIS.error || '❌';
+                const status = config.modules[key]?.enabled ? EMOJIS.success || '✅' : EMOJIS.error || '<a:Emo_Loading:1566551264924405931>';
                 content += `${status} **${mod.name}** (\`${key}\`)\n└ ${mod.description}\n`;
             }
             return this.sendInfo(message, 'Automod Modules', content);
@@ -1060,7 +1060,7 @@ export default {
         let moduleStatus = '';
         for (const [key, mod] of Object.entries(MODULES)) {
             const cfg = config.modules?.[key] || {};
-            const status = cfg.enabled ? EMOJIS.success || '✅' : EMOJIS.error || '❌';
+            const status = cfg.enabled ? EMOJIS.success || '✅' : EMOJIS.error || '<a:Emo_Loading:1566551264924405931>';
             const punishments = cfg.punishments || (cfg.punishment ? [cfg.punishment] : [mod.defaultPunishment]);
             const threshold = cfg.threshold || 1;
             moduleStatus += `${status} **${mod.name}** → ${punishments.join('+')} (${threshold})\n`;
@@ -1071,7 +1071,7 @@ export default {
 
         container.addTextDisplayComponents(td =>
             td.setContent(
-                `**Status:** ${config.enabled ? `${EMOJIS.success || '✅'} Enabled` : `${EMOJIS.error || '❌'} Disabled`}\n` +
+                `**Status:** ${config.enabled ? `${EMOJIS.success || '✅'} Enabled` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Disabled`}\n` +
                 `**Log Channel:** ${config.logChannel ? `<#${config.logChannel}>` : '*Not set*'}\n` +
                 `**Global Ignores:** ${ignoreCount}\n\n` +
                 `**Modules:**\n${moduleStatus}`
@@ -1128,7 +1128,7 @@ export default {
                 .join('\n');
 
             let content = `**Strike System**\n\n`;
-            content += `**Status:** ${strikesEnabled ? '✅ Enabled' : '❌ Disabled'}\n\n`;
+            content += `**Status:** ${strikesEnabled ? '✅ Enabled' : '<a:Emo_Loading:1566551264924405931> Disabled'}\n\n`;
             content += `Strikes accumulate per-user. When thresholds are reached, automated actions trigger.\n\n`;
             content += `**Current Actions:**\n${actionsText || '*None configured*'}\n\n`;
             content += `**Strike Expiry:** ${config.strikeExpiry || 24} hours\n\n`;
@@ -1247,7 +1247,7 @@ export default {
 
     sendError(message, title, description) {
         const container = new ContainerBuilder();
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} ${title}`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} ${title}`));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(description));
         return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });

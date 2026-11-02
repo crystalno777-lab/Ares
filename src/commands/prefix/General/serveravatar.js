@@ -13,7 +13,7 @@ export default {
     if (!iconUrl) {
       const container = new ContainerBuilder();
       container.addTextDisplayComponents(td =>
-        td.setContent(`# ${EMOJIS.error || '❌'} **No Icon**`)
+        td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **No Icon**`)
       );
       container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
       container.addTextDisplayComponents(td =>

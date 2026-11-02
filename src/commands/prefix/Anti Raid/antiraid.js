@@ -48,7 +48,7 @@ const buildConfigContainer = (config) => {
 
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
-    const raidStatus = config.raidState ? `${EMOJIS.error || '🚨'} **RAID MODE ACTIVE**` : `${EMOJIS.success || '✅'} Normal`;
+    const raidStatus = config.raidState ? `${EMOJIS.error || '<:emoji_1:1566528388733337600>'} **RAID MODE ACTIVE**` : `${EMOJIS.success || '✅'} Normal`;
 
     container.addTextDisplayComponents(td =>
         td.setContent(
@@ -62,7 +62,7 @@ const buildConfigContainer = (config) => {
 
     container.addTextDisplayComponents(td =>
         td.setContent(
-            `🚨 **Mass Join Detection**\n` +
+            `<:emoji_1:1566528388733337600> **Mass Join Detection**\n` +
             `├ Status: ${config.massjoin?.enabled ? '`Enabled`' : '`Disabled`'}\n` +
             `├ Threshold: \`${config.massjoin?.threshold || 5}\` joins/10s\n` +
             `├ Action: \`${config.massjoin?.action || 'kick'}\`\n` +
@@ -95,7 +95,7 @@ const buildConfigContainer = (config) => {
 
     const whitelistCount = config.whitelist?.length || 0;
     container.addTextDisplayComponents(td =>
-        td.setContent(`📋 **Whitelist:** ${whitelistCount} user${whitelistCount !== 1 ? 's' : ''}`)
+        td.setContent(`<:emoji_9:1566528847464108183> **Whitelist:** ${whitelistCount} user${whitelistCount !== 1 ? 's' : ''}`)
     );
 
     return container;
@@ -111,7 +111,7 @@ const buildSuccessContainer = (title, description) => {
 
 const buildErrorContainer = (title, description) => {
     const container = new ContainerBuilder();
-    container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **${title}**`));
+    container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **${title}**`));
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
     container.addTextDisplayComponents(td => td.setContent(description));
     return container;
@@ -277,7 +277,7 @@ export default {
 
             if (config.raidState) {
                 return message.reply({
-                    components: [buildErrorContainer('🚨 RAID MODE ACTIVATED',
+                    components: [buildErrorContainer('<:emoji_1:1566528388733337600> RAID MODE ACTIVATED',
                         'The server is now in raid mode.\n' +
                         '• New members will be punished based on your settings.\n' +
                         '• Use `.antiraid state` again to disable.'
@@ -308,7 +308,7 @@ export default {
                 }
 
                 const container = new ContainerBuilder();
-                container.addTextDisplayComponents(td => td.setContent(`📋 **ANTIRAID WHITELIST**\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━`));
+                container.addTextDisplayComponents(td => td.setContent(`<:emoji_9:1566528847464108183> **ANTIRAID WHITELIST**\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━`));
                 container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                 container.addTextDisplayComponents(td =>
                     td.setContent(whitelist.map((id, i) => `\`${i + 1}\` <@${id}>`).join('\n'))

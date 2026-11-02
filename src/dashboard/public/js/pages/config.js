@@ -2,14 +2,14 @@
 const CONFIG_MODULES = [
   { key: 'automod',   name: 'Automod',   icon: '🛡️', desc: 'Anti-invite, anti-spam, bad words and more' },
   { key: 'antinuke',  name: 'Antinuke',  icon: '☢️', desc: 'Protect against mass bans, kicks, channel deletions' },
-  { key: 'welcome',   name: 'Welcome',   icon: '👋', desc: 'Welcome messages with embeds and placeholders' },
+  { key: 'welcome',   name: 'Welcome',   icon: '<:MH_Blush:1566534747067515043>', desc: 'Welcome messages with embeds and placeholders' },
   { key: 'leveling',  name: 'Leveling',  icon: '📈', desc: 'XP system with role rewards and leaderboard' },
   { key: 'starboard', name: 'Starboard', icon: '⭐', desc: 'Pin popular messages to a starboard channel' },
-  { key: 'logging',   name: 'Logging',   icon: '📋', desc: 'Comprehensive server event logging' },
+  { key: 'logging',   name: 'Logging',   icon: '<:emoji_9:1566528847464108183>', desc: 'Comprehensive server event logging' },
   { key: 'stats',     name: 'Stats',     icon: '📊', desc: 'Track message, voice and join activity' },
-  { key: 'antiraid',  name: 'Anti-Raid', icon: '🚨', desc: 'Join-rate based raid protection' },
+  { key: 'antiraid',  name: 'Anti-Raid', icon: '<:emoji_1:1566528388733337600>', desc: 'Join-rate based raid protection' },
   { key: 'tickets',   name: 'Tickets',   icon: '🎫', desc: 'Support ticket system with transcripts' },
-  { key: 'birthday',  name: 'Birthday',  icon: '🎂', desc: 'Birthday announcements and role assignment' },
+  { key: 'birthday',  name: 'Birthday',  icon: '<:emoji_4:1566528582799458364>', desc: 'Birthday announcements and role assignment' },
 ];
 
 async function renderConfig({ guildId }) {

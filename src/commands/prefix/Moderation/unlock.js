@@ -22,7 +22,7 @@ export default {
 			if (!(hasDiscordAdmin && (isOwner || isExtraOwner || isAdmin))) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Permission Denied`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -47,7 +47,7 @@ export default {
 		if (!hasPermission) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Permission Denied`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -99,7 +99,7 @@ export default {
 			if (!message.guild.members.me.permissions.has('ManageChannels')) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Missing Permissions`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Permissions`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -196,7 +196,7 @@ export default {
 			console.error('Error in unlock command:', error);
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Error`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -220,7 +220,7 @@ async function unlockAllChannels(message, args, client) {
 		if (!message.guild.members.me.permissions.has('ManageChannels')) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Missing Permissions`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Permissions`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -358,7 +358,7 @@ async function unlockAllChannels(message, args, client) {
 		console.error('Error in unlock all command:', error);
 		const container = new ContainerBuilder();
 		container.addTextDisplayComponents((textDisplay) =>
-			textDisplay.setContent(`# ❌ Error`)
+			textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 		);
 		container.addSeparatorComponents((separator) =>
 			separator.setSpacing(SeparatorSpacingSize.Small)

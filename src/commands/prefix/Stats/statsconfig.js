@@ -15,13 +15,13 @@ const aliases = ['statssettings', 'statssetup'];
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} You need **Administrator** permission to use this command.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Administrator** permission to use this command.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
@@ -49,8 +49,8 @@ async function execute(message, args, client) {
 			await client.db.updateOne({ guildId: message.guildId }, { $set: { stats } });
 
 			container.addTextDisplayComponents(td => td.setContent(
-				`# ${EMOJIS.settings || '⚙️'} Stats Settings\n\n` +
-				`**Message Tracking:** ${stats.settings.trackMessages ? `${EMOJIS.check || '✅'} Enabled` : `${EMOJIS.error || '❌'} Disabled`}`
+				`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Stats Settings\n\n` +
+				`**Message Tracking:** ${stats.settings.trackMessages ? `${EMOJIS.check || '✅'} Enabled` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Disabled`}`
 			));
 
 		} else if (subCommand === 'voice') {
@@ -59,8 +59,8 @@ async function execute(message, args, client) {
 			await client.db.updateOne({ guildId: message.guildId }, { $set: { stats } });
 
 			container.addTextDisplayComponents(td => td.setContent(
-				`# ${EMOJIS.settings || '⚙️'} Stats Settings\n\n` +
-				`**Voice Tracking:** ${stats.settings.trackVoice ? `${EMOJIS.check || '✅'} Enabled` : `${EMOJIS.error || '❌'} Disabled`}`
+				`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Stats Settings\n\n` +
+				`**Voice Tracking:** ${stats.settings.trackVoice ? `${EMOJIS.check || '✅'} Enabled` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Disabled`}`
 			));
 
 		} else if (subCommand === 'invites') {
@@ -69,8 +69,8 @@ async function execute(message, args, client) {
 			await client.db.updateOne({ guildId: message.guildId }, { $set: { stats } });
 
 			container.addTextDisplayComponents(td => td.setContent(
-				`# ${EMOJIS.settings || '⚙️'} Stats Settings\n\n` +
-				`**Invite Tracking:** ${stats.settings.trackInvites ? `${EMOJIS.check || '✅'} Enabled` : `${EMOJIS.error || '❌'} Disabled`}`
+				`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Stats Settings\n\n` +
+				`**Invite Tracking:** ${stats.settings.trackInvites ? `${EMOJIS.check || '✅'} Enabled` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Disabled`}`
 			));
 
 		} else if (subCommand === 'public') {
@@ -79,8 +79,8 @@ async function execute(message, args, client) {
 			await client.db.updateOne({ guildId: message.guildId }, { $set: { stats } });
 
 			container.addTextDisplayComponents(td => td.setContent(
-				`# ${EMOJIS.settings || '⚙️'} Stats Settings\n\n` +
-				`**Public Stats:** ${stats.settings.publicStats ? `${EMOJIS.check || '✅'} Anyone can view` : `${EMOJIS.error || '❌'} Admins only`}`
+				`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Stats Settings\n\n` +
+				`**Public Stats:** ${stats.settings.publicStats ? `${EMOJIS.check || '✅'} Anyone can view` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Admins only`}`
 			));
 
 		} else if (subCommand === 'ignore' || subCommand === 'ignorechannel') {
@@ -89,7 +89,7 @@ async function execute(message, args, client) {
 
 			if (!channel) {
 				container.addTextDisplayComponents(td => td.setContent(
-					`${EMOJIS.error || '❌'} Please mention a channel or provide a channel ID.`
+					`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please mention a channel or provide a channel ID.`
 				));
 			} else {
 				if (!stats.settings.ignoredChannels) stats.settings.ignoredChannels = [];
@@ -119,7 +119,7 @@ async function execute(message, args, client) {
 
 			if (!role) {
 				container.addTextDisplayComponents(td => td.setContent(
-					`${EMOJIS.error || '❌'} Please mention a role or provide a role ID.`
+					`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please mention a role or provide a role ID.`
 				));
 			} else {
 				if (!stats.settings.ignoredRoles) stats.settings.ignoredRoles = [];
@@ -149,7 +149,7 @@ async function execute(message, args, client) {
 
 			if (!days || isNaN(days) || days < 1 || days > 365) {
 				container.addTextDisplayComponents(td => td.setContent(
-					`# ${EMOJIS.settings || '⚙️'} Stats Lookback Period\n\n` +
+					`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Stats Lookback Period\n\n` +
 					`**Current:** ${stats.lookback || 14} days\n\n` +
 					`To change, use: \`statsconfig lookback <days>\`\n` +
 					`Valid range: 1-365 days\n\n` +
@@ -160,7 +160,7 @@ async function execute(message, args, client) {
 				await client.db.updateOne({ guildId: message.guildId }, { $set: { 'stats.lookback': days } });
 
 				container.addTextDisplayComponents(td => td.setContent(
-					`# ${EMOJIS.settings || '⚙️'} Stats Lookback Period\n\n` +
+					`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Stats Lookback Period\n\n` +
 					`${EMOJIS.check || '✅'} Lookback period set to **${days} days**\n\n` +
 					`Daily stats older than ${days} days will be cleaned up automatically.`
 				));
@@ -169,7 +169,7 @@ async function execute(message, args, client) {
 		} else {
 
 			container.addTextDisplayComponents(td => td.setContent(
-				`# ${EMOJIS.settings || '⚙️'} Stats Settings\n\n` +
+				`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Stats Settings\n\n` +
 				`## ${message.guild.name}`
 			));
 
@@ -178,12 +178,12 @@ async function execute(message, args, client) {
 			const settings = stats.settings;
 			container.addTextDisplayComponents(td => td.setContent(
 				`**Tracking:**\n` +
-				`${settings.trackMessages ? '✅' : '❌'} Messages\n` +
-				`${settings.trackVoice ? '✅' : '❌'} Voice\n` +
-				`${settings.trackInvites ? '✅' : '❌'} Invites\n\n` +
+				`${settings.trackMessages ? '✅' : '<a:Emo_Loading:1566551264924405931>'} Messages\n` +
+				`${settings.trackVoice ? '✅' : '<a:Emo_Loading:1566551264924405931>'} Voice\n` +
+				`${settings.trackInvites ? '✅' : '<a:Emo_Loading:1566551264924405931>'} Invites\n\n` +
 				`**Lookback Period:** ${stats.lookback || 14} days\n\n` +
 				`**Access:**\n` +
-				`${settings.publicStats ? '👁️ Public' : '🔒 Admins only'}`
+				`${settings.publicStats ? '👁️ Public' : '<:emoji_12:1566529085235134695> Admins only'}`
 			));
 
 			if (settings.ignoredChannels?.length > 0) {
@@ -216,7 +216,7 @@ async function execute(message, args, client) {
 	} catch (error) {
 		console.error('[StatsConfig] Error:', error);
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} An error occurred while managing stats settings.`
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} An error occurred while managing stats settings.`
 		));
 	}
 

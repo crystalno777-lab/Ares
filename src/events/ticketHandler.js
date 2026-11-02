@@ -51,7 +51,7 @@ async function logTicketAction(client, guild, config, action, details) {
 
 	const icons = {
 		created: '🎫',
-		closed: '🔒',
+		closed: '<:emoji_12:1566529085235134695>',
 		reopened: '🔓',
 		deleted: '🗑️',
 		claimed: '🙋',
@@ -640,7 +640,7 @@ export default async (client, interaction) => {
 				.setCustomId('ticket_close_ask')
 				.setLabel('Close')
 				.setStyle(ButtonStyle.Danger)
-				.setEmoji('🔒'),
+				.setEmoji('<:emoji_12:1566529085235134695>'),
 			new ButtonBuilder()
 				.setCustomId('ticket_claim')
 				.setLabel('Claim')
@@ -695,7 +695,7 @@ export default async (client, interaction) => {
 				.setCustomId('ticket_confirm_close')
 				.setLabel('Close Ticket')
 				.setStyle(ButtonStyle.Danger)
-				.setEmoji('🔒'),
+				.setEmoji('<:emoji_12:1566529085235134695>'),
 			new ButtonBuilder()
 				.setCustomId('ticket_cancel_close')
 				.setLabel('Cancel')
@@ -801,7 +801,7 @@ export default async (client, interaction) => {
 		}
 
 		const container = new ContainerBuilder()
-			.addTextDisplayComponents(td => td.setContent(`# 🔒 Ticket Closed`))
+			.addTextDisplayComponents(td => td.setContent(`# <:emoji_12:1566529085235134695> Ticket Closed`))
 			.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small))
 			.addTextDisplayComponents(td => td.setContent(`Closed by <@${user.id}>\n\nUse the buttons below to manage this ticket.`));
 
@@ -1113,7 +1113,7 @@ export default async (client, interaction) => {
 				}
 
 				const closedContainer = new ContainerBuilder()
-					.addTextDisplayComponents(td => td.setContent(`# 🔒 Ticket Closed\nClosed by <@${user.id}> (approved close request)`))
+					.addTextDisplayComponents(td => td.setContent(`# <:emoji_12:1566529085235134695> Ticket Closed\nClosed by <@${user.id}> (approved close request)`))
 					.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
 				const row = new ActionRowBuilder().addComponents(

@@ -33,9 +33,9 @@ function buildInvitesPanel(guild, user, inviteData, authorId, botName) {
 		'',
 		`${EMOJIS.invite || '📨'} **Total Invites:** ${formatNumber(total)}`,
 		`${EMOJIS.check || '✅'} **Regular:** ${formatNumber(regular)}`,
-		`${EMOJIS.leave || '👋'} **Left:** ${formatNumber(left)}`,
+		`${EMOJIS.leave || '<:MH_Blush:1566534747067515043>'} **Left:** ${formatNumber(left)}`,
 		`${EMOJIS.fake || '🚫'} **Fake:** ${formatNumber(fake)}`,
-		`${EMOJIS.bonus || '🎁'} **Bonus:** ${formatNumber(bonus)}`
+		`${EMOJIS.bonus || '<:emoji_29:1566533478902800464>'} **Bonus:** ${formatNumber(bonus)}`
 	].join('\n');
 
 	container.addSectionComponents(section => {
@@ -87,7 +87,7 @@ async function getInviteData(client, guildId, userId) {
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 

@@ -22,7 +22,7 @@ export default {
     if (!bannerUrl) {
       const container = new ContainerBuilder();
       container.addTextDisplayComponents(td =>
-        td.setContent(`# ${EMOJIS.error || '❌'} **No Banner**`)
+        td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **No Banner**`)
       );
       container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
       container.addTextDisplayComponents(td =>

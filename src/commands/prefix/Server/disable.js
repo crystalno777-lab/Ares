@@ -11,14 +11,14 @@ async function execute(message, args, client) {
 	const container = new ContainerBuilder();
 
 	if (!message.member.permissions.has(PermissionFlagsBits.ManageGuild) && message.author.id !== message.guild.ownerId) {
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Permission Denied**`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Permission Denied**`));
 		container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 		container.addTextDisplayComponents(td => td.setContent('You need **Manage Guild** permission to use this command.'));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 
 	if (!args[0]) {
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Missing Arguments**`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Missing Arguments**`));
 		container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 		container.addTextDisplayComponents(td => td.setContent('Usage: `disable <command|category> [channel|server]`'));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -32,7 +32,7 @@ async function execute(message, args, client) {
 
 	if (command) {
 		if (command.name === 'disable' || command.name === 'enable') {
-			container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Safety**`));
+			container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Safety**`));
 			container.addTextDisplayComponents(td => td.setContent('You cannot disable the disable/enable commands.'));
 			return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 		}
@@ -47,7 +47,7 @@ async function execute(message, args, client) {
 	}
 
 	if (!resolvedName) {
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Not Found**`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Not Found**`));
 		container.addTextDisplayComponents(td => td.setContent(`Could not find command or category \`${args[0]}\`.`));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
@@ -103,7 +103,7 @@ async function execute(message, args, client) {
 
 	} catch (err) {
 		console.error('Disable Error:', err);
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Database Error**`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Database Error**`));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 }

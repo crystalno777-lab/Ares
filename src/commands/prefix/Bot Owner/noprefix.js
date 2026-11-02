@@ -29,7 +29,7 @@ function formatDuration(ms) {
 function formatExpiry(expiresAt) {
     if (expiresAt >= LIFETIME) return '♾️ Lifetime';
     const now = Date.now();
-    if (expiresAt <= now) return '❌ Expired';
+    if (expiresAt <= now) return '<a:Emo_Loading:1566551264924405931> Expired';
     const remaining = expiresAt - now;
     const days = Math.floor(remaining / (24 * 60 * 60 * 1000));
     const hours = Math.floor((remaining % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
@@ -48,7 +48,7 @@ async function execute(message, args, client) {
     const isBotOwner = ownerIds.includes(message.author.id) || client.application?.owner?.id === message.author.id;
 
     if (!isBotOwner) {
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Access Denied`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Access Denied`));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent('Only bot owners can use this command.'));
         return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -58,7 +58,7 @@ async function execute(message, args, client) {
     const type = args[1]?.toLowerCase();
 
     if (!action || !['add', 'remove', 'list', 'status'].includes(action)) {
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.info || '📋'} No-Prefix System`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.info || '<:emoji_9:1566528847464108183>'} No-Prefix System`));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
             '**➕ Add Access:**\n' +
@@ -67,7 +67,7 @@ async function execute(message, args, client) {
             '```\n.noprefix remove user <@user|id>\n.noprefix remove server [id]\n.noprefix remove role <@role|id>\n```\n' +
             '**📊 Status Check:**\n' +
             '```\n.noprefix status user <@user|id>\n.noprefix status server [id]\n.noprefix status role <@role|id>\n```\n' +
-            '**📋 List All:**\n' +
+            '**<:emoji_9:1566528847464108183> List All:**\n' +
             '```\n.noprefix list\n```\n' +
             '> **Duration:** `30d`, `7d`, `lifetime` (default: 90d)'
         ));
@@ -85,7 +85,7 @@ async function execute(message, args, client) {
     npData.roles = npData.roles.filter(r => r.expiresAt > now || r.expiresAt >= LIFETIME);
 
     if (action === 'list') {
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.info || '📋'} No-Prefix Grants`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.info || '<:emoji_9:1566528847464108183>'} No-Prefix Grants`));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
         let content = '';
@@ -136,7 +136,7 @@ async function execute(message, args, client) {
 
     if (action === 'status') {
         if (!type || !['user', 'server', 'role'].includes(type)) {
-            container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Invalid Type**`));
+            container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Invalid Type**`));
             container.addTextDisplayComponents(td => td.setContent('Usage: `.noprefix status <user|server|role> [target]`'));
             return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
         }
@@ -170,7 +170,7 @@ async function execute(message, args, client) {
                     `**Granted:** ${formatTimestamp(entry.grantedAt)}`
                 ));
             } else {
-                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} No Access`));
+                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} No Access`));
                 container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                 container.addTextDisplayComponents(td => td.setContent(`<@${userId}> does not have no-prefix access.`));
             }
@@ -193,7 +193,7 @@ async function execute(message, args, client) {
                     `**Granted:** ${formatTimestamp(entry.grantedAt)}`
                 ));
             } else {
-                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} No Access`));
+                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} No Access`));
                 container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                 container.addTextDisplayComponents(td => td.setContent(`**${guild?.name || serverId}** does not have no-prefix access.`));
             }
@@ -202,7 +202,7 @@ async function execute(message, args, client) {
 
         if (type === 'role') {
             if (!targetArg) {
-                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Missing Role**`));
+                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Missing Role**`));
                 container.addTextDisplayComponents(td => td.setContent('Please mention a role or provide its ID.'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             }
@@ -222,7 +222,7 @@ async function execute(message, args, client) {
                     `**Granted:** ${formatTimestamp(entry.grantedAt)}`
                 ));
             } else {
-                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} No Access`));
+                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} No Access`));
                 container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                 container.addTextDisplayComponents(td => td.setContent(`Role **${role?.name || roleId}** does not have no-prefix access.`));
             }
@@ -231,7 +231,7 @@ async function execute(message, args, client) {
     }
 
     if (!type || !['user', 'server', 'role'].includes(type)) {
-        container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Invalid Type**`));
+        container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Invalid Type**`));
         container.addTextDisplayComponents(td => td.setContent('Type must be `user`, `server`, or `role`.'));
         return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
     }
@@ -242,7 +242,7 @@ async function execute(message, args, client) {
 
         if (action === 'add') {
             if (!targetArg) {
-                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Missing User**`));
+                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Missing User**`));
                 container.addTextDisplayComponents(td => td.setContent('Please mention a user or provide their ID.'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             }
@@ -250,7 +250,7 @@ async function execute(message, args, client) {
             const userId = targetArg.replace(/[<@!>]/g, '');
             const duration = parseDuration(durationArg);
             if (durationArg && duration === null) {
-                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Invalid Duration**`));
+                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Invalid Duration**`));
                 container.addTextDisplayComponents(td => td.setContent('Duration format: `30d`, `7d`, `lifetime`'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             }
@@ -279,7 +279,7 @@ async function execute(message, args, client) {
 
         if (action === 'remove') {
             if (!targetArg) {
-                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Missing User**`));
+                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Missing User**`));
                 container.addTextDisplayComponents(td => td.setContent('Please mention a user or provide their ID.'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             }
@@ -314,7 +314,7 @@ async function execute(message, args, client) {
             const duration = parseDuration(isDurationArg ? targetArg : durationArg);
 
             if ((isDurationArg ? null : durationArg) && duration === null) {
-                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Invalid Duration**`));
+                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Invalid Duration**`));
                 container.addTextDisplayComponents(td => td.setContent('Duration format: `30d`, `7d`, `lifetime`'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             }
@@ -369,7 +369,7 @@ async function execute(message, args, client) {
 
         if (action === 'add') {
             if (!targetArg) {
-                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Missing Role**`));
+                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Missing Role**`));
                 container.addTextDisplayComponents(td => td.setContent('Please mention a role or provide its ID.'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             }
@@ -377,7 +377,7 @@ async function execute(message, args, client) {
             const roleId = targetArg.replace(/[<@&>]/g, '');
             const duration = parseDuration(durationArg);
             if (durationArg && duration === null) {
-                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Invalid Duration**`));
+                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Invalid Duration**`));
                 container.addTextDisplayComponents(td => td.setContent('Duration format: `30d`, `7d`, `lifetime`'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             }
@@ -408,7 +408,7 @@ async function execute(message, args, client) {
 
         if (action === 'remove') {
             if (!targetArg) {
-                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Missing Role**`));
+                container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Missing Role**`));
                 container.addTextDisplayComponents(td => td.setContent('Please mention a role or provide its ID.'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             }

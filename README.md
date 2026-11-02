@@ -37,11 +37,11 @@ Whether you need a strict moderation bot, an engaging music player, or a complet
 ### Key Highlights
 
 - 🛡️ **Comprehensive Moderation** — Over 75+ moderation commands including advanced features like raid protection, detention system, and cascade roles
-- 🎵 **High-Quality Music** — Powered by Shoukaku/Lavalink for seamless music playback from YouTube, Spotify, and more
+- <:emoji_12:1566529131200512120> **High-Quality Music** — Powered by Shoukaku/Lavalink for seamless music playback from YouTube, Spotify, and more
 - 📊 **Advanced Statistics** — Track messages, voice activity, invites, and more with detailed leaderboards
 - ⬆️ **Leveling System** — Full XP-based leveling with customizable rewards, rank cards, and role rewards
 - 🎫 **Ticket System** — Complete ticket management with transcripts and custom categories
-- 🔒 **Security Features** — Anti-nuke, anti-raid, and automod protection for your server
+- <:emoji_12:1566529085235134695> **Security Features** — Anti-nuke, anti-raid, and automod protection for your server
 
 ---
 
@@ -59,7 +59,7 @@ Ares includes a comprehensive set of modules, each packed with powerful commands
 - **User Notes** — Add, remove, and track notes on users
 - **Warnings System** — Full warning management with crime files
 
-### 🎵 Music (15 commands)
+### <:emoji_12:1566529131200512120> Music (15 commands)
 
 - **Playback** — Play, pause, resume, stop, skip
 - **Queue Management** — Queue, remove, shuffle, clear
@@ -101,7 +101,7 @@ Ares includes a comprehensive set of modules, each packed with powerful commands
 - Customizable star threshold
 - Beautiful embed formatting
 
-### 🎂 Birthday System
+### <:emoji_4:1566528582799458364> Birthday System
 
 - Birthday tracking and announcements
 - Automatic birthday role assignment
@@ -113,7 +113,7 @@ Ares includes a comprehensive set of modules, each packed with powerful commands
 - Customizable reminder messages
 - Bump streak tracking
 
-### 🔒 Security & Protection
+### <:emoji_12:1566529085235134695> Security & Protection
 
 - **Anti-Nuke** — Protect against malicious admin actions
 - **Anti-Raid** — Automatic raid detection and prevention
@@ -131,7 +131,7 @@ Ares includes a comprehensive set of modules, each packed with powerful commands
 - Rate, choose, hack
 - Interactive entertainment features
 
-### ⚙️ Server Configuration
+### <a:gears:1566530875879989289> Server Configuration
 
 - Prefix customization
 - Module toggles

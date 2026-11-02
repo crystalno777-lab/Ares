@@ -3,23 +3,23 @@ import EMOJIS from '../../../utils/emojis.js';
 
 const getCategoryEmoji = (cat) => {
     const emojiMap = {
-        'General': EMOJIS.general || EMOJIS.info || '📋',
+        'General': EMOJIS.general || EMOJIS.info || '<:emoji_9:1566528847464108183>',
         'Moderation': EMOJIS.moderation || EMOJIS.security || '🛡️',
         'Fun': EMOJIS.fun || EMOJIS.game || '🎮',
-        'Music': EMOJIS.music || '🎵',
+        'Music': EMOJIS.music || '<:emoji_12:1566529131200512120>',
         'Leveling': EMOJIS.leveling || EMOJIS.stats || '📊',
-        'Server': EMOJIS.server || EMOJIS.settings || '⚙️',
+        'Server': EMOJIS.server || EMOJIS.settings || '<a:gears:1566530875879989289>',
         'Automod': EMOJIS.automod || EMOJIS.bot || '🤖',
-        'Antinuke': EMOJIS.antinuke || EMOJIS.lock || '🔒',
-        'Anti Raid': EMOJIS.antiraid || EMOJIS.alert || '🚨',
+        'Antinuke': EMOJIS.antinuke || EMOJIS.lock || '<:emoji_12:1566529085235134695>',
+        'Anti Raid': EMOJIS.antiraid || EMOJIS.alert || '<:emoji_1:1566528388733337600>',
         'Logs': EMOJIS.logs || EMOJIS.log || '📝',
-        'Welcome': EMOJIS.welcome || EMOJIS.wave || '👋',
+        'Welcome': EMOJIS.welcome || EMOJIS.wave || '<:MH_Blush:1566534747067515043>',
         'Tickets': EMOJIS.tickets || EMOJIS.ticket || '🎫',
         'Giveaways': EMOJIS.giveaway || EMOJIS.party || '🎉',
-        'Birthday': EMOJIS.birthday || EMOJIS.cake || '🎂',
+        'Birthday': EMOJIS.birthday || EMOJIS.cake || '<:emoji_4:1566528582799458364>',
         'Starboard': EMOJIS.starboard || EMOJIS.star || '⭐',
         'Stats': EMOJIS.statistics || EMOJIS.chart || '📈',
-        'Custom Roles': EMOJIS.customroles || EMOJIS.palette || '🎨',
+        'Custom Roles': EMOJIS.customroles || EMOJIS.palette || '<:emoji_7:1566528746461331606>',
         'Voice Commands': EMOJIS.voice || EMOJIS.speaker || '🔊',
         'BumpReminder': EMOJIS.bump || EMOJIS.bell || '🔔',
         'Bot Owner': EMOJIS.owner || EMOJIS.crown || '👑',
@@ -290,7 +290,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
 
     if (expired) {
         container.addTextDisplayComponents(td => td.setContent(
-            `# ${EMOJIS.error || '❌'} Help Menu Expired`
+            `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Help Menu Expired`
         ));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
@@ -300,7 +300,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
     }
 
     container.addTextDisplayComponents(td => td.setContent(
-        `# ${EMOJIS.help || '📚'} ${client.user.username} Help`
+        `# ${EMOJIS.help || '<:Xieron_stolen_emoji_1784414611:1566532286306979871>'} ${client.user.username} Help`
     ));
 
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
@@ -312,7 +312,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
 
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small).setDivider(true));
 
-    let categoryList = `**${EMOJIS.folder || '📁'} Categories**\n\n`;
+    let categoryList = `**${EMOJIS.folder || '<:emoji_5:1566528650411647178>'} Categories**\n\n`;
 
     const sortedCategories = Object.keys(grouped)
         .filter(cat => cat !== 'Bot Owner')
@@ -331,7 +331,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small).setDivider(true));
 
     container.addTextDisplayComponents(td => td.setContent(
-        `**${EMOJIS.lightbulb || '💡'} Quick Tips**\n` +
+        `**${EMOJIS.lightbulb || '<a:1202lightyellowcrown:1566531939752747078>'} Quick Tips**\n` +
         `> **${prefix}help <command>** — View command details\n` +
         `> **${prefix}help <category>** — View category commands`
     ));
@@ -355,7 +355,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
 
     const selectMenu = new StringSelectMenuBuilder()
         .setCustomId('slash_help_category_select')
-        .setPlaceholder('📁 Select a category...')
+        .setPlaceholder('<:emoji_5:1566528650411647178> Select a category...')
         .addOptions(selectOptions);
 
     container.addActionRowComponents(new ActionRowBuilder().addComponents(selectMenu));
@@ -396,7 +396,7 @@ function buildCategoryPage(client, prefix, categoryName, commands, expired = fal
 
     if (expired) {
         container.addTextDisplayComponents(td => td.setContent(
-            `# ${EMOJIS.error || '❌'} Help Menu Expired`
+            `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Help Menu Expired`
         ));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
@@ -540,7 +540,7 @@ function buildCommandPage(client, prefix, cmd) {
         .setCustomId(`slash_help_category_${(cmd.category || 'General').toLowerCase().replace(/\s+/g, '_')}`)
         .setLabel(cmd.category || 'General')
         .setStyle(ButtonStyle.Primary)
-        .setEmoji('📁');
+        .setEmoji('<:emoji_5:1566528650411647178>');
 
     container.addActionRowComponents(new ActionRowBuilder().addComponents(backButton, categoryButton));
 
@@ -617,7 +617,7 @@ export default {
             }
 
             const container = new ContainerBuilder();
-            container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Not Found`));
+            container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Not Found`));
             container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
             container.addTextDisplayComponents(td => td.setContent(
                 `No command or category found matching \`${query}\`.\n\n` +

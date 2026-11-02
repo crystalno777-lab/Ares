@@ -11,7 +11,7 @@ async function execute(message, args, client) {
 	const container = new ContainerBuilder();
 
 	if (!message.member.permissions.has(PermissionFlagsBits.ManageGuild) && message.author.id !== message.guild.ownerId) {
-		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Permission Denied**`));
+		container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Permission Denied**`));
 		container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 		container.addTextDisplayComponents(td => td.setContent('You need **Manage Guild** permission to use this command.'));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });

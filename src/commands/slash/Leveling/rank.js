@@ -11,7 +11,7 @@ export default {
 		.setDMPermission(false),
 	async execute(interaction) {
 		const leveling = await ensureLevelingConfig(interaction.client.db, interaction.guildId);
-		if (!leveling.enabled) return interaction.reply({ content: '❌ Leveling is disabled here.', ephemeral: true });
+		if (!leveling.enabled) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Leveling is disabled here.', ephemeral: true });
 		const target = interaction.options.getUser('user') || interaction.user;
 		const member = await interaction.guild.members.fetch(target.id).catch(() => null);
 		const state = getMemberSnapshot(leveling, target.id);

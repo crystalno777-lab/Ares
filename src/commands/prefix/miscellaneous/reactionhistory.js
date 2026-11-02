@@ -107,7 +107,7 @@ export default {
         const displayHistory = history.slice(0, 15).map(entry => {
             const action = entry.action === 'add'
                 ? `${EMOJIS.success || '✅'} Added`
-                : `${EMOJIS.error || '❌'} Removed`;
+                : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Removed`;
             const time = `<t:${Math.floor(entry.timestamp / 1000)}:R>`;
             return `> ${entry.emoji} ${action} by **${entry.user.username}** ${time}`;
         }).join('\n');

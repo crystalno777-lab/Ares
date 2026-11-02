@@ -48,7 +48,7 @@ export default {
       `${EMOJIS?.id || '🆔'} **Bot ID:** ${bot.id}\n` +
       `${EMOJIS?.date || '📅'} **Created:**\n<t:${Math.floor(bot.createdTimestamp / 1000)}:F>\n<t:${Math.floor(bot.createdTimestamp / 1000)}:R>\n\n` +
       `${EMOJIS?.server || '🏷️'} **Servers:** ${guildCount}\n` +
-      `${EMOJIS?.channels || '📁'} **Commands:** ${totalCommands}\n` +
+      `${EMOJIS?.channels || '<:emoji_5:1566528650411647178>'} **Commands:** ${totalCommands}\n` +
       `⏱️ **Uptime:** ${formatUptime(uptime)}\n` +
       `${EMOJIS?.owner || '👑'} **Developed by:** <@${developerId}>`;
 

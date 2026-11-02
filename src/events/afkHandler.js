@@ -53,7 +53,7 @@ export default function registerAfkHandler(client) {
                 );
 
                 const container = new ContainerBuilder();
-                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.afkremoved || '👋'} Welcome Back, ${message.author.username}!`));
+                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.afkremoved || '<:MH_Blush:1566534747067515043>'} Welcome Back, ${message.author.username}!`));
                 container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                 let content = `You were AFK for **${duration}**`;
                 if (mentionsCount > 0) {

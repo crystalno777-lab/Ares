@@ -24,7 +24,7 @@ export default {
     if (!canUse.allowed) {
       const container = new ContainerBuilder();
       container.addTextDisplayComponents((textDisplay) =>
-        textDisplay.setContent(`# ❌ Permission Denied`)
+        textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
       );
       container.addSeparatorComponents((separator) =>
         separator.setSpacing(SeparatorSpacingSize.Small)
@@ -107,7 +107,7 @@ export default {
 
       const totalActions = Object.values(stats).reduce((a, b) => a + b, 0);
 
-      const statsText = `⚠️ Warns: **${stats.warns}**\n👟 Kicks: **${stats.kicks}**\n🔨 Bans: **${stats.bans}**\n🔇 Mutes: **${stats.mutes}**\n🔊 Unmutes: **${stats.unmutes}**\n📋 Unbans: **${stats.unbans}**\n\n**Total: ${totalActions}**`;
+      const statsText = `⚠️ Warns: **${stats.warns}**\n👟 Kicks: **${stats.kicks}**\n🔨 Bans: **${stats.bans}**\n🔇 Mutes: **${stats.mutes}**\n🔊 Unmutes: **${stats.unmutes}**\n<:emoji_9:1566528847464108183> Unbans: **${stats.unbans}**\n\n**Total: ${totalActions}**`;
 
       const container = buildNotice(
         `📊 **Moderation Stats: ${formatUserDisplay(target.user)}**`,

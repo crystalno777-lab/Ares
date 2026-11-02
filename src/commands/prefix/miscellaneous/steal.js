@@ -197,7 +197,7 @@ async function addMultipleEmojis(message, emojis) {
         if (results.success.length > 0) {
             container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
         }
-        const failedList = results.failed.map(f => `❌ **${f.name}**: ${f.error}`).join('\n');
+        const failedList = results.failed.map(f => `<a:Emo_Loading:1566551264924405931> **${f.name}**: ${f.error}`).join('\n');
         container.addTextDisplayComponents(t =>
             t.setContent(`${results.success.length === 0 ? EMOJIS.error + ' **Failed to Add Emojis**\n' : '**Failed:**\n'}${failedList}`)
         );

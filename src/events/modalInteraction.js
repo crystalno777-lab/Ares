@@ -120,7 +120,7 @@ export default function registerModalInteraction(client) {
       const authorId = parts[4];
 
       if (interaction.user.id !== authorId) {
-        await interaction.reply({ content: '❌ You cannot use this.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -128,13 +128,13 @@ export default function registerModalInteraction(client) {
       let guildData = await db.findOne({ guildId: interaction.guildId }) || { guildId: interaction.guildId };
 
       if (!guildData.welcome || !guildData.welcome.channels) {
-        await interaction.reply({ content: '❌ Welcome system not configured.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Welcome system not configured.', flags: 64 }).catch(() => {});
         return;
       }
 
       const channelConfig = guildData.welcome.channels.find(c => c.channelId === channelId);
       if (!channelConfig) {
-        await interaction.reply({ content: '❌ That channel is no longer configured.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> That channel is no longer configured.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -159,14 +159,14 @@ export default function registerModalInteraction(client) {
           break;
         case 'title':
           if (value && value.length > 256) {
-            await interaction.reply({ content: '❌ Title cannot exceed 256 characters.', flags: 64 }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Title cannot exceed 256 characters.', flags: 64 }).catch(() => {});
             return;
           }
           channelConfig.title = value;
           break;
         case 'description':
           if (value && value.length > 4000) {
-            await interaction.reply({ content: '❌ Description cannot exceed 4000 characters.', flags: 64 }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Description cannot exceed 4000 characters.', flags: 64 }).catch(() => {});
             return;
           }
           channelConfig.description = value;
@@ -177,7 +177,7 @@ export default function registerModalInteraction(client) {
           } else {
             const color = parseColor(value);
             if (color === null) {
-              await interaction.reply({ content: '❌ Invalid hex color. Use format like `#5865F2`.', flags: 64 }).catch(() => {});
+              await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid hex color. Use format like `#5865F2`.', flags: 64 }).catch(() => {});
               return;
             }
             channelConfig.color = color;
@@ -209,14 +209,14 @@ export default function registerModalInteraction(client) {
           break;
         case 'thumbnail':
           if (value && !isValidUrl(value) && !value.startsWith('{')) {
-            await interaction.reply({ content: '❌ Invalid URL. Use a valid image URL or placeholder like `{user.avatar}`.', flags: 64 }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid URL. Use a valid image URL or placeholder like `{user.avatar}`.', flags: 64 }).catch(() => {});
             return;
           }
           channelConfig.thumbnail = value;
           break;
         case 'image':
           if (value && !isValidUrl(value)) {
-            await interaction.reply({ content: '❌ Invalid URL.', flags: 64 }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid URL.', flags: 64 }).catch(() => {});
             return;
           }
           channelConfig.image = value;
@@ -227,7 +227,7 @@ export default function registerModalInteraction(client) {
           } else {
             const seconds = parseInt(value);
             if (isNaN(seconds) || seconds < 6 || seconds > 60) {
-              await interaction.reply({ content: '❌ Self-destruct must be between 6 and 60 seconds.', flags: 64 }).catch(() => {});
+              await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Self-destruct must be between 6 and 60 seconds.', flags: 64 }).catch(() => {});
               return;
             }
             channelConfig.selfDestruct = seconds;
@@ -240,7 +240,7 @@ export default function registerModalInteraction(client) {
           channelConfig.buttons = value;
           break;
         default:
-          await interaction.reply({ content: '❌ Unknown option.', flags: 64 }).catch(() => {});
+          await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Unknown option.', flags: 64 }).catch(() => {});
           return;
       }
 
@@ -268,7 +268,7 @@ export default function registerModalInteraction(client) {
 
       const container = new ContainerBuilder();
       if (channelConfig.color) container.setAccentColor(channelConfig.color);
-      container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Config for <#${channelId}>`));
+      container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Config for <#${channelId}>`));
       container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
       container.addTextDisplayComponents(td => td.setContent(
         `**Content:** ${channelConfig.content ? (channelConfig.content.length > 50 ? channelConfig.content.slice(0, 50) + '...' : channelConfig.content) : 'Not set'}\n` +
@@ -318,28 +318,28 @@ export default function registerModalInteraction(client) {
     const authorId = parts[1];
     const roleId = parts[2];
     if (interaction.user.id !== authorId) {
-      await interaction.reply({ content: '❌ This modal is locked to the invoker.', flags: 64 }).catch(() => {});
+      await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> This modal is locked to the invoker.', flags: 64 }).catch(() => {});
       return;
     }
     if (!interaction.member.permissions.has('ManageGuild') && !interaction.member.permissions.has('Administrator')) {
-      await interaction.reply({ content: '❌ Manage Server is required.', flags: 64 }).catch(() => {});
+      await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Manage Server is required.', flags: 64 }).catch(() => {});
       return;
     }
     const levelStr = interaction.fields.getTextInputValue('level')?.trim();
     const level = parseInt(levelStr, 10);
     if (!Number.isFinite(level) || level < 1) {
-      await interaction.reply({ content: '❌ Level must be a positive number.', flags: 64 }).catch(() => {});
+      await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Level must be a positive number.', flags: 64 }).catch(() => {});
       return;
     }
 
     const role = interaction.guild?.roles?.cache?.get(roleId) || null;
     const me = interaction.guild?.members?.me;
     if (!role) {
-      await interaction.reply({ content: '❌ Role not found.', flags: 64 }).catch(() => {});
+      await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Role not found.', flags: 64 }).catch(() => {});
       return;
     }
     if (!me || me.roles.highest.comparePositionTo(role) <= 0) {
-      await interaction.reply({ content: '❌ I need my role above that role to assign it.', flags: 64 }).catch(() => {});
+      await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> I need my role above that role to assign it.', flags: 64 }).catch(() => {});
       return;
     }
 
@@ -373,11 +373,11 @@ export default function registerModalInteraction(client) {
   if (interaction.customId.startsWith('leveling_msg_modal:')) {
     const [, field, authorId] = interaction.customId.split(':');
     if (interaction.user.id !== authorId) {
-      await interaction.reply({ content: '❌ This modal is locked to the invoker.', flags: 64 }).catch(() => {});
+      await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> This modal is locked to the invoker.', flags: 64 }).catch(() => {});
       return;
     }
     if (!interaction.member.permissions.has('ManageGuild') && !interaction.member.permissions.has('Administrator')) {
-      await interaction.reply({ content: '❌ Manage Server is required.', flags: 64 }).catch(() => {});
+      await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Manage Server is required.', flags: 64 }).catch(() => {});
       return;
     }
 
@@ -413,12 +413,12 @@ export default function registerModalInteraction(client) {
   if (interaction.customId.startsWith('leveling_template_modal:')) {
     const [, authorId] = interaction.customId.split(':');
     if (interaction.user.id !== authorId) {
-      await interaction.reply({ content: '❌ This modal is locked to the invoker.', flags: 64 }).catch(() => {});
+      await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> This modal is locked to the invoker.', flags: 64 }).catch(() => {});
       return;
     }
 
     if (!interaction.member.permissions.has('ManageGuild') && !interaction.member.permissions.has('Administrator')) {
-      await interaction.reply({ content: '❌ Manage Server is required.', flags: 64 }).catch(() => {});
+      await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Manage Server is required.', flags: 64 }).catch(() => {});
       return;
     }
 
@@ -448,13 +448,13 @@ export default function registerModalInteraction(client) {
       const authorId = interaction.customId.split('_')[3];
 
       if (interaction.user.id !== authorId) {
-        await interaction.reply({ content: '❌ You cannot use this.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this.', flags: 64 }).catch(() => {});
         return;
       }
 
       const input = interaction.fields.getTextInputValue('channel')?.trim();
       if (!input) {
-        await interaction.reply({ content: '❌ Please provide a channel.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please provide a channel.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -469,12 +469,12 @@ export default function registerModalInteraction(client) {
       }
 
       if (!channel) {
-        await interaction.reply({ content: '❌ Channel not found. Use channel name (e.g. `general`) or channel ID.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Channel not found. Use channel name (e.g. `general`) or channel ID.', flags: 64 }).catch(() => {});
         return;
       }
 
       if (!channel.isTextBased()) {
-        await interaction.reply({ content: '❌ Please select a text channel.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please select a text channel.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -490,7 +490,7 @@ export default function registerModalInteraction(client) {
       }
 
       if (guildData.welcome.channels.some(c => c.channelId === channelId)) {
-        await interaction.reply({ content: `❌ <#${channelId}> is already a welcome channel.`, flags: 64 }).catch(() => {});
+        await interaction.reply({ content: `<a:Emo_Loading:1566551264924405931> <#${channelId}> is already a welcome channel.`, flags: 64 }).catch(() => {});
         return;
       }
 
@@ -518,7 +518,7 @@ export default function registerModalInteraction(client) {
 
       const rebuildMainContainer = () => {
         const container = new ContainerBuilder();
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Welcome Configuration`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Welcome Configuration`));
         container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
           `**Status:** ${config.enabled ? `${EMOJIS.success} Enabled` : `${EMOJIS.error} Disabled`}\n` +
@@ -588,13 +588,13 @@ export default function registerModalInteraction(client) {
       const authorId = interaction.customId.split('_')[3];
 
       if (interaction.user.id !== authorId) {
-        await interaction.reply({ content: '❌ You cannot use this.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this.', flags: 64 }).catch(() => {});
         return;
       }
 
       const input = interaction.fields.getTextInputValue('channel')?.trim();
       if (!input) {
-        await interaction.reply({ content: '❌ Please provide a channel.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please provide a channel.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -602,7 +602,7 @@ export default function registerModalInteraction(client) {
       let guildData = await db.findOne({ guildId: interaction.guildId }) || { guildId: interaction.guildId };
 
       if (!guildData.welcome || !guildData.welcome.channels || guildData.welcome.channels.length === 0) {
-        await interaction.reply({ content: '❌ No welcome channels configured.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No welcome channels configured.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -621,13 +621,13 @@ export default function registerModalInteraction(client) {
       }
 
       if (!channelId) {
-        await interaction.reply({ content: '❌ Channel not found. Use channel name (e.g. `general`) or channel ID.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Channel not found. Use channel name (e.g. `general`) or channel ID.', flags: 64 }).catch(() => {});
         return;
       }
 
       const channelIndex = guildData.welcome.channels.findIndex(c => c.channelId === channelId);
       if (channelIndex === -1) {
-        await interaction.reply({ content: `❌ <#${channelId}> is not a configured welcome channel.`, flags: 64 }).catch(() => {});
+        await interaction.reply({ content: `<a:Emo_Loading:1566551264924405931> <#${channelId}> is not a configured welcome channel.`, flags: 64 }).catch(() => {});
         return;
       }
 
@@ -644,7 +644,7 @@ export default function registerModalInteraction(client) {
 
       const rebuildMainContainer = () => {
         const container = new ContainerBuilder();
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Welcome Configuration`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Welcome Configuration`));
         container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
           `**Status:** ${config.enabled ? `${EMOJIS.success} Enabled` : `${EMOJIS.error} Disabled`}\n` +
@@ -714,13 +714,13 @@ export default function registerModalInteraction(client) {
       const authorId = interaction.customId.split('_')[3];
 
       if (interaction.user.id !== authorId) {
-        await interaction.reply({ content: '❌ You cannot use this.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this.', flags: 64 }).catch(() => {});
         return;
       }
 
       const input = interaction.fields.getTextInputValue('channel')?.trim();
       if (!input) {
-        await interaction.reply({ content: '❌ Please provide a channel.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please provide a channel.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -735,12 +735,12 @@ export default function registerModalInteraction(client) {
       }
 
       if (!channel) {
-        await interaction.reply({ content: '❌ Channel not found. Use channel name (e.g. `general`) or channel ID.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Channel not found. Use channel name (e.g. `general`) or channel ID.', flags: 64 }).catch(() => {});
         return;
       }
 
       if (!channel.isTextBased()) {
-        await interaction.reply({ content: '❌ Please select a text channel.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please select a text channel.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -756,7 +756,7 @@ export default function registerModalInteraction(client) {
       }
 
       if (guildData.goodbye.channels.some(c => c.channelId === channelId)) {
-        await interaction.reply({ content: `❌ <#${channelId}> is already a goodbye channel.`, flags: 64 }).catch(() => {});
+        await interaction.reply({ content: `<a:Emo_Loading:1566551264924405931> <#${channelId}> is already a goodbye channel.`, flags: 64 }).catch(() => {});
         return;
       }
 
@@ -784,7 +784,7 @@ export default function registerModalInteraction(client) {
 
       const rebuildMainContainer = () => {
         const container = new ContainerBuilder();
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Goodbye Configuration`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Goodbye Configuration`));
         container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
           `**Status:** ${config.enabled ? `${EMOJIS.success} Enabled` : `${EMOJIS.error} Disabled`}\n` +
@@ -854,13 +854,13 @@ export default function registerModalInteraction(client) {
       const authorId = interaction.customId.split('_')[3];
 
       if (interaction.user.id !== authorId) {
-        await interaction.reply({ content: '❌ You cannot use this.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this.', flags: 64 }).catch(() => {});
         return;
       }
 
       const input = interaction.fields.getTextInputValue('channel')?.trim();
       if (!input) {
-        await interaction.reply({ content: '❌ Please provide a channel.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please provide a channel.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -868,7 +868,7 @@ export default function registerModalInteraction(client) {
       let guildData = await db.findOne({ guildId: interaction.guildId }) || { guildId: interaction.guildId };
 
       if (!guildData.goodbye || !guildData.goodbye.channels || guildData.goodbye.channels.length === 0) {
-        await interaction.reply({ content: '❌ No goodbye channels configured.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No goodbye channels configured.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -887,13 +887,13 @@ export default function registerModalInteraction(client) {
       }
 
       if (!channelId) {
-        await interaction.reply({ content: '❌ Channel not found. Use channel name (e.g. `general`) or channel ID.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Channel not found. Use channel name (e.g. `general`) or channel ID.', flags: 64 }).catch(() => {});
         return;
       }
 
       const channelIndex = guildData.goodbye.channels.findIndex(c => c.channelId === channelId);
       if (channelIndex === -1) {
-        await interaction.reply({ content: `❌ <#${channelId}> is not a configured goodbye channel.`, flags: 64 }).catch(() => {});
+        await interaction.reply({ content: `<a:Emo_Loading:1566551264924405931> <#${channelId}> is not a configured goodbye channel.`, flags: 64 }).catch(() => {});
         return;
       }
 
@@ -910,7 +910,7 @@ export default function registerModalInteraction(client) {
 
       const rebuildMainContainer = () => {
         const container = new ContainerBuilder();
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Goodbye Configuration`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Goodbye Configuration`));
         container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
           `**Status:** ${config.enabled ? `${EMOJIS.success} Enabled` : `${EMOJIS.error} Disabled`}\n` +
@@ -983,7 +983,7 @@ export default function registerModalInteraction(client) {
       const authorId = parts[4];
 
       if (interaction.user.id !== authorId) {
-        await interaction.reply({ content: '❌ You cannot use this.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -991,13 +991,13 @@ export default function registerModalInteraction(client) {
       let guildData = await db.findOne({ guildId: interaction.guildId }) || { guildId: interaction.guildId };
 
       if (!guildData.goodbye || !guildData.goodbye.channels) {
-        await interaction.reply({ content: '❌ Goodbye system not configured.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Goodbye system not configured.', flags: 64 }).catch(() => {});
         return;
       }
 
       const channelConfig = guildData.goodbye.channels.find(c => c.channelId === channelId);
       if (!channelConfig) {
-        await interaction.reply({ content: '❌ That channel is no longer configured.', flags: 64 }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> That channel is no longer configured.', flags: 64 }).catch(() => {});
         return;
       }
 
@@ -1022,14 +1022,14 @@ export default function registerModalInteraction(client) {
           break;
         case 'title':
           if (value && value.length > 256) {
-            await interaction.reply({ content: '❌ Title cannot exceed 256 characters.', flags: 64 }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Title cannot exceed 256 characters.', flags: 64 }).catch(() => {});
             return;
           }
           channelConfig.title = value;
           break;
         case 'description':
           if (value && value.length > 4000) {
-            await interaction.reply({ content: '❌ Description cannot exceed 4000 characters.', flags: 64 }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Description cannot exceed 4000 characters.', flags: 64 }).catch(() => {});
             return;
           }
           channelConfig.description = value;
@@ -1040,7 +1040,7 @@ export default function registerModalInteraction(client) {
           } else {
             const color = parseColor(value);
             if (color === null) {
-              await interaction.reply({ content: '❌ Invalid hex color. Use format like `#5865F2`.', flags: 64 }).catch(() => {});
+              await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid hex color. Use format like `#5865F2`.', flags: 64 }).catch(() => {});
               return;
             }
             channelConfig.color = color;
@@ -1072,14 +1072,14 @@ export default function registerModalInteraction(client) {
           break;
         case 'thumbnail':
           if (value && !isValidUrl(value) && !value.startsWith('{')) {
-            await interaction.reply({ content: '❌ Invalid URL. Use a valid image URL or placeholder like `{user.avatar}`.', flags: 64 }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid URL. Use a valid image URL or placeholder like `{user.avatar}`.', flags: 64 }).catch(() => {});
             return;
           }
           channelConfig.thumbnail = value;
           break;
         case 'image':
           if (value && !isValidUrl(value)) {
-            await interaction.reply({ content: '❌ Invalid URL.', flags: 64 }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid URL.', flags: 64 }).catch(() => {});
             return;
           }
           channelConfig.image = value;
@@ -1090,7 +1090,7 @@ export default function registerModalInteraction(client) {
           } else {
             const seconds = parseInt(value);
             if (isNaN(seconds) || seconds < 6 || seconds > 60) {
-              await interaction.reply({ content: '❌ Self-destruct must be between 6 and 60 seconds.', flags: 64 }).catch(() => {});
+              await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Self-destruct must be between 6 and 60 seconds.', flags: 64 }).catch(() => {});
               return;
             }
             channelConfig.selfDestruct = seconds;
@@ -1103,7 +1103,7 @@ export default function registerModalInteraction(client) {
           channelConfig.buttons = value;
           break;
         default:
-          await interaction.reply({ content: '❌ Unknown option.', flags: 64 }).catch(() => {});
+          await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Unknown option.', flags: 64 }).catch(() => {});
           return;
       }
 
@@ -1131,7 +1131,7 @@ export default function registerModalInteraction(client) {
 
       const container = new ContainerBuilder();
       if (channelConfig.color) container.setAccentColor(channelConfig.color);
-      container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Config for <#${channelId}>`));
+      container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Config for <#${channelId}>`));
       container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
       container.addTextDisplayComponents(td => td.setContent(
         `**Content:** ${channelConfig.content ? (channelConfig.content.length > 50 ? channelConfig.content.slice(0, 50) + '...' : channelConfig.content) : 'Not set'}\n` +
@@ -1181,13 +1181,13 @@ export default function registerModalInteraction(client) {
         const colorValue = interaction.fields.getTextInputValue('color_value')?.trim();
 
         if (!colorValue) {
-          await interaction.reply({ content: '❌ Please provide a color.', ephemeral: true });
+          await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please provide a color.', ephemeral: true });
           return;
         }
 
         const hex = colorValue.startsWith('#') ? colorValue : `#${colorValue}`;
         if (!/^#[0-9A-Fa-f]{6}$/i.test(hex)) {
-          await interaction.reply({ content: '❌ Invalid hex color. Use format: `#FFD700` or `FFD700`', ephemeral: true });
+          await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid hex color. Use format: `#FFD700` or `FFD700`', ephemeral: true });
           return;
         }
 
@@ -1222,7 +1222,7 @@ export default function registerModalInteraction(client) {
         return;
       } catch (error) {
         console.error('[Starboard Color Modal] Error:', error);
-        await interaction.reply({ content: '❌ An error occurred.', ephemeral: true }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> An error occurred.', ephemeral: true }).catch(() => {});
       }
     }
 
@@ -1242,13 +1242,13 @@ export default function registerModalInteraction(client) {
         }
 
         if (!channelId) {
-          await interaction.reply({ content: '❌ Channel not found. Use channel name or ID.', ephemeral: true }).catch(() => {});
+          await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Channel not found. Use channel name or ID.', ephemeral: true }).catch(() => {});
           return;
         }
 
         const channel = interaction.guild.channels.cache.get(channelId);
         if (!channel || !channel.isTextBased()) {
-          await interaction.reply({ content: '❌ Please provide a valid text channel.', ephemeral: true }).catch(() => {});
+          await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please provide a valid text channel.', ephemeral: true }).catch(() => {});
           return;
         }
 
@@ -1263,7 +1263,7 @@ export default function registerModalInteraction(client) {
         await interaction.update({ components: [updatedContainer], flags: MessageFlags.IsComponentsV2 }).catch(() => {});
       } catch (error) {
         console.error('[Automod Log Channel Modal] Error:', error);
-        await interaction.reply({ content: '❌ An error occurred.', ephemeral: true }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> An error occurred.', ephemeral: true }).catch(() => {});
       }
     }
 
@@ -1273,14 +1273,14 @@ export default function registerModalInteraction(client) {
         const guildId = interaction.guildId;
 
         if (!input) {
-          await interaction.reply({ content: '❌ Please provide words.', ephemeral: true }).catch(() => {});
+          await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please provide words.', ephemeral: true }).catch(() => {});
           return;
         }
 
         const newWords = input.split(',').map(w => w.trim()).filter(w => w.length > 0);
 
         if (newWords.length === 0) {
-            await interaction.reply({ content: '❌ Invalid input.', ephemeral: true }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid input.', ephemeral: true }).catch(() => {});
             return;
         }
 
@@ -1301,7 +1301,7 @@ export default function registerModalInteraction(client) {
         }
 
         if (addedCount === 0) {
-            await interaction.reply({ content: '❌ All words are already in the filter.', ephemeral: true }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> All words are already in the filter.', ephemeral: true }).catch(() => {});
             return;
         }
 
@@ -1312,7 +1312,7 @@ export default function registerModalInteraction(client) {
         await interaction.followUp({ content: `✅ Added **${addedCount}** words to the filter.`, ephemeral: true }).catch(() => {});
       } catch (error) {
         console.error('[Automod Words Add Modal] Error:', error);
-        await interaction.reply({ content: '❌ An error occurred.', ephemeral: true }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> An error occurred.', ephemeral: true }).catch(() => {});
       }
     }
 
@@ -1322,14 +1322,14 @@ export default function registerModalInteraction(client) {
         const guildId = interaction.guildId;
 
         if (!input) {
-            await interaction.reply({ content: '❌ Please provide words to remove.', ephemeral: true }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please provide words to remove.', ephemeral: true }).catch(() => {});
             return;
         }
 
         const removeWords = input.split(',').map(w => w.trim()).filter(w => w.length > 0);
 
         if (removeWords.length === 0) {
-            await interaction.reply({ content: '❌ Invalid input.', ephemeral: true }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid input.', ephemeral: true }).catch(() => {});
             return;
         }
 
@@ -1338,7 +1338,7 @@ export default function registerModalInteraction(client) {
         let config = guildData.automod || getDefaultConfig();
 
         if (!config.modules.badwords || !config.modules.badwords.words || config.modules.badwords.words.length === 0) {
-            await interaction.reply({ content: '❌ No words to remove.', ephemeral: true }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No words to remove.', ephemeral: true }).catch(() => {});
             return;
         }
 
@@ -1349,7 +1349,7 @@ export default function registerModalInteraction(client) {
         removedCount = initialLength - config.modules.badwords.words.length;
 
         if (removedCount === 0) {
-            await interaction.reply({ content: '❌ None of the provided words were found in the filter.', ephemeral: true }).catch(() => {});
+            await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> None of the provided words were found in the filter.', ephemeral: true }).catch(() => {});
             return;
         }
 
@@ -1360,7 +1360,7 @@ export default function registerModalInteraction(client) {
         await interaction.followUp({ content: `✅ Removed **${removedCount}** words from the filter.`, ephemeral: true }).catch(() => {});
       } catch (error) {
         console.error('[Automod Words Bulk Remove Modal] Error:', error);
-        await interaction.reply({ content: '❌ An error occurred.', ephemeral: true }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> An error occurred.', ephemeral: true }).catch(() => {});
       }
     }
 
@@ -1370,7 +1370,7 @@ export default function registerModalInteraction(client) {
         const guildId = interaction.guildId;
 
         if (!hours || hours < 1 || hours > 8760) {
-          await interaction.reply({ content: '❌ Please provide a valid number of hours (1-8760).', ephemeral: true }).catch(() => {});
+          await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Please provide a valid number of hours (1-8760).', ephemeral: true }).catch(() => {});
           return;
         }
 
@@ -1385,7 +1385,7 @@ export default function registerModalInteraction(client) {
         await interaction.update({ components: [updatedContainer], flags: MessageFlags.IsComponentsV2 }).catch(() => {});
       } catch (error) {
         console.error('[Automod Strike Expiry Modal] Error:', error);
-        await interaction.reply({ content: '❌ An error occurred.', ephemeral: true }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> An error occurred.', ephemeral: true }).catch(() => {});
       }
     }
 
@@ -1419,7 +1419,7 @@ export default function registerModalInteraction(client) {
         });
       } catch (error) {
         console.error('[Birthday Wish Modal]', error);
-        await interaction.reply({ content: '❌ Failed to save message.', ephemeral: true }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to save message.', ephemeral: true }).catch(() => {});
       }
     }
 
@@ -1452,7 +1452,7 @@ export default function registerModalInteraction(client) {
         });
       } catch (error) {
         console.error('[Birthday Appearance Modal]', error);
-        await interaction.reply({ content: '❌ Failed to save settings.', ephemeral: true }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to save settings.', ephemeral: true }).catch(() => {});
       }
     }
 
@@ -1483,7 +1483,7 @@ export default function registerModalInteraction(client) {
         });
       } catch (error) {
         console.error('[Birthday Advanced Modal]', error);
-        await interaction.reply({ content: '❌ Failed to save settings.', ephemeral: true }).catch(() => {});
+        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to save settings.', ephemeral: true }).catch(() => {});
       }
     }
 
@@ -1648,10 +1648,10 @@ export default function registerModalInteraction(client) {
 
             const userId = interaction.user.id;
             const session = componentSessions.get(userId);
-            if (!session) return interaction.reply({ content: '❌ Session expired.', flags: MessageFlags.Ephemeral });
+            if (!session) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Session expired.', flags: MessageFlags.Ephemeral });
 
             const currentRow = session.rows[session.selectedRow];
-            if (!currentRow) return interaction.reply({ content: '❌ No row selected.', flags: MessageFlags.Ephemeral });
+            if (!currentRow) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No row selected.', flags: MessageFlags.Ephemeral });
 
             if (interaction.customId.startsWith('comp_modal_btn_')) {
                 const label = interaction.fields.getTextInputValue('label');
@@ -1717,7 +1717,7 @@ export default function registerModalInteraction(client) {
 
         } catch (err) {
             console.error('[Component Modal]', err);
-            try { await interaction.reply({ content: '❌ Failed to add component.', flags: MessageFlags.Ephemeral }); } catch {}
+            try { await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to add component.', flags: MessageFlags.Ephemeral }); } catch {}
         }
     }
   });

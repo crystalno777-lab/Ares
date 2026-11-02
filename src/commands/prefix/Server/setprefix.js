@@ -16,7 +16,7 @@ async function execute(message, args, client) {
     const isBotOwner = ownerIds.includes(message.author.id) || client.application?.owner?.id === message.author.id;
 
     if (!isOwner && !isAdmin && !isBotOwner) {
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Permission Denied`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Permission Denied`));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent('You need **Administrator** permission to change the prefix.'));
         return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -34,7 +34,7 @@ async function execute(message, args, client) {
             }
         } catch (err) {}
 
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.info || '⚙️'} Set Prefix`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.info || '<a:gears:1566530875879989289>'} Set Prefix`));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
         let content = `**Current Prefix:** \`${currentPrefix}\`\n\n`;
@@ -64,14 +64,14 @@ async function execute(message, args, client) {
         }
 
         if (newPrefix.length > 5) {
-            container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Invalid Prefix`));
+            container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid Prefix`));
             container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
             container.addTextDisplayComponents(td => td.setContent('Prefix must be 5 characters or less.'));
             return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
         }
 
         if (newPrefix.includes(' ')) {
-            container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Invalid Prefix`));
+            container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid Prefix`));
             container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
             container.addTextDisplayComponents(td => td.setContent('Prefix cannot contain spaces.'));
             return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -96,7 +96,7 @@ async function execute(message, args, client) {
 
     } catch (err) {
         console.error('SetPrefix Error:', err);
-        container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Database Error**`));
+        container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Database Error**`));
         container.addTextDisplayComponents(td => td.setContent('Failed to update the prefix. Please try again.'));
         return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
     }

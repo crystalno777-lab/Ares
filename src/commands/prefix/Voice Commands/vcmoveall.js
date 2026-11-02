@@ -19,7 +19,7 @@ async function execute(message, args, client) {
 
 	if (!hasPerms(message.member, PermissionFlagsBits.MoveMembers)) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} You need **Move Members** permission to use this command.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Move Members** permission to use this command.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -36,7 +36,7 @@ async function execute(message, args, client) {
 
 		if (!sourceChannel || !sourceChannel.isVoiceBased()) {
 			container.addTextDisplayComponents(td =>
-				td.setContent(`${EMOJIS.error || '❌'} Invalid source channel ID.`)
+				td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid source channel ID.`)
 			);
 			return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 		}
@@ -48,28 +48,28 @@ async function execute(message, args, client) {
 		sourceChannel = message.member.voice.channel;
 		if (!sourceChannel) {
 			container.addTextDisplayComponents(td =>
-				td.setContent(`${EMOJIS.error || '❌'} You need to be in a voice channel or specify a source channel ID.`)
+				td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need to be in a voice channel or specify a source channel ID.`)
 			);
 			return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 		}
 	} else {
 
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Please specify a destination channel ID. Usage: \`vcmoveall <target> [source]\``)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please specify a destination channel ID. Usage: \`vcmoveall <target> [source]\``)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (!targetChannel || !targetChannel.isVoiceBased()) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Invalid destination voice channel.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid destination voice channel.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (sourceChannel.id === targetChannel.id) {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Source and destination channels are the same.`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Source and destination channels are the same.`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
@@ -107,7 +107,7 @@ async function execute(message, args, client) {
 
 	let content = `${EMOJIS.success || '✅'} Moved **${successCount}** members to **${targetChannel.name}**.`;
 	if (failCount > 0) {
-		content += `\n${EMOJIS.error || '❌'} Failed to move **${failCount}** members due to permissions/hierarchy.`;
+		content += `\n${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Failed to move **${failCount}** members due to permissions/hierarchy.`;
 	}
 
 	container.addTextDisplayComponents(td => td.setContent(content));

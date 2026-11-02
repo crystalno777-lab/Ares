@@ -21,7 +21,7 @@ async function execute(message, args, client) {
 
         const isCustom = guildData?.prefix ? true : false;
 
-        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.info || '📋'} Server Prefix`));
+        container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.info || '<:emoji_9:1566528847464108183>'} Server Prefix`));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
         let content = `**Current Prefix:** \`${currentPrefix}\`\n`;
@@ -34,7 +34,7 @@ async function execute(message, args, client) {
 
     } catch (err) {
         console.error('Prefix Error:', err);
-        container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Error**`));
+        container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Error**`));
         container.addTextDisplayComponents(td => td.setContent('Failed to get prefix information.'));
         return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
     }

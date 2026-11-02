@@ -2,7 +2,7 @@ export const MODULES = {
     ban: { name: 'Anti Ban', description: 'Prevents mass banning', emoji: '🔨' },
     kick: { name: 'Anti Kick', description: 'Prevents mass kicking', emoji: '👢' },
     role: { name: 'Anti Role', description: 'Prevents mass role changes', emoji: '🎭' },
-    channel: { name: 'Anti Channel', description: 'Prevents mass channel changes', emoji: '📁' },
+    channel: { name: 'Anti Channel', description: 'Prevents mass channel changes', emoji: '<:emoji_5:1566528650411647178>' },
     webhook: { name: 'Anti Webhook', description: 'Prevents webhook spam', emoji: '🪝' },
     emoji: { name: 'Anti Emoji', description: 'Prevents emoji deletion', emoji: '😀' },
     botadd: { name: 'Anti Bot', description: 'Prevents unauthorized bots', emoji: '🤖' },

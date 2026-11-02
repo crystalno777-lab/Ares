@@ -10,7 +10,7 @@ export default {
 	async execute(message, args, client) {
 		if (!message.member?.voice.channel) {
 			return message.reply({
-				content: '❌ You must be in a voice channel to use this command.',
+				content: '<a:Emo_Loading:1566551264924405931> You must be in a voice channel to use this command.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -19,14 +19,14 @@ export default {
 
 		if (!queue || queue.stopped) {
 			return message.reply({
-				content: '❌ I\'m not playing any music.',
+				content: '<a:Emo_Loading:1566551264924405931> I\'m not playing any music.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
 
 		if (message.member.voice.channelId !== queue.voiceChannel.id) {
 			return message.reply({
-				content: '❌ You must be in the same voice channel as me.',
+				content: '<a:Emo_Loading:1566551264924405931> You must be in the same voice channel as me.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -34,7 +34,7 @@ export default {
 		const currentTrack = queue.tracks.peekAt(0);
 		if (!currentTrack) {
 			return message.reply({
-				content: '❌ There\'s no track currently playing.',
+				content: '<a:Emo_Loading:1566551264924405931> There\'s no track currently playing.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -56,7 +56,7 @@ export default {
 		} catch (error) {
 			console.error('Error in skip command:', error);
 			return message.reply({
-				content: '❌ An error occurred while skipping the track.',
+				content: '<a:Emo_Loading:1566551264924405931> An error occurred while skipping the track.',
 				allowedMentions: { repliedUser: false }
 			});
 		}

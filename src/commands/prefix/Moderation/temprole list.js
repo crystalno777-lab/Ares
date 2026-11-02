@@ -104,7 +104,7 @@ export default {
 			console.error('Error in temprole list command:', error);
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ${EMOJIS.error || '❌'} Error`)
+				textDisplay.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Error`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)

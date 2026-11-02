@@ -117,7 +117,7 @@ export async function generateTranscript(channel, ticket, guild) {
 </head>
 <body>
 	<div class="header">
-		<h1>📋 Ticket #${ticket.ticketId}</h1>
+		<h1><:emoji_9:1566528847464108183> Ticket #${ticket.ticketId}</h1>
 		<div class="info">
 			<p><strong>Server:</strong> <span>${escapeHtml(guild.name)}</span></p>
 			<p><strong>Created by:</strong> <span>${escapeHtml(ownerName)}</span></p>

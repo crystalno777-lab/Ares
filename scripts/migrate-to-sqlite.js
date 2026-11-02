@@ -25,7 +25,7 @@ async function migrate() {
 	
 	// Check for DATABASE_URL
 	if (!process.env.DATABASE_URL) {
-		console.log('❌ No DATABASE_URL found. Nothing to migrate.');
+		console.log('<a:Emo_Loading:1566551264924405931> No DATABASE_URL found. Nothing to migrate.');
 		console.log('   If you want to use SQLite, just remove DATABASE_URL from .env');
 		process.exit(0);
 	}
@@ -40,15 +40,15 @@ async function migrate() {
 		await pgClient.connect();
 		console.log('✅ Connected to PostgreSQL');
 	} catch (error) {
-		console.error('❌ Failed to connect to PostgreSQL:', error.message);
-		console.log('\n💡 If your PostgreSQL quota is exceeded, you may need to:');
+		console.error('<a:Emo_Loading:1566551264924405931> Failed to connect to PostgreSQL:', error.message);
+		console.log('\n<a:1202lightyellowcrown:1566531939752747078> If your PostgreSQL quota is exceeded, you may need to:');
 		console.log('   1. Wait for quota reset, or');
 		console.log('   2. Start fresh with SQLite (no migration needed)');
 		process.exit(1);
 	}
 	
 	// Initialize SQLite
-	console.log('\n📁 Initializing SQLite database...');
+	console.log('\n<:emoji_5:1566528650411647178> Initializing SQLite database...');
 	let sqliteDb;
 	try {
 		const betterSqlite3 = await import('better-sqlite3');
@@ -66,14 +66,14 @@ async function migrate() {
 		sqliteDb.pragma('journal_mode = WAL');
 		console.log('✅ SQLite initialized');
 	} catch (error) {
-		console.error('❌ Failed to initialize SQLite:', error.message);
-		console.log('\n💡 Make sure better-sqlite3 is installed: npm install better-sqlite3');
+		console.error('<a:Emo_Loading:1566551264924405931> Failed to initialize SQLite:', error.message);
+		console.log('\n<a:1202lightyellowcrown:1566531939752747078> Make sure better-sqlite3 is installed: npm install better-sqlite3');
 		await pgClient.end();
 		process.exit(1);
 	}
 	
 	// Create SQLite tables
-	console.log('\n📋 Creating SQLite tables...');
+	console.log('\n<:emoji_9:1566528847464108183> Creating SQLite tables...');
 	try {
 		sqliteDb.exec(`
 			CREATE TABLE IF NOT EXISTS guilds (
@@ -99,7 +99,7 @@ async function migrate() {
 		sqliteDb.exec(`CREATE INDEX IF NOT EXISTS idx_moderation_user ON moderation(userId)`);
 		console.log('✅ Tables created');
 	} catch (error) {
-		console.error('❌ Failed to create tables:', error.message);
+		console.error('<a:Emo_Loading:1566551264924405931> Failed to create tables:', error.message);
 	}
 	
 	// Migrate guilds table
@@ -133,7 +133,7 @@ async function migrate() {
 		}
 		console.log(`✅ Migrated ${migrated}/${guilds.length} guilds`);
 	} catch (error) {
-		console.error('❌ Failed to migrate guilds:', error.message);
+		console.error('<a:Emo_Loading:1566551264924405931> Failed to migrate guilds:', error.message);
 	}
 	
 	// Migrate moderation table
@@ -170,7 +170,7 @@ async function migrate() {
 		if (error.message.includes('does not exist')) {
 			console.log('   ℹ️ No moderation table found (this is OK)');
 		} else {
-			console.error('❌ Failed to migrate moderation:', error.message);
+			console.error('<a:Emo_Loading:1566551264924405931> Failed to migrate moderation:', error.message);
 		}
 	}
 	
@@ -185,7 +185,7 @@ async function migrate() {
 	console.log('   2. Remove or comment out DATABASE_URL');
 	console.log('   3. Restart the bot with: pm2 restart ares-bot');
 	console.log('   4. Check logs: pm2 logs ares-bot');
-	console.log('\n💡 The bot will now use SQLite automatically.');
+	console.log('\n<a:1202lightyellowcrown:1566531939752747078> The bot will now use SQLite automatically.');
 }
 
 // Load environment variables

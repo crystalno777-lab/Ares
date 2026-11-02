@@ -16,7 +16,7 @@ export default {
 	async execute(interaction, client) {
 		if (!interaction.member?.voice.channel) {
 			return interaction.reply({
-				content: '❌ You must be in a voice channel to use this command.',
+				content: '<a:Emo_Loading:1566551264924405931> You must be in a voice channel to use this command.',
 				ephemeral: true
 			});
 		}
@@ -26,14 +26,14 @@ export default {
 
 		if (!botPermissions?.has(PermissionFlagsBits.Connect)) {
 			return interaction.reply({
-				content: '❌ I don\'t have permission to connect to your voice channel.',
+				content: '<a:Emo_Loading:1566551264924405931> I don\'t have permission to connect to your voice channel.',
 				ephemeral: true
 			});
 		}
 
 		if (!botPermissions?.has(PermissionFlagsBits.Speak)) {
 			return interaction.reply({
-				content: '❌ I can join that voice channel, but I do not have permission to speak there.',
+				content: '<a:Emo_Loading:1566551264924405931> I can join that voice channel, but I do not have permission to speak there.',
 				ephemeral: true
 			});
 		}
@@ -50,7 +50,7 @@ export default {
 
 			if (!node) {
 				return interaction.editReply({
-					content: '❌ No Lavalink nodes available. Try again later.',
+					content: '<a:Emo_Loading:1566551264924405931> No Lavalink nodes available. Try again later.',
 				});
 			}
 
@@ -80,7 +80,7 @@ export default {
 
 			if (isEmptyLoadResult(result)) {
 				return interaction.editReply({
-					content: '❌ No results found for: **' + searchQuery + '**',
+					content: '<a:Emo_Loading:1566551264924405931> No results found for: **' + searchQuery + '**',
 				});
 			}
 
@@ -130,7 +130,7 @@ export default {
 
 				if (!track || !track.info) {
 					return interaction.editReply({
-						content: '❌ Could not extract track information. The URL or search result may be invalid.',
+						content: '<a:Emo_Loading:1566551264924405931> Could not extract track information. The URL or search result may be invalid.',
 					});
 				}
 
@@ -220,8 +220,8 @@ export default {
 			console.error('Error in play command:', error);
 			interaction.editReply({
 				content: isMusicBackendUnavailable(error)
-					? '❌ Music backend is offline. Please check your Lavalink node and try again.'
-					: '❌ An error occurred while searching for the track.',
+					? '<a:Emo_Loading:1566551264924405931> Music backend is offline. Please check your Lavalink node and try again.'
+					: '<a:Emo_Loading:1566551264924405931> An error occurred while searching for the track.',
 			});
 		}
 	}
@@ -250,23 +250,23 @@ function getSpotifyResolveErrorMessage(error) {
 	const code = error?.code;
 
 	if (code === 'SPOTIFY_CREDENTIALS_MISSING') {
-		return '❌ Spotify links require Spotify API credentials.\nSet SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET on your host and restart the bot.';
+		return '<a:Emo_Loading:1566551264924405931> Spotify links require Spotify API credentials.\nSet SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET on your host and restart the bot.';
 	}
 
 	if (code === 'SPOTIFY_TOKEN_REQUEST_FAILED') {
-		return '❌ Spotify authentication failed. Verify SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET, then restart the bot.';
+		return '<a:Emo_Loading:1566551264924405931> Spotify authentication failed. Verify SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET, then restart the bot.';
 	}
 
 	if (code === 'SPOTIFY_API_REQUEST_FAILED') {
-		return '❌ Spotify API request failed. The playlist may be private or your credentials may be invalid.';
+		return '<a:Emo_Loading:1566551264924405931> Spotify API request failed. The playlist may be private or your credentials may be invalid.';
 	}
 
 	if (code === 'SPOTIFY_EMPTY_SOURCE') {
-		return '❌ Spotify returned no playable tracks for this link.';
+		return '<a:Emo_Loading:1566551264924405931> Spotify returned no playable tracks for this link.';
 	}
 
 	if (code === 'SPOTIFY_RESOLVE_FAILED') {
-		return '❌ Spotify tracks were found, but Lavalink could not resolve playable sources from them.';
+		return '<a:Emo_Loading:1566551264924405931> Spotify tracks were found, but Lavalink could not resolve playable sources from them.';
 	}
 
 	return null;

@@ -61,7 +61,7 @@ export default {
         container
             .addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small))
             .addTextDisplayComponents(t => t.setContent(
-                `${EMOJIS.error || '❌'} **Before**\n` +
+                `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Before**\n` +
                 `>>> ${oldContent}`
             ));
 
@@ -76,7 +76,7 @@ export default {
             container
                 .addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small))
                 .addTextDisplayComponents(t => t.setContent(
-                    `-# 📋 Showing ${index + 1} of ${editedMsgs.length} • Use \`.editsnipe [1-${editedMsgs.length}]\` to view others`
+                    `-# <:emoji_9:1566528847464108183> Showing ${index + 1} of ${editedMsgs.length} • Use \`.editsnipe [1-${editedMsgs.length}]\` to view others`
                 ));
         }
 

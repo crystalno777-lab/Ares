@@ -9,30 +9,30 @@ const category = 'General';
 
 const getCategoryEmoji = (cat) => {
     const emojiMap = {
-        'General': EMOJIS.general || EMOJIS.info || '📋',
-        'Moderation': EMOJIS.moderation || EMOJIS.security || '🛡️',
-        'Fun': EMOJIS.fun || EMOJIS.game || '🎮',
-        'Music': EMOJIS.music || '🎵',
-        'Configuration': EMOJIS.settings || EMOJIS.config || '⚙️',
-        'Leveling': EMOJIS.leveling || EMOJIS.stats || '📊',
-        'Server': EMOJIS.server || EMOJIS.settings || '⚙️',
-        'Automod': EMOJIS.automod || EMOJIS.bot || '🤖',
-        'Antinuke': EMOJIS.antinuke || EMOJIS.lock || '🔒',
-        'Anti Raid': EMOJIS.antiraid || EMOJIS.alert || '🚨',
-        'Logs': EMOJIS.logs || EMOJIS.log || '📝',
-        'Welcome': EMOJIS.welcome || EMOJIS.wave || '👋',
-        'Tickets': EMOJIS.tickets || EMOJIS.ticket || '🎫',
-        'Giveaways': EMOJIS.giveaway || EMOJIS.party || '🎉',
-        'Birthday': EMOJIS.birthday || EMOJIS.cake || '🎂',
-        'Starboard': EMOJIS.starboard || EMOJIS.star || '⭐',
-        'Stats': EMOJIS.statistics || EMOJIS.chart || '📈',
-        'Custom Roles': EMOJIS.customroles || EMOJIS.palette || '🎨',
-        'Voice Commands': EMOJIS.voice || EMOJIS.speaker || '🔊',
-        'BumpReminder': EMOJIS.bump || EMOJIS.bell || '🔔',
-        'Bot Owner': EMOJIS.owner || EMOJIS.crown || '👑',
-        'miscellaneous': EMOJIS.misc || EMOJIS.box || '📦'
+        'General': '<:emoji_9:1566528847464108183>',
+        'Moderation': '<:emoji_76:1566533991639678986>',
+        'Fun': '<:emoji_6:1566530216359108629>',
+        'Music': '<:emoji_12:1566529131200512120>',
+        'Configuration': '<a:gears:1563970627482947716>',
+        'Leveling': '<:emoji_8:1566528799359635557>',
+        'Server': '<:emoji_20:1566529594280910868>',
+        'Automod': '<a:xieron_stolen_emoji_1793006358:1566530937020489910>',
+        'Antinuke': '<:emoji_12:1566529085235134695>',
+        'Anti Raid': '<:emoji_1:1566528388733337600>',
+        'Logs': '<:emoji_10:1566528971632279712>',
+        'Welcome': '<:MH_Blush:1566534747067515043>',
+        'Tickets': '<:emoji_18:1566529464379248640>',
+        'Giveaways': '<:emoji_29:1566533478902800464>',
+        'Birthday': '<:emoji_4:1566528582799458364>',
+        'Starboard': '<:emoji_16:1566529308237889617>',
+        'Stats': '<:emoji_17:1566529370330366123>',
+        'Custom Roles': '<:emoji_7:1566528746461331606>',
+        'Voice Commands': '<:emoji_19:1566529535313191072>',
+        'Bumpreminder': '<:emoji_5:1566528650411647178>',
+        'Bot Owner': EMOJIS.owner || '👑',
+        'Miscellaneous': '<:emoji_5:1566528650411647178>'
     };
-    return emojiMap[cat] || EMOJIS.folder || '📂';
+    return emojiMap[cat] || '<:emoji_5:1566528650411647178>';
 };
 
 const CATEGORY_DESCRIPTIONS = {
@@ -327,7 +327,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
 
     if (expired) {
         container.addTextDisplayComponents(td => td.setContent(
-            `# ${EMOJIS.error || '❌'} Help Menu Expired`
+            `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Help Menu Expired`
         ));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
@@ -337,7 +337,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
     }
 
     container.addTextDisplayComponents(td => td.setContent(
-        `# ${EMOJIS.help || '📚'} ${client.user.username} Help`
+        `# ${EMOJIS.help || '<:musafir_flower_purple:1566549613215883354>'} ${client.user.username} Help`
     ));
 
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
@@ -349,7 +349,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
 
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small).setDivider(true));
 
-    let categoryList = `**${EMOJIS.folder || '📁'} Categories**\n\n`;
+    let categoryList = `**${EMOJIS.folder || '<:emoji_5:1566528650411647178>'} Categories**\n\n`;
 
     const sortedCategories = Object.keys(grouped)
         .filter(cat => cat !== 'Bot Owner')
@@ -368,7 +368,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small).setDivider(true));
 
     container.addTextDisplayComponents(td => td.setContent(
-        `**${EMOJIS.lightbulb || '💡'} Quick Tips**\n` +
+        `**${EMOJIS.lightbulb || '<a:1202lightyellowcrown:1566531939752747078>'} Quick Tips**\n` +
         `> **${prefix}help <command>** — View command details\n` +
         `> **${prefix}help <category>** — View category commands`
     ));
@@ -393,7 +393,7 @@ function buildMainMenu(client, prefix, grouped, expired = false) {
 
     const selectMenu = new StringSelectMenuBuilder()
         .setCustomId('help_category_select')
-        .setPlaceholder('📁 Select a category...')
+        .setPlaceholder('Select a category...')
         .addOptions(selectOptions);
 
     container.addActionRowComponents(new ActionRowBuilder().addComponents(selectMenu));
@@ -434,7 +434,7 @@ function buildCategoryPage(client, prefix, categoryName, commands, expired = fal
 
     if (expired) {
         container.addTextDisplayComponents(td => td.setContent(
-            `# ${EMOJIS.error || '❌'} Help Menu Expired`
+            `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Help Menu Expired`
         ));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
@@ -578,7 +578,7 @@ function buildCommandPage(client, prefix, cmd) {
         .setCustomId(`help_category_${(cmd.category || 'General').toLowerCase().replace(/\s+/g, '_')}`)
         .setLabel(cmd.category || 'General')
         .setStyle(ButtonStyle.Primary)
-        .setEmoji('📁');
+        .setEmoji('<:emoji_5:1566528650411647178>');
 
     container.addActionRowComponents(new ActionRowBuilder().addComponents(backButton, categoryButton));
 
@@ -694,7 +694,7 @@ async function execute(message, args, client) {
     }
 
     const container = new ContainerBuilder();
-    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Not Found`));
+    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Not Found`));
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
     container.addTextDisplayComponents(td => td.setContent(
         `No command or category found matching \`${query}\`.\n\n` +

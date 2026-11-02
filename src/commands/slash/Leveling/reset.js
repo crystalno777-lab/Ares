@@ -14,7 +14,7 @@ export default {
 		const memberCount = Object.keys(leveling.members || {}).length;
 		if (memberCount === 0) {
 			const c = new ContainerBuilder();
-			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} No members to reset.`));
+			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} No members to reset.`));
 			return interaction.reply({ components: [c], flags: MessageFlags.Ephemeral | MessageFlags.IsComponentsV2 });
 		}
 

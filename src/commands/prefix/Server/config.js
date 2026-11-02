@@ -15,7 +15,7 @@ export default {
 		if (!isOwner && !isAdmin) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Permission Denied`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -34,7 +34,7 @@ export default {
 		if (!args.length) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ⚙️ Config Command`)
+				textDisplay.setContent(`# <a:gears:1566530875879989289> Config Command`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -56,7 +56,7 @@ export default {
 
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ⚙️ Server Configuration`)
+					textDisplay.setContent(`# <a:gears:1566530875879989289> Server Configuration`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -96,7 +96,7 @@ export default {
 				config += `**Detain Channel:** Not set\n`;
 			}
 
-			config += `**Detain Mode (Remove Roles):** ${detainMode ? 'Enabled ✅' : 'Disabled ❌'}`;				container.addTextDisplayComponents((textDisplay) =>
+			config += `**Detain Mode (Remove Roles):** ${detainMode ? 'Enabled ✅' : 'Disabled <a:Emo_Loading:1566551264924405931>'}`;				container.addTextDisplayComponents((textDisplay) =>
 					textDisplay.setContent(config)
 				);
 
@@ -109,7 +109,7 @@ export default {
 				console.error('Error viewing config:', error);
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Error`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -128,7 +128,7 @@ export default {
 			if (args.length < 2) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Missing Arguments`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Arguments`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -150,7 +150,7 @@ export default {
 		if (!validSettings.includes(setting)) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Invalid Setting`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Invalid Setting`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -182,7 +182,7 @@ export default {
 			if (!channel) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Channel Not Found`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Channel Not Found`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -201,7 +201,7 @@ export default {
 			if (!channel.isTextBased()) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Invalid Channel Type`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Invalid Channel Type`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -264,7 +264,7 @@ export default {
 				console.error('Error updating detain channel:', error);
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Error`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -287,7 +287,7 @@ export default {
 			if (!modeValue || !['true', 'false', 'on', 'off', 'enable', 'disable'].includes(modeValue)) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Invalid Value`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Invalid Value`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -337,7 +337,7 @@ export default {
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
 				);
-				const status = guildData.moderation.detainMode ? 'Enabled ✅' : 'Disabled ❌';
+				const status = guildData.moderation.detainMode ? 'Enabled ✅' : 'Disabled <a:Emo_Loading:1566551264924405931>';
 				container.addTextDisplayComponents((textDisplay) =>
 					textDisplay.setContent(`Detain mode (remove roles) has been ${status}`)
 				);
@@ -351,7 +351,7 @@ export default {
 				console.error('Error updating detain mode:', error);
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Error`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -382,7 +382,7 @@ export default {
 				if (!role) {
 					const container = new ContainerBuilder();
 					container.addTextDisplayComponents((textDisplay) =>
-						textDisplay.setContent(`# ❌ Role Not Found`)
+						textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Role Not Found`)
 					);
 					container.addSeparatorComponents((separator) =>
 						separator.setSpacing(SeparatorSpacingSize.Small)
@@ -445,7 +445,7 @@ export default {
 					console.error('Error updating detain role:', error);
 					const container = new ContainerBuilder();
 					container.addTextDisplayComponents((textDisplay) =>
-						textDisplay.setContent(`# ❌ Error`)
+						textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 					);
 					container.addSeparatorComponents((separator) =>
 						separator.setSpacing(SeparatorSpacingSize.Small)
@@ -475,7 +475,7 @@ export default {
 			if (!role) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Role Not Found`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Role Not Found`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -554,7 +554,7 @@ export default {
 				console.error('Error updating config:', error);
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Error`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -572,7 +572,7 @@ export default {
 		} else {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Invalid Action`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Invalid Action`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)

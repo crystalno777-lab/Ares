@@ -16,7 +16,7 @@ async function execute(message, args, client) {
 		targetName = args.join(' ');
 	} else {
 		container.addTextDisplayComponents(td =>
-			td.setContent(`${EMOJIS.error || '❌'} Who are we hacking? (Usage: \`.hack @user\`)`)
+			td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Who are we hacking? (Usage: \`.hack @user\`)`)
 		);
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}

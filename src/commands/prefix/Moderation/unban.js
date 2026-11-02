@@ -21,7 +21,7 @@ export default {
 		if (!args.length) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Missing Arguments`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Arguments`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -42,7 +42,7 @@ export default {
 		if (isNaN(targetId)) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Invalid Input`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Invalid Input`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -64,7 +64,7 @@ export default {
 		} catch {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ User Not Found`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> User Not Found`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -85,7 +85,7 @@ export default {
 		if (!message.guild.members.me.permissions.has('BanMembers')) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Missing Permissions`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Permissions`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -112,7 +112,7 @@ export default {
 		if (!permCheck.allowed) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Permission Denied`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -135,7 +135,7 @@ export default {
 			if (!ban) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ${EMOJIS.error || '❌'} Not Banned`)
+					textDisplay.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Not Banned`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -238,7 +238,7 @@ export default {
 			console.error('Error in unban command:', error);
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Error`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)

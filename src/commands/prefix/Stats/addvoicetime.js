@@ -14,13 +14,13 @@ const aliases = ['addvoice', 'givevoice', 'addvc'];
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} You need **Administrator** permission to use this command.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Administrator** permission to use this command.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
@@ -32,7 +32,7 @@ async function execute(message, args, client) {
 
 	if (!targetUser) {
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} Please mention a user.\n\n` +
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please mention a user.\n\n` +
 			`**Usage:** \`.addvoicetime @user <duration>\`\n` +
 			`**Examples:** \`.addvoicetime @user 1h\`, \`.addvoicetime @user 30m\``
 		));
@@ -41,7 +41,7 @@ async function execute(message, args, client) {
 
 	if (!durationArg) {
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} Please provide a duration.\n\n` +
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please provide a duration.\n\n` +
 			`**Usage:** \`.addvoicetime @user <duration>\`\n` +
 			`**Examples:** \`.addvoicetime @user 1h\`, \`.addvoicetime @user 30m\``
 		));
@@ -51,7 +51,7 @@ async function execute(message, args, client) {
 	const durationMs = parseDuration(durationArg);
 	if (!durationMs || durationMs <= 0) {
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} Invalid duration format.\n\n` +
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid duration format.\n\n` +
 			`**Valid formats:** \`1h\`, \`30m\`, \`1h30m\`, \`90m\``
 		));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
@@ -87,7 +87,7 @@ async function execute(message, args, client) {
 	} catch (error) {
 		console.error('[AddVoiceTime] Error:', error);
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} An error occurred while adding voice time.`
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} An error occurred while adding voice time.`
 		));
 	}
 

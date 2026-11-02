@@ -35,7 +35,7 @@ export default {
   async execute(message, args, client) {
     if (!message.guild) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Guild Only`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Guild Only`,
         'This command can only be used in a guild.'
       );
       return message.reply({
@@ -53,7 +53,7 @@ export default {
 
     if (!(hasDiscordAdmin && (isOwner || isExtraOwner || isAdmin))) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Missing Permissions`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Missing Permissions`,
         'You need **Discord Administrator** + **Antinuke Admin** permissions to use this command.'
       );
       return message.reply({
@@ -68,7 +68,7 @@ export default {
 
     if (!executor.permissions.has(PermissionFlagsBits.BanMembers)) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Missing Permissions`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Missing Permissions`,
         'You need the Ban Members permission to use this command.'
       );
       return message.reply({
@@ -80,7 +80,7 @@ export default {
 
     if (!args || args.length < 2) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Missing Arguments`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Missing Arguments`,
         `Usage: ${this.usage}`
       );
       return message.reply({
@@ -101,7 +101,7 @@ export default {
     const durationMs = parseDuration(timeArg);
     if (durationMs === null) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Invalid Time`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid Time`,
         'Invalid time format. Use formats like `10s` or `5m`.'
       );
       return message.reply({
@@ -113,7 +113,7 @@ export default {
 
     if (durationMs < 1000) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Invalid Time`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid Time`,
         'Duration must be at least 1 second.'
       );
       return message.reply({
@@ -125,7 +125,7 @@ export default {
 
     if (durationMs > 15 * 60 * 1000) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Too Large`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Too Large`,
         'Maximum allowed time is 15 minutes.'
       );
       return message.reply({
@@ -137,7 +137,7 @@ export default {
 
     if (!['ban', 'kick'].includes(action)) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Invalid Action`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid Action`,
         'Action must be `ban` or `kick`.'
       );
       return message.reply({
@@ -149,7 +149,7 @@ export default {
 
     if (action === 'ban' && !me.permissions.has(PermissionFlagsBits.BanMembers)) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Missing Bot Permission`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Missing Bot Permission`,
         'I need the Ban Members permission to perform bans.'
       );
       return message.reply({
@@ -161,7 +161,7 @@ export default {
 
     if (action === 'kick' && !me.permissions.has(PermissionFlagsBits.KickMembers)) {
       const c = buildNotice(
-        `# ${EMOJIS.error || '❌'} Missing Bot Permission`,
+        `# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Missing Bot Permission`,
         'I need the Kick Members permission to perform kicks.'
       );
       return message.reply({

@@ -27,7 +27,7 @@ const TIMEZONES = [
 
 const DEFAULT_WISH = {
     content: 'Happy Birthday {user}! ❤️',
-    title: '🎂 Happy Birthday!',
+    title: '<:emoji_4:1566528582799458364> Happy Birthday!',
     description: 'Wishing you an amazing day filled with joy and happiness!',
     thumbnail: 'avatar',
     image: '',
@@ -44,7 +44,7 @@ const updateGuildData = async (client, guildId, update) => {
 
 const buildError = (title, description) => {
     const container = new ContainerBuilder();
-    container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **${title}**`));
+    container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **${title}**`));
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
     container.addTextDisplayComponents(td => td.setContent(description));
     return container;
@@ -61,10 +61,10 @@ const buildSuccess = (title, description) => {
 const buildWizardContainer = (config) => {
     const container = new ContainerBuilder();
 
-    const statusEmoji = config.enabled ? (EMOJIS.success || '✅') : (EMOJIS.error || '❌');
+    const statusEmoji = config.enabled ? (EMOJIS.success || '✅') : (EMOJIS.error || '<a:Emo_Loading:1566551264924405931>');
     const statusText = config.enabled ? 'Enabled' : 'Disabled';
 
-    container.addTextDisplayComponents(td => td.setContent(`# 🎂 Birthday System Setup`));
+    container.addTextDisplayComponents(td => td.setContent(`# <:emoji_4:1566528582799458364> Birthday System Setup`));
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
     const cmdChannel = config.commandChannel ? `<#${config.commandChannel}>` : '`Not Set`';
@@ -346,7 +346,7 @@ export default {
 
             const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             return message.reply({
-                components: [buildSuccess('Birthday Set', `Your birthday has been set to **${day} ${monthNames[month - 1]}** 🎂`)],
+                components: [buildSuccess('Birthday Set', `Your birthday has been set to **${day} ${monthNames[month - 1]}** <:emoji_4:1566528582799458364>`)],
                 flags: MessageFlags.IsComponentsV2,
                 allowedMentions: { repliedUser: false }
             });
@@ -369,7 +369,7 @@ export default {
 
             const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             const container = new ContainerBuilder();
-            container.addTextDisplayComponents(td => td.setContent(`🎂 **${targetUser.username}'s Birthday**`));
+            container.addTextDisplayComponents(td => td.setContent(`<:emoji_4:1566528582799458364> **${targetUser.username}'s Birthday**`));
             container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
             container.addTextDisplayComponents(td => td.setContent(`**${birthday.day} ${monthNames[birthday.month - 1]}**`));
 
@@ -428,7 +428,7 @@ export default {
             }).join('\n');
 
             const container = new ContainerBuilder();
-            container.addTextDisplayComponents(td => td.setContent(`🎂 **Upcoming Birthdays**`));
+            container.addTextDisplayComponents(td => td.setContent(`<:emoji_4:1566528582799458364> **Upcoming Birthdays**`));
             container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
             container.addTextDisplayComponents(td => td.setContent(list));
 
@@ -481,7 +481,7 @@ export default {
         }
 
         const container = new ContainerBuilder();
-        container.addTextDisplayComponents(td => td.setContent(`🎂 **Birthday Commands**`));
+        container.addTextDisplayComponents(td => td.setContent(`<:emoji_4:1566528582799458364> **Birthday Commands**`));
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td => td.setContent(
             '`.birthday set DD/MM` - Set your birthday\n' +

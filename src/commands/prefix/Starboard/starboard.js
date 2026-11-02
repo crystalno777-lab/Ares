@@ -75,7 +75,7 @@ export const buildWizardContainer = (guildData, disabled = false) => {
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
     container.addTextDisplayComponents(td =>
-        td.setContent(`**Status:** ${config.enabled ? `${EMOJIS.success || '✅'} Active` : `${EMOJIS.error || '❌'} Inactive`}\n` +
+        td.setContent(`**Status:** ${config.enabled ? `${EMOJIS.success || '✅'} Active` : `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Inactive`}\n` +
             `**Channel:** ${config.channel ? `<#${config.channel}>` : 'Not Set'}\n` +
             `**Emojis:** ${emojiList}\n` +
             `**Self-Star:** ${config.selfStar ? 'Enabled' : 'Disabled'}`)
@@ -137,7 +137,7 @@ export const buildWizardContainer = (guildData, disabled = false) => {
         new ButtonBuilder()
             .setCustomId('starboard_color')
             .setLabel('Color')
-            .setEmoji('🎨')
+            .setEmoji('<:emoji_7:1566528746461331606>')
             .setStyle(ButtonStyle.Secondary)
             .setDisabled(disabled),
         new ButtonBuilder()
@@ -166,13 +166,13 @@ export const buildWizardContainer = (guildData, disabled = false) => {
         new ButtonBuilder()
             .setCustomId(`starboard_toggle_${config.enabled ? 'off' : 'on'}`)
             .setLabel(config.enabled ? 'Lock Starboard' : 'Unlock Starboard')
-            .setEmoji(config.enabled ? '🔒' : '🔓')
+            .setEmoji(config.enabled ? '<:emoji_12:1566529085235134695>' : '🔓')
             .setStyle(config.enabled ? ButtonStyle.Danger : ButtonStyle.Success)
             .setDisabled(disabled),
         new ButtonBuilder()
             .setCustomId('starboard_view_config')
             .setLabel('View Config')
-            .setEmoji('📋')
+            .setEmoji('<:emoji_9:1566528847464108183>')
             .setStyle(ButtonStyle.Secondary)
             .setDisabled(disabled),
         new ButtonBuilder()
@@ -904,7 +904,7 @@ export default {
         const tip = getStarboardTip(guildData);
         const config = guildData.starboard;
 
-        let content = `**Status:** ${config.enabled ? '✅ Active' : '❌ Inactive'}\n`;
+        let content = `**Status:** ${config.enabled ? '✅ Active' : '<a:Emo_Loading:1566551264924405931> Inactive'}\n`;
         content += `**Channel:** ${config.channel ? `<#${config.channel}>` : 'Not Set'}\n\n`;
 
         const emojiList = config.emojis && config.emojis.length > 0

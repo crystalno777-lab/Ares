@@ -19,7 +19,7 @@ export default function registerButtonInteraction(client) {
 				const pageNum = parseInt(parts[3]);
 
 				if (interaction.user.id !== commandAuthorId) {
-					await interaction.reply({ content: '❌ You cannot use this button.', flags: 64 });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', flags: 64 });
 					return;
 				}
 
@@ -28,7 +28,7 @@ export default function registerButtonInteraction(client) {
 				const guildData = await interaction.client.db.findOne({ guildId: interaction.guildId }) || {};
 				const entries = Object.entries(guildData?.moderation?.forcedNicknames || {});
 				if (!entries || entries.length === 0) {
-					await interaction.followUp({ content: '❌ No forced nicknames configured.', flags: 64 }).catch(() => {});
+					await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> No forced nicknames configured.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -71,7 +71,7 @@ export default function registerButtonInteraction(client) {
 				return;
 			} catch (error) {
 				console.error('Error handling forcenicklist pagination:', error);
-				await interaction.followUp({ content: '❌ An error occurred while navigating forced nicknames.', flags: 64 }).catch(() => {});
+				await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating forced nicknames.', flags: 64 }).catch(() => {});
 			}
 		}
 
@@ -81,7 +81,7 @@ export default function registerButtonInteraction(client) {
 
 				const wizardData = discordClient.starboardWizards?.get(interaction.message.id);
 				if (wizardData && wizardData.authorId !== interaction.user.id) {
-					await interaction.reply({ content: '❌ You cannot use this button.', ephemeral: true });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', ephemeral: true });
 					return;
 				}
 
@@ -142,7 +142,7 @@ export default function registerButtonInteraction(client) {
 
 					if (newState && !guildData.starboard.channel) {
 						await interaction.followUp({
-							content: '❌ Please set a starboard channel first using `.starboard set #channel`',
+							content: '<a:Emo_Loading:1566551264924405931> Please set a starboard channel first using `.starboard set #channel`',
 							ephemeral: true
 						});
 						return;
@@ -200,7 +200,7 @@ export default function registerButtonInteraction(client) {
 				if (customId === 'starboard_view_config') {
 					const config = guildData.starboard;
 
-					let content = `**Status:** ${config.enabled ? '✅ Active' : '❌ Inactive'}\n`;
+					let content = `**Status:** ${config.enabled ? '✅ Active' : '<a:Emo_Loading:1566551264924405931> Inactive'}\n`;
 					content += `**Channel:** ${config.channel ? `<#${config.channel}>` : 'Not Set'}\n\n`;
 					content += `**Settings:**\n`;
 					content += `• Emoji: ${config.emoji}\n`;
@@ -272,7 +272,7 @@ export default function registerButtonInteraction(client) {
 				if (customId === 'starboard_quick_setup') {
 					if (!guildData.starboard.channel) {
 						await interaction.followUp({
-							content: '❌ Please set a starboard channel first using `.starboard set #channel`',
+							content: '<a:Emo_Loading:1566551264924405931> Please set a starboard channel first using `.starboard set #channel`',
 							ephemeral: true
 						});
 						return;
@@ -348,7 +348,7 @@ export default function registerButtonInteraction(client) {
 
 			} catch (error) {
 				console.error('[Starboard Button Handler] Error:', error);
-				await interaction.followUp({ content: '❌ An error occurred.', ephemeral: true }).catch(() => {});
+				await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> An error occurred.', ephemeral: true }).catch(() => {});
 			}
 			return;
 		}
@@ -359,7 +359,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts[4];
 			const value = parts[5];
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', ephemeral: true }).catch(() => {});
 				return;
 			}
 			await interaction.deferUpdate().catch(() => {});
@@ -395,7 +395,7 @@ export default function registerButtonInteraction(client) {
 				await interaction.editReply({ components: [container], flags: interaction.message.flags }).catch(() => {});
 			} catch (e) {
 				console.error('[Antinuke Default Punish Confirm] Error:', e);
-				await interaction.followUp({ content: '❌ Failed to update default punishment.', ephemeral: true }).catch(() => {});
+				await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Failed to update default punishment.', ephemeral: true }).catch(() => {});
 			}
 			return;
 		}
@@ -406,7 +406,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts[4];
 			const valueRaw = parts[5];
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', ephemeral: true }).catch(() => {});
 				return;
 			}
 			await interaction.deferUpdate().catch(() => {});
@@ -422,7 +422,7 @@ export default function registerButtonInteraction(client) {
 			}
 			const threshold = parseInt(valueRaw);
 			if (!threshold || threshold < 1 || threshold > 20) {
-				await interaction.followUp({ content: '❌ Invalid threshold value.', ephemeral: true }).catch(() => {});
+				await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Invalid threshold value.', ephemeral: true }).catch(() => {});
 				return;
 			}
 			try {
@@ -447,7 +447,7 @@ export default function registerButtonInteraction(client) {
 				await interaction.editReply({ components: [container], flags: interaction.message.flags }).catch(() => {});
 			} catch (e) {
 				console.error('[Antinuke Default Threshold Confirm] Error:', e);
-				await interaction.followUp({ content: '❌ Failed to update default threshold.', ephemeral: true }).catch(() => {});
+				await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Failed to update default threshold.', ephemeral: true }).catch(() => {});
 			}
 			return;
 		}
@@ -457,7 +457,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts[2];
 			const channelId = parts[3];
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', ephemeral: true }).catch(() => {});
 				return;
 			}
 
@@ -470,7 +470,7 @@ export default function registerButtonInteraction(client) {
 					try { channel = await guild.channels.fetch(channelId); } catch (e) { channel = null; }
 				}
 				if (!channel || !channel.viewable) {
-					await interaction.editReply({ content: '❌ Channel not found or not viewable.' }).catch(() => {});
+					await interaction.editReply({ content: '<a:Emo_Loading:1566551264924405931> Channel not found or not viewable.' }).catch(() => {});
 					return;
 				}
 
@@ -539,7 +539,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts[2];
 			const channelId = parts[3];
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', ephemeral: true }).catch(() => {});
 				return;
 			}
 			await interaction.deferReply({ ephemeral: true }).catch(() => {});
@@ -550,7 +550,7 @@ export default function registerButtonInteraction(client) {
 					try { channel = await guild.channels.fetch(channelId); } catch (e) { channel = null; }
 				}
 				if (!channel || !channel.viewable) {
-					await interaction.editReply({ content: '❌ Channel not found or not viewable.' }).catch(() => {});
+					await interaction.editReply({ content: '<a:Emo_Loading:1566551264924405931> Channel not found or not viewable.' }).catch(() => {});
 					return;
 				}
 				const pins = await channel.messages.fetchPinned();
@@ -607,7 +607,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts[2];
 			const channelId = parts[3];
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', ephemeral: true }).catch(() => {});
 				return;
 			}
 			await interaction.deferReply({ ephemeral: true }).catch(() => {});
@@ -618,7 +618,7 @@ export default function registerButtonInteraction(client) {
 					try { channel = await guild.channels.fetch(channelId); } catch (e) { channel = null; }
 				}
 				if (!channel || !channel.viewable) {
-					await interaction.editReply({ content: '❌ Channel not found or not viewable.' }).catch(() => {});
+					await interaction.editReply({ content: '<a:Emo_Loading:1566551264924405931> Channel not found or not viewable.' }).catch(() => {});
 					return;
 				}
 				const pins = await channel.messages.fetchPinned();
@@ -687,7 +687,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts[2];
 			const guildId = parts[3];
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', ephemeral: true }).catch(() => {});
 				return;
 			}
 
@@ -697,7 +697,7 @@ export default function registerButtonInteraction(client) {
 
 			if (action === 'cancel') {
 				const cancelContainer = new ContainerBuilder();
-				cancelContainer.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Cancelled`));
+				cancelContainer.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Cancelled`));
 				cancelContainer.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 				cancelContainer.addTextDisplayComponents(td => td.setContent('Reset cancelled.'));
 				await interaction.message.edit({ components: [cancelContainer], flags: MessageFlags.IsComponentsV2 }).catch(() => {});
@@ -713,7 +713,7 @@ export default function registerButtonInteraction(client) {
 				const db = interaction.client.db;
 				if (!db) {
 					const fail = new ContainerBuilder();
-					fail.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Failed`));
+					fail.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Failed`));
 					fail.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 					fail.addTextDisplayComponents(td => td.setContent('Database unavailable.'));
 					await interaction.message.edit({ components: [fail], flags: MessageFlags.IsComponentsV2 }).catch(() => {});
@@ -739,7 +739,7 @@ export default function registerButtonInteraction(client) {
 				console.error('[restrictreset] error:', err);
 				try {
 					const fail = new ContainerBuilder();
-					fail.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Failed`));
+					fail.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Failed`));
 					fail.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 					fail.addTextDisplayComponents(td => td.setContent('Failed to reset restrictions.'));
 					await interaction.message.edit({ components: [fail], flags: MessageFlags.IsComponentsV2 }).catch(() => {});
@@ -754,7 +754,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts[2];
 			const guildId = parts[3];
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', ephemeral: true }).catch(() => {});
 				return;
 			}
 
@@ -764,7 +764,7 @@ export default function registerButtonInteraction(client) {
 
 			if (action === 'cancel') {
 				const cancelContainer = new ContainerBuilder();
-				cancelContainer.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Cancelled`));
+				cancelContainer.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Cancelled`));
 				cancelContainer.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 				cancelContainer.addTextDisplayComponents(td => td.setContent('Reset cancelled.'));
 				await interaction.message.edit({ components: [cancelContainer], flags: MessageFlags.IsComponentsV2 }).catch(() => {});
@@ -779,7 +779,7 @@ export default function registerButtonInteraction(client) {
 				const db = interaction.client.db;
 				if (!db) {
 					const fail = new ContainerBuilder();
-					fail.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Failed`));
+					fail.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Failed`));
 					fail.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 					fail.addTextDisplayComponents(td => td.setContent('Database unavailable.'));
 					await interaction.message.edit({ components: [fail], flags: MessageFlags.IsComponentsV2 }).catch(() => {});
@@ -804,7 +804,7 @@ export default function registerButtonInteraction(client) {
 				console.error('[bindreset] error:', err);
 				try {
 					const fail = new ContainerBuilder();
-					fail.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Failed`));
+					fail.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Failed`));
 					fail.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 					fail.addTextDisplayComponents(td => td.setContent('Failed to reset bindings.'));
 					await interaction.message.edit({ components: [fail], flags: MessageFlags.IsComponentsV2 }).catch(() => {});
@@ -818,7 +818,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts[2];
 			let pageNum = parseInt(parts[3], 10);
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', ephemeral: true }).catch(() => {});
 				return;
 			}
 
@@ -830,7 +830,7 @@ export default function registerButtonInteraction(client) {
 				const db = interaction.client.db;
 				if (!db) {
 					const err = new ContainerBuilder();
-					err.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} DB Missing`));
+					err.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} DB Missing`));
 					err.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 					err.addTextDisplayComponents(td => td.setContent('Database not available.'));
 					await interaction.message.edit({ components: [err], flags: MessageFlags.IsComponentsV2 }).catch(() => {});
@@ -920,7 +920,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== authorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -965,7 +965,7 @@ export default function registerButtonInteraction(client) {
 					}
 					if (!nukeData) {
 						await interaction.followUp({
-							content: '❌ Confirmation expired or not found.',
+							content: '<a:Emo_Loading:1566551264924405931> Confirmation expired or not found.',
 							flags: 64
 						});
 						return;
@@ -974,7 +974,7 @@ export default function registerButtonInteraction(client) {
 					const channel = guild.channels.cache.get(channelId);
 					if (!channel) {
 						await interaction.followUp({
-							content: '❌ Channel not found.',
+							content: '<a:Emo_Loading:1566551264924405931> Channel not found.',
 							flags: 64
 						});
 						return;
@@ -984,7 +984,7 @@ export default function registerButtonInteraction(client) {
 					const scheduledNukes = globalThis._scheduledNukes;
 					if (scheduledNukes.has(channelId)) {
 						await interaction.followUp({
-							content: '❌ A nuke is already scheduled for this channel.',
+							content: '<a:Emo_Loading:1566551264924405931> A nuke is already scheduled for this channel.',
 							flags: 64
 						});
 						return;
@@ -1075,7 +1075,7 @@ export default function registerButtonInteraction(client) {
 						authorId = cancelData.authorId;
 						channelId = cancelData.channelId;
 					} else {
-						await interaction.followUp({ content: '❌ Confirmation expired or not found.', flags: 64 });
+						await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Confirmation expired or not found.', flags: 64 });
 						return;
 					}
 				} else {
@@ -1084,7 +1084,7 @@ export default function registerButtonInteraction(client) {
 				}
 
 				if (interaction.user.id !== authorId) {
-					await interaction.reply({ content: '❌ You cannot use this button.', flags: 64 });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', flags: 64 });
 					return;
 				}
 
@@ -1104,7 +1104,7 @@ export default function registerButtonInteraction(client) {
 				const guild = interaction.guild;
 				const channel = guild.channels.cache.get(channelId);
 				if (!channel) {
-					await interaction.followUp({ content: '❌ Channel not found.', flags: 64 });
+					await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Channel not found.', flags: 64 });
 					return;
 				}
 
@@ -1133,11 +1133,11 @@ export default function registerButtonInteraction(client) {
 				} catch (e) {
 					console.error('Error during instant nuke:', e);
 					try {
-						await interaction.followUp({ content: '❌ Failed to nuke channel. Please check my permissions.', flags: 64 });
+						await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Failed to nuke channel. Please check my permissions.', flags: 64 });
 					} catch (fuErr) {
 						console.error('Failed to followUp after nuke error, attempting DM:', fuErr);
 						try {
-							await interaction.user.send('❌ Failed to nuke channel. Please check my permissions.').catch(() => {});
+							await interaction.user.send('<a:Emo_Loading:1566551264924405931> Failed to nuke channel. Please check my permissions.').catch(() => {});
 						} catch {}
 					}
 				} finally {
@@ -1150,7 +1150,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling nuke confirmation:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while handling nuke confirmation.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while handling nuke confirmation.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -1173,7 +1173,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== commandAuthorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -1185,7 +1185,7 @@ export default function registerButtonInteraction(client) {
 
 				if (!guildData || !guildData.moderation || !guildData.moderation.warnings) {
 					await interaction.followUp({
-						content: '❌ No warnings found.',
+						content: '<a:Emo_Loading:1566551264924405931> No warnings found.',
 						flags: 64
 					});
 					return;
@@ -1195,7 +1195,7 @@ export default function registerButtonInteraction(client) {
 
 				if (userWarnings.length === 0) {
 					await interaction.followUp({
-						content: '❌ No warnings found.',
+						content: '<a:Emo_Loading:1566551264924405931> No warnings found.',
 						flags: 64
 					});
 					return;
@@ -1233,7 +1233,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling warnings pagination:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while navigating warnings.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating warnings.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -1248,7 +1248,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== commandAuthorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -1315,7 +1315,7 @@ export default function registerButtonInteraction(client) {
 				return;
 			} catch (error) {
 				console.error('Error handling newmembers pagination:', error);
-				await interaction.followUp({ content: '❌ An error occurred while navigating new members.', flags: 64 }).catch(() => {});
+				await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating new members.', flags: 64 }).catch(() => {});
 			}
 		}
 
@@ -1329,7 +1329,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== commandAuthorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -1341,7 +1341,7 @@ export default function registerButtonInteraction(client) {
 
 				if (!guildData || !guildData.moderation || !guildData.moderation.notes || !guildData.moderation.notes[notedUserId]) {
 					await interaction.followUp({
-						content: '❌ No notes found.',
+						content: '<a:Emo_Loading:1566551264924405931> No notes found.',
 						flags: 64
 					});
 					return;
@@ -1351,7 +1351,7 @@ export default function registerButtonInteraction(client) {
 
 				if (userNotes.length === 0) {
 					await interaction.followUp({
-						content: '❌ No notes found.',
+						content: '<a:Emo_Loading:1566551264924405931> No notes found.',
 						flags: 64
 					});
 					return;
@@ -1389,7 +1389,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling notes pagination:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while navigating notes.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating notes.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -1403,7 +1403,7 @@ export default function registerButtonInteraction(client) {
 				const pageNum = parseInt(parts[3]);
 
 				if (interaction.user.id !== commandAuthorId) {
-					await interaction.reply({ content: '❌ You cannot use this button.', flags: 64 });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', flags: 64 });
 					return;
 				}
 
@@ -1412,7 +1412,7 @@ export default function registerButtonInteraction(client) {
 				const guildData = await interaction.client.db.findOne({ guildId: interaction.guildId }) || {};
 				const entries = Object.entries(guildData?.moderation?.restrictedCommands || {});
 				if (!entries || entries.length === 0) {
-					await interaction.followUp({ content: '❌ No restricted commands configured.', flags: 64 }).catch(() => {});
+					await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> No restricted commands configured.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -1461,7 +1461,7 @@ export default function registerButtonInteraction(client) {
 				return;
 			} catch (error) {
 				console.error('Error handling restrictlist pagination:', error);
-				await interaction.followUp({ content: '❌ An error occurred while navigating restricted commands.', flags: 64 }).catch(() => {});
+				await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating restricted commands.', flags: 64 }).catch(() => {});
 			}
 		}
 
@@ -1474,7 +1474,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== commandAuthorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -1486,7 +1486,7 @@ export default function registerButtonInteraction(client) {
 
 				if (!guildData || !guildData.moderation || !guildData.moderation.detains) {
 					await interaction.followUp({
-						content: '❌ No detained members found.',
+						content: '<a:Emo_Loading:1566551264924405931> No detained members found.',
 						flags: 64
 					});
 					return;
@@ -1496,7 +1496,7 @@ export default function registerButtonInteraction(client) {
 
 				if (detainedUsers.length === 0) {
 					await interaction.followUp({
-						content: '❌ No detained members found.',
+						content: '<a:Emo_Loading:1566551264924405931> No detained members found.',
 						flags: 64
 					});
 					return;
@@ -1534,7 +1534,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling detainlist pagination:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while navigating the detained members list.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating the detained members list.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -1555,7 +1555,7 @@ export default function registerButtonInteraction(client) {
 
 				if (!queue || queue.stopped || !queue.tracks.peekAt(0)) {
 					await interaction.followUp({
-						content: '❌ Queue no longer available or music stopped.',
+						content: '<a:Emo_Loading:1566551264924405931> Queue no longer available or music stopped.',
 						flags: 64
 					}).catch(() => {});
 					return;
@@ -1592,7 +1592,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling queue pagination:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while navigating the queue.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating the queue.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -1608,7 +1608,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== commandAuthorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -1620,7 +1620,7 @@ export default function registerButtonInteraction(client) {
 
 				if (!guildData || !guildData.moderation || !guildData.moderation.actions) {
 					await interaction.followUp({
-						content: '❌ No moderation actions found.',
+						content: '<a:Emo_Loading:1566551264924405931> No moderation actions found.',
 						flags: 64
 					});
 					return;
@@ -1648,7 +1648,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling modstats pagination:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while navigating modstats.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating modstats.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -1664,7 +1664,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== commandAuthorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -1676,7 +1676,7 @@ export default function registerButtonInteraction(client) {
 
 				if (!guildData || !guildData.moderation || !guildData.moderation.actions) {
 					await interaction.followUp({
-						content: '❌ No moderation actions found.',
+						content: '<a:Emo_Loading:1566551264924405931> No moderation actions found.',
 						flags: 64
 					});
 					return;
@@ -1704,7 +1704,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling crimefile pagination:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while navigating crimefile.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating crimefile.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -1720,7 +1720,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== commandAuthorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -1732,7 +1732,7 @@ export default function registerButtonInteraction(client) {
 
 				if (!guildData || !guildData.moderation || !guildData.moderation.actions) {
 					await interaction.followUp({
-						content: '❌ No moderation actions found.',
+						content: '<a:Emo_Loading:1566551264924405931> No moderation actions found.',
 						flags: 64
 					});
 					return;
@@ -1760,7 +1760,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling modhistory pagination:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while navigating modhistory.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating modhistory.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -1841,7 +1841,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== authorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -1853,7 +1853,7 @@ export default function registerButtonInteraction(client) {
 
 				if (!guildData) {
 					await interaction.followUp({
-						content: '❌ Guild data not found.',
+						content: '<a:Emo_Loading:1566551264924405931> Guild data not found.',
 						flags: 64
 					}).catch(() => {});
 					return;
@@ -1937,7 +1937,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling clear confirmation:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while clearing records.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while clearing records.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -1949,7 +1949,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== authorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -1960,7 +1960,7 @@ export default function registerButtonInteraction(client) {
 				const { ContainerBuilder, MessageFlags, SeparatorSpacingSize } = await import('discord.js');
 				const cancelContainer = new ContainerBuilder();
 				cancelContainer.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Cancelled`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Cancelled`)
 				);
 				cancelContainer.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -1987,7 +1987,7 @@ export default function registerButtonInteraction(client) {
 				const nonce = parts[3];
 
 				if (interaction.user.id !== authorId) {
-					await interaction.reply({ content: '❌ You cannot use this button.', flags: 64 });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', flags: 64 });
 					return;
 				}
 
@@ -1995,7 +1995,7 @@ export default function registerButtonInteraction(client) {
 
 				const map = interaction.client.banfluxConfirmations;
 				if (!map) {
-					await interaction.followUp({ content: '❌ Confirmation expired or not found.', flags: 64 }).catch(() => {});
+					await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Confirmation expired or not found.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -2017,7 +2017,7 @@ export default function registerButtonInteraction(client) {
 
 				const data = map.get(confirmKey);
 				if (!data) {
-					await interaction.followUp({ content: '❌ Confirmation expired or not found.', flags: 64 }).catch(() => {});
+					await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Confirmation expired or not found.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -2061,7 +2061,7 @@ export default function registerButtonInteraction(client) {
 				return;
 			} catch (error) {
 				console.error('Error handling banflux confirmation:', error);
-				await interaction.followUp({ content: '❌ An error occurred while handling banflux confirmation.', flags: 64 }).catch(() => {});
+				await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> An error occurred while handling banflux confirmation.', flags: 64 }).catch(() => {});
 			}
 		}
 
@@ -2072,7 +2072,7 @@ export default function registerButtonInteraction(client) {
 				const authorId = parts[2];
 				const channelId = parts[3];
 				if (interaction.user.id !== authorId) {
-					await interaction.reply({ content: '❌ You cannot use this button.', flags: 64 });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', flags: 64 });
 					return;
 				}
 
@@ -2081,7 +2081,7 @@ export default function registerButtonInteraction(client) {
 				const guild = interaction.guild;
 				const channel = guild.channels.cache.get(channelId) || await guild.channels.fetch(channelId).catch(() => null);
 				if (!channel) {
-					await interaction.followUp({ content: '❌ Channel not found.', flags: 64 }).catch(() => {});
+					await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Channel not found.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -2179,7 +2179,7 @@ export default function registerButtonInteraction(client) {
 
 			} catch (error) {
 				console.error('Error handling slowmode button interaction:', error);
-				try { await interaction.followUp({ content: '❌ An error occurred.', flags: 64 }); } catch {};
+				try { await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> An error occurred.', flags: 64 }); } catch {};
 			}
 			return;
 		}
@@ -2194,7 +2194,7 @@ export default function registerButtonInteraction(client) {
 
 				if (interaction.user.id !== commandAuthorId) {
 					await interaction.reply({
-						content: '❌ You cannot use this button.',
+						content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.',
 						flags: 64
 					});
 					return;
@@ -2206,7 +2206,7 @@ export default function registerButtonInteraction(client) {
 				const cache = interaction.client._snapshotCache?.get(cacheKey);
 				if (!cache) {
 					await interaction.followUp({
-						content: '❌ Snapshot expired or not found. Please run the command again.',
+						content: '<a:Emo_Loading:1566551264924405931> Snapshot expired or not found. Please run the command again.',
 						flags: 64
 					});
 					return;
@@ -2218,7 +2218,7 @@ export default function registerButtonInteraction(client) {
 				const role = interaction.guild.roles.cache.get(roleId);
 				if (!role) {
 					await interaction.followUp({
-						content: '❌ Role not found.',
+						content: '<a:Emo_Loading:1566551264924405931> Role not found.',
 						flags: 64
 					});
 					return;
@@ -2376,7 +2376,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('Error handling snapshot pagination:', error);
 				await interaction.followUp({
-					content: '❌ An error occurred while navigating the snapshot.',
+					content: '<a:Emo_Loading:1566551264924405931> An error occurred while navigating the snapshot.',
 					flags: 64
 				}).catch(() => {});
 			}
@@ -2389,7 +2389,7 @@ export default function registerButtonInteraction(client) {
 			const currentPage = parseInt(parts[3]);
 
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', flags: 64 }).catch(() => {});
 				return;
 			}
 
@@ -2401,7 +2401,7 @@ export default function registerButtonInteraction(client) {
 			let guildData = await db.findOne({ guildId: interaction.guildId }) || { guildId: interaction.guildId };
 
 			if (!guildData.welcome || !guildData.welcome.channels || guildData.welcome.channels.length === 0) {
-				await interaction.reply({ content: '❌ No welcome channels configured.', flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No welcome channels configured.', flags: 64 }).catch(() => {});
 				return;
 			}
 
@@ -2414,7 +2414,7 @@ export default function registerButtonInteraction(client) {
 			else if (action === 'next') newPage = Math.min(currentPage + 1, totalPages - 1);
 
 			const container = new ContainerBuilder();
-			container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Welcome Channels (${config.channels.length})`));
+			container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Welcome Channels (${config.channels.length})`));
 
 			const start = newPage * PER_PAGE;
 			const end = Math.min(start + PER_PAGE, config.channels.length);
@@ -2460,7 +2460,7 @@ export default function registerButtonInteraction(client) {
 			const currentPage = parseInt(parts[3]);
 
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', flags: 64 }).catch(() => {});
 				return;
 			}
 
@@ -2472,7 +2472,7 @@ export default function registerButtonInteraction(client) {
 			let guildData = await db.findOne({ guildId: interaction.guildId }) || { guildId: interaction.guildId };
 
 			if (!guildData.goodbye || !guildData.goodbye.channels || guildData.goodbye.channels.length === 0) {
-				await interaction.reply({ content: '❌ No goodbye channels configured.', flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No goodbye channels configured.', flags: 64 }).catch(() => {});
 				return;
 			}
 
@@ -2485,7 +2485,7 @@ export default function registerButtonInteraction(client) {
 			else if (action === 'next') newPage = Math.min(currentPage + 1, totalPages - 1);
 
 			const container = new ContainerBuilder();
-			container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Goodbye Channels (${config.channels.length})`));
+			container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Goodbye Channels (${config.channels.length})`));
 			container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 			container.addTextDisplayComponents(td => td.setContent(`**System Status:** ${config.enabled ? `${EMOJIS.success} Enabled` : `${EMOJIS.error} Disabled`}`));
 
@@ -2532,7 +2532,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts.slice(-1)[0];
 
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', flags: 64 }).catch(() => {});
 				return;
 			}
 
@@ -2541,7 +2541,7 @@ export default function registerButtonInteraction(client) {
 			const { buildWelcomeEmbed, buildWelcomeButtons, replacePlaceholders, parseFields, parseButtons } = await import('../commands/prefix/Welcome/welcome.js');
 
 			if (!interaction.member.permissions.has(PermissionFlagsBits.Administrator) && !interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
-				await interaction.reply({ content: '❌ You need **Administrator** or **Manage Server** permission.', flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You need **Administrator** or **Manage Server** permission.', flags: 64 }).catch(() => {});
 				return;
 			}
 
@@ -2555,7 +2555,7 @@ export default function registerButtonInteraction(client) {
 
 			const rebuildContainer = () => {
 				const container = new ContainerBuilder();
-				container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Welcome Configuration`));
+				container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Welcome Configuration`));
 				container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 				container.addTextDisplayComponents(td => td.setContent(
 					`**Status:** ${config.enabled ? `${EMOJIS.success} Enabled` : `${EMOJIS.error} Disabled`}\n` +
@@ -2620,7 +2620,7 @@ export default function registerButtonInteraction(client) {
 			if (action === 'toggle') {
 				config.enabled = !config.enabled;
 				if (config.enabled && config.channels.length === 0) {
-					await interaction.reply({ content: '❌ Add a welcome channel first with `.welcome add #channel`', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Add a welcome channel first with `.welcome add #channel`', flags: 64 }).catch(() => {});
 					return;
 				}
 				await db.updateOne({ guildId: interaction.guildId }, { $set: { welcome: config } }, { upsert: true });
@@ -2649,7 +2649,7 @@ export default function registerButtonInteraction(client) {
 
 			if (action === 'removechannel') {
 				if (config.channels.length === 0) {
-					await interaction.reply({ content: '❌ No channels configured to remove.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No channels configured to remove.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -2679,12 +2679,12 @@ export default function registerButtonInteraction(client) {
 				const channelId = parts[3];
 				const channelConfig = config.channels.find(c => c.channelId === channelId);
 				if (!channelConfig) {
-					await interaction.reply({ content: '❌ That channel is no longer configured.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> That channel is no longer configured.', flags: 64 }).catch(() => {});
 					return;
 				}
 				const channel = interaction.guild.channels.cache.get(channelId);
 				if (!channel) {
-					await interaction.reply({ content: '❌ The configured welcome channel no longer exists.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> The configured welcome channel no longer exists.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -2694,7 +2694,7 @@ export default function registerButtonInteraction(client) {
 					const buttonRow = buildWelcomeButtons(channelConfig, interaction.member);
 
 					if (!content && !embed) {
-						await interaction.reply({ content: '❌ No content or embed configured. Add some content first.', flags: 64 }).catch(() => {});
+						await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No content or embed configured. Add some content first.', flags: 64 }).catch(() => {});
 						return;
 					}
 
@@ -2711,14 +2711,14 @@ export default function registerButtonInteraction(client) {
 
 					await interaction.reply({ content: `✅ Test welcome message sent to <#${channel.id}>`, flags: 64 }).catch(() => {});
 				} catch (err) {
-					await interaction.reply({ content: '❌ Failed to send test message. Check bot permissions.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to send test message. Check bot permissions.', flags: 64 }).catch(() => {});
 				}
 				return;
 			}
 
 			if (action === 'test') {
 				if (config.channels.length === 0) {
-					await interaction.reply({ content: '❌ Add a welcome channel first with `.welcome add #channel`', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Add a welcome channel first with `.welcome add #channel`', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -2760,7 +2760,7 @@ export default function registerButtonInteraction(client) {
 				}
 
 				if (successCount === 0) {
-					await interaction.reply({ content: '❌ Failed to send test messages. Check bot permissions.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to send test messages. Check bot permissions.', flags: 64 }).catch(() => {});
 				} else {
 					let response = `✅ Sent ${successCount} test message${successCount !== 1 ? 's' : ''}.`;
 					if (failCount > 0) response += ` (${failCount} failed)`;
@@ -2775,7 +2775,7 @@ export default function registerButtonInteraction(client) {
 				const channelConfig = config.channels.find(c => c.channelId === channelId);
 
 				if (!channelConfig) {
-					await interaction.reply({ content: '❌ That channel is no longer configured.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> That channel is no longer configured.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -2897,7 +2897,7 @@ export default function registerButtonInteraction(client) {
 							.setMaxLength(1000);
 						break;
 					default:
-						await interaction.reply({ content: '❌ Unknown option.', flags: 64 }).catch(() => {});
+						await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Unknown option.', flags: 64 }).catch(() => {});
 						return;
 				}
 
@@ -2910,12 +2910,12 @@ export default function registerButtonInteraction(client) {
 				const channelId = parts[2];
 				const channelConfig = config.channels.find(c => c.channelId === channelId);
 				if (!channelConfig) {
-					await interaction.reply({ content: '❌ That channel is no longer configured.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> That channel is no longer configured.', flags: 64 }).catch(() => {});
 					return;
 				}
 				const channel = interaction.guild.channels.cache.get(channelId);
 				if (!channel) {
-					await interaction.reply({ content: '❌ The configured welcome channel no longer exists.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> The configured welcome channel no longer exists.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -2925,7 +2925,7 @@ export default function registerButtonInteraction(client) {
 					const buttonRow = buildWelcomeButtons(channelConfig, interaction.member);
 
 					if (!content && !embed) {
-						await interaction.reply({ content: '❌ No content or embed configured. Add some content first.', flags: 64 }).catch(() => {});
+						await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No content or embed configured. Add some content first.', flags: 64 }).catch(() => {});
 						return;
 					}
 
@@ -2942,7 +2942,7 @@ export default function registerButtonInteraction(client) {
 
 					await interaction.reply({ content: `✅ Test welcome message sent to <#${channel.id}>`, flags: 64 }).catch(() => {});
 				} catch (err) {
-					await interaction.reply({ content: '❌ Failed to send test message. Check bot permissions.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to send test message. Check bot permissions.', flags: 64 }).catch(() => {});
 				}
 				return;
 			}
@@ -2960,7 +2960,7 @@ export default function registerButtonInteraction(client) {
 			const authorId = parts.slice(-1)[0];
 
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ You cannot use this button.', flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot use this button.', flags: 64 }).catch(() => {});
 				return;
 			}
 
@@ -2969,7 +2969,7 @@ export default function registerButtonInteraction(client) {
 			const { buildGoodbyeEmbed, buildGoodbyeButtons, replacePlaceholders, parseFields, parseButtons } = await import('../commands/prefix/Welcome/goodbye.js');
 
 			if (!interaction.member.permissions.has(PermissionFlagsBits.Administrator) && !interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
-				await interaction.reply({ content: '❌ You need **Administrator** or **Manage Server** permission.', flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You need **Administrator** or **Manage Server** permission.', flags: 64 }).catch(() => {});
 				return;
 			}
 
@@ -2983,7 +2983,7 @@ export default function registerButtonInteraction(client) {
 
 			const rebuildContainer = () => {
 				const container = new ContainerBuilder();
-				container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '⚙️'} Goodbye Configuration`));
+				container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Goodbye Configuration`));
 				container.addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small));
 				container.addTextDisplayComponents(td => td.setContent(
 					`**Status:** ${config.enabled ? `${EMOJIS.success} Enabled` : `${EMOJIS.error} Disabled`}\n` +
@@ -3048,7 +3048,7 @@ export default function registerButtonInteraction(client) {
 			if (action === 'toggle') {
 				config.enabled = !config.enabled;
 				if (config.enabled && config.channels.length === 0) {
-					await interaction.reply({ content: '❌ Add a goodbye channel first with `.goodbye add #channel`', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Add a goodbye channel first with `.goodbye add #channel`', flags: 64 }).catch(() => {});
 					return;
 				}
 				await db.updateOne({ guildId: interaction.guildId }, { $set: { goodbye: config } }, { upsert: true });
@@ -3077,7 +3077,7 @@ export default function registerButtonInteraction(client) {
 
 			if (action === 'removechannel') {
 				if (config.channels.length === 0) {
-					await interaction.reply({ content: '❌ No channels configured to remove.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No channels configured to remove.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -3107,12 +3107,12 @@ export default function registerButtonInteraction(client) {
 				const channelId = parts[3];
 				const channelConfig = config.channels.find(c => c.channelId === channelId);
 				if (!channelConfig) {
-					await interaction.reply({ content: '❌ That channel is no longer configured.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> That channel is no longer configured.', flags: 64 }).catch(() => {});
 					return;
 				}
 				const channel = interaction.guild.channels.cache.get(channelId);
 				if (!channel) {
-					await interaction.reply({ content: '❌ The configured goodbye channel no longer exists.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> The configured goodbye channel no longer exists.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -3122,7 +3122,7 @@ export default function registerButtonInteraction(client) {
 					const buttonRow = buildGoodbyeButtons(channelConfig, interaction.member);
 
 					if (!content && !embed) {
-						await interaction.reply({ content: '❌ No content or embed configured. Add some content first.', flags: 64 }).catch(() => {});
+						await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No content or embed configured. Add some content first.', flags: 64 }).catch(() => {});
 						return;
 					}
 
@@ -3139,14 +3139,14 @@ export default function registerButtonInteraction(client) {
 
 					await interaction.reply({ content: `✅ Test goodbye message sent to <#${channel.id}>`, flags: 64 }).catch(() => {});
 				} catch (err) {
-					await interaction.reply({ content: '❌ Failed to send test message. Check bot permissions.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to send test message. Check bot permissions.', flags: 64 }).catch(() => {});
 				}
 				return;
 			}
 
 			if (action === 'test') {
 				if (config.channels.length === 0) {
-					await interaction.reply({ content: '❌ Add a goodbye channel first with `.goodbye add #channel`', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Add a goodbye channel first with `.goodbye add #channel`', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -3188,7 +3188,7 @@ export default function registerButtonInteraction(client) {
 				}
 
 				if (successCount === 0) {
-					await interaction.reply({ content: '❌ Failed to send test messages. Check bot permissions.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to send test messages. Check bot permissions.', flags: 64 }).catch(() => {});
 				} else {
 					let response = `✅ Sent ${successCount} test message${successCount !== 1 ? 's' : ''}.`;
 					if (failCount > 0) response += ` (${failCount} failed)`;
@@ -3203,7 +3203,7 @@ export default function registerButtonInteraction(client) {
 				const channelConfig = config.channels.find(c => c.channelId === channelId);
 
 				if (!channelConfig) {
-					await interaction.reply({ content: '❌ That channel is no longer configured.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> That channel is no longer configured.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -3325,7 +3325,7 @@ export default function registerButtonInteraction(client) {
 							.setMaxLength(1000);
 						break;
 					default:
-						await interaction.reply({ content: '❌ Unknown option.', flags: 64 }).catch(() => {});
+						await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Unknown option.', flags: 64 }).catch(() => {});
 						return;
 				}
 
@@ -3338,12 +3338,12 @@ export default function registerButtonInteraction(client) {
 				const channelId = parts[2];
 				const channelConfig = config.channels.find(c => c.channelId === channelId);
 				if (!channelConfig) {
-					await interaction.reply({ content: '❌ That channel is no longer configured.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> That channel is no longer configured.', flags: 64 }).catch(() => {});
 					return;
 				}
 				const channel = interaction.guild.channels.cache.get(channelId);
 				if (!channel) {
-					await interaction.reply({ content: '❌ The configured goodbye channel no longer exists.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> The configured goodbye channel no longer exists.', flags: 64 }).catch(() => {});
 					return;
 				}
 
@@ -3353,7 +3353,7 @@ export default function registerButtonInteraction(client) {
 					const buttonRow = buildGoodbyeButtons(channelConfig, interaction.member);
 
 					if (!content && !embed) {
-						await interaction.reply({ content: '❌ No content or embed configured. Add some content first.', flags: 64 }).catch(() => {});
+						await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No content or embed configured. Add some content first.', flags: 64 }).catch(() => {});
 						return;
 					}
 
@@ -3370,7 +3370,7 @@ export default function registerButtonInteraction(client) {
 
 					await interaction.reply({ content: `✅ Test goodbye message sent to <#${channel.id}>`, flags: 64 }).catch(() => {});
 				} catch (err) {
-					await interaction.reply({ content: '❌ Failed to send test message. Check bot permissions.', flags: 64 }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to send test message. Check bot permissions.', flags: 64 }).catch(() => {});
 				}
 				return;
 			}
@@ -3402,7 +3402,7 @@ export default function registerButtonInteraction(client) {
 
 					if (wizardData.authorId !== interaction.user.id) {
 						await interaction.reply({
-							content: '❌ Only the user who opened this wizard can use these buttons.',
+							content: '<a:Emo_Loading:1566551264924405931> Only the user who opened this wizard can use these buttons.',
 							ephemeral: true
 						}).catch(() => {});
 						return;
@@ -3417,7 +3417,7 @@ export default function registerButtonInteraction(client) {
 				const isExtraOwner = antinuke.extraOwners?.includes(interaction.user.id);
 
 				if (!isGuildOwner && !isAntinukeAdmin && !isExtraOwner) {
-					await interaction.reply({ content: '❌ Only antinuke admins, extra owners, or the server owner can access this.', ephemeral: true }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Only antinuke admins, extra owners, or the server owner can access this.', ephemeral: true }).catch(() => {});
 					return;
 				}
 
@@ -3458,7 +3458,7 @@ export default function registerButtonInteraction(client) {
 			const preset = customId.replace('antinuke_preset_', '');
 
 			if (!PRESETS[preset]) {
-				await interaction.reply({ content: '❌ Invalid preset.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Invalid preset.', ephemeral: true }).catch(() => {});
 				return;
 			}
 
@@ -3541,11 +3541,11 @@ export default function registerButtonInteraction(client) {
 				{ label: 'Ban Protection', value: 'ban', emoji: '🔨', description: 'Protect against mass bans' },
 				{ label: 'Kick Protection', value: 'kick', emoji: '👢', description: 'Protect against mass kicks' },
 				{ label: 'Role Protection', value: 'role', emoji: '🎭', description: 'Protect against role changes' },
-				{ label: 'Channel Protection', value: 'channel', emoji: '📁', description: 'Protect against channel changes' },
+				{ label: 'Channel Protection', value: 'channel', emoji: '<:emoji_5:1566528650411647178>', description: 'Protect against channel changes' },
 				{ label: 'Webhook Protection', value: 'webhook', emoji: '🪝', description: 'Protect against webhook spam' },
 				{ label: 'Bot Add Protection', value: 'botadd', emoji: '🤖', description: 'Monitor bot additions' },
 				{ label: 'Emoji Protection', value: 'emoji', emoji: '😀', description: 'Protect server emojis' },
-				{ label: 'Vanity Protection', value: 'vanity', emoji: '✨', description: 'Protect vanity URL' },
+				{ label: 'Vanity Protection', value: 'vanity', emoji: '<:emoji_6:1566530216359108629>', description: 'Protect vanity URL' },
 				{ label: 'Permission Protection', value: 'permissions', emoji: '🔐', description: 'Monitor dangerous perms' },
 				{ label: 'Prune Protection', value: 'prune', emoji: '🧹', description: 'Prevent mass prunes' }
 			];
@@ -3639,7 +3639,7 @@ export default function registerButtonInteraction(client) {
 				{ label: 'Ban', value: 'ban', emoji: '🔨', description: 'Permanently ban the user' },
 				{ label: 'Kick', value: 'kick', emoji: '👢', description: 'Kick the user from server' },
 				{ label: 'Strip Roles', value: 'strip', emoji: '🎭', description: 'Remove all dangerous roles' },
-				{ label: 'Protocol', value: 'protocol', emoji: '🔒', description: 'Strip roles and apply timeout' },
+				{ label: 'Protocol', value: 'protocol', emoji: '<:emoji_12:1566529085235134695>', description: 'Strip roles and apply timeout' },
 				{ label: 'Timeout', value: 'timeout', emoji: '⏰', description: 'Timeout for 28 days' }
 			];
 
@@ -3663,7 +3663,7 @@ export default function registerButtonInteraction(client) {
 
 			let statusText = `Select the default punishment for antinuke violations.\n\n**Current Default:** ${currentPunishment}`;
 			if (isGlobalLocked) {
-				statusText = `🔒 **Per-Module Mode Active** - Global punishment is locked.\n\n**Current Default:** ${currentPunishment}\n_Click "Switch to Global Mode" to use global punishment instead._`;
+				statusText = `<:emoji_12:1566529085235134695> **Per-Module Mode Active** - Global punishment is locked.\n\n**Current Default:** ${currentPunishment}\n_Click "Switch to Global Mode" to use global punishment instead._`;
 			} else if (hasPerModulePunishments) {
 				statusText += `\n⚠️ _Some modules have custom punishments configured_`;
 			}
@@ -3683,7 +3683,7 @@ export default function registerButtonInteraction(client) {
 						.setCustomId('antinuke_punishment_per_module')
 						.setLabel('Configure Per-Module')
 						.setStyle(ButtonStyle.Primary)
-						.setEmoji('⚙️'),
+						.setEmoji('<a:gears:1566530875879989289>'),
 					new ButtonBuilder()
 						.setCustomId('antinuke_punishment_switch_to_global')
 						.setLabel('Switch to Global')
@@ -3940,7 +3940,7 @@ export default function registerButtonInteraction(client) {
 				ban: { name: 'Anti Ban', description: 'Prevents mass banning', emoji: '🔨' },
 				kick: { name: 'Anti Kick', description: 'Prevents mass kicking', emoji: '👢' },
 				role: { name: 'Anti Role', description: 'Prevents role changes', emoji: '🎭' },
-				channel: { name: 'Anti Channel', description: 'Prevents channel changes', emoji: '📁' },
+				channel: { name: 'Anti Channel', description: 'Prevents channel changes', emoji: '<:emoji_5:1566528650411647178>' },
 				webhook: { name: 'Anti Webhook', description: 'Prevents webhooks', emoji: '🪝' },
 				emoji: { name: 'Anti Emoji', description: 'Prevents emoji deletion', emoji: '😀' },
 				botadd: { name: 'Anti Bot', description: 'Prevents bot additions', emoji: '🤖' },
@@ -3982,7 +3982,7 @@ export default function registerButtonInteraction(client) {
 						{ label: 'Ban', value: 'ban', emoji: '🔨', description: 'Permanently ban violators' },
 						{ label: 'Kick', value: 'kick', emoji: '👢', description: 'Kick violators from server' },
 						{ label: 'Strip Roles', value: 'strip', emoji: '🎭', description: 'Remove all dangerous roles' },
-						{ label: 'Protocol', value: 'protocol', emoji: '🔒', description: 'Strip roles and apply timeout' },
+						{ label: 'Protocol', value: 'protocol', emoji: '<:emoji_12:1566529085235134695>', description: 'Strip roles and apply timeout' },
 						{ label: 'Timeout', value: 'timeout', emoji: '⏰', description: 'Timeout for 28 days' }
 					].map(opt => ({ ...opt, default: opt.value === currentPunishment })));
 
@@ -4041,7 +4041,7 @@ export default function registerButtonInteraction(client) {
 				ban: { name: 'Anti Ban', description: 'Prevents mass banning', emoji: '🔨' },
 				kick: { name: 'Anti Kick', description: 'Prevents mass kicking', emoji: '👢' },
 				role: { name: 'Anti Role', description: 'Prevents role changes', emoji: '🎭' },
-				channel: { name: 'Anti Channel', description: 'Prevents channel changes', emoji: '📁' },
+				channel: { name: 'Anti Channel', description: 'Prevents channel changes', emoji: '<:emoji_5:1566528650411647178>' },
 				webhook: { name: 'Anti Webhook', description: 'Prevents webhooks', emoji: '🪝' },
 				emoji: { name: 'Anti Emoji', description: 'Prevents emoji deletion', emoji: '😀' },
 				botadd: { name: 'Anti Bot', description: 'Prevents bot additions', emoji: '🤖' },
@@ -4071,7 +4071,7 @@ export default function registerButtonInteraction(client) {
 						{ label: 'Ban', value: 'ban', emoji: '🔨', description: 'Permanently ban violators' },
 						{ label: 'Kick', value: 'kick', emoji: '👢', description: 'Kick violators from server' },
 						{ label: 'Strip Roles', value: 'strip', emoji: '🎭', description: 'Remove all dangerous roles' },
-						{ label: 'Protocol', value: 'protocol', emoji: '🔒', description: 'Strip roles and apply timeout' },
+						{ label: 'Protocol', value: 'protocol', emoji: '<:emoji_12:1566529085235134695>', description: 'Strip roles and apply timeout' },
 						{ label: 'Timeout', value: 'timeout', emoji: '⏰', description: 'Timeout for 28 days' }
 					].map(opt => ({ ...opt, default: opt.value === currentPunishment })));
 
@@ -4142,7 +4142,7 @@ export default function registerButtonInteraction(client) {
 				{ label: 'Ban', value: 'ban', emoji: '🔨', description: 'Permanently ban the user' },
 				{ label: 'Kick', value: 'kick', emoji: '👢', description: 'Kick the user from server' },
 				{ label: 'Strip Roles', value: 'strip', emoji: '🎭', description: 'Remove all dangerous roles' },
-				{ label: 'Protocol', value: 'protocol', emoji: '🔒', description: 'Strip roles and apply timeout' },
+				{ label: 'Protocol', value: 'protocol', emoji: '<:emoji_12:1566529085235134695>', description: 'Strip roles and apply timeout' },
 				{ label: 'Timeout', value: 'timeout', emoji: '⏰', description: 'Timeout for 28 days' }
 			];
 
@@ -4192,7 +4192,7 @@ export default function registerButtonInteraction(client) {
 				ban: { name: 'Anti Ban', description: 'Prevents mass banning', emoji: '🔨' },
 				kick: { name: 'Anti Kick', description: 'Prevents mass kicking', emoji: '👢' },
 				role: { name: 'Anti Role', description: 'Prevents role changes', emoji: '🎭' },
-				channel: { name: 'Anti Channel', description: 'Prevents channel changes', emoji: '📁' },
+				channel: { name: 'Anti Channel', description: 'Prevents channel changes', emoji: '<:emoji_5:1566528650411647178>' },
 				webhook: { name: 'Anti Webhook', description: 'Prevents webhooks', emoji: '🪝' },
 				emoji: { name: 'Anti Emoji', description: 'Prevents emoji deletion', emoji: '😀' },
 				botadd: { name: 'Anti Bot', description: 'Prevents bot additions', emoji: '🤖' },
@@ -4233,7 +4233,7 @@ export default function registerButtonInteraction(client) {
 						{ label: 'Ban', value: 'ban', emoji: '🔨', description: 'Permanently ban violators' },
 						{ label: 'Kick', value: 'kick', emoji: '👢', description: 'Kick violators from server' },
 						{ label: 'Strip Roles', value: 'strip', emoji: '🎭', description: 'Remove all dangerous roles' },
-						{ label: 'Protocol', value: 'protocol', emoji: '🔒', description: 'Strip roles and apply timeout' },
+						{ label: 'Protocol', value: 'protocol', emoji: '<:emoji_12:1566529085235134695>', description: 'Strip roles and apply timeout' },
 						{ label: 'Timeout', value: 'timeout', emoji: '⏰', description: 'Timeout for 28 days' }
 					].map(opt => ({ ...opt, default: opt.value === currentPunishment })));
 
@@ -5544,7 +5544,7 @@ export default function registerButtonInteraction(client) {
 			const view = new ContainerBuilder();
 			view.addTextDisplayComponents(td => td.setContent(`# 📊 Full Configuration`));
 			view.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
-			view.addTextDisplayComponents(td => td.setContent(`**Status:** ${antinuke.enabled ? '✅ Enabled' : '❌ Disabled'}\n**Default Punishment:** ${antinuke.defaultPunishment || 'ban'}\n**Default Threshold:** ${antinuke.defaultThreshold || 3} actions\n\n**Enabled Modules:**\n${enabledModules}\n\n**Permissions:**\n• Admins: ${admins.length} users\n• Extra Owners: ${extraOwners.length} users\n\n**Other:**\n• Whitelist: ${whitelist.length} users`));
+			view.addTextDisplayComponents(td => td.setContent(`**Status:** ${antinuke.enabled ? '✅ Enabled' : '<a:Emo_Loading:1566551264924405931> Disabled'}\n**Default Punishment:** ${antinuke.defaultPunishment || 'ban'}\n**Default Threshold:** ${antinuke.defaultThreshold || 3} actions\n\n**Enabled Modules:**\n${enabledModules}\n\n**Permissions:**\n• Admins: ${admins.length} users\n• Extra Owners: ${extraOwners.length} users\n\n**Other:**\n• Whitelist: ${whitelist.length} users`));
 			view.addActionRowComponents(new ActionRowBuilder().addComponents(
 				new ButtonBuilder().setCustomId('antinuke_setup_back').setLabel('Back').setStyle(ButtonStyle.Secondary)
 			));
@@ -5629,7 +5629,7 @@ export default function registerButtonInteraction(client) {
 	} catch (error) {
 		console.error('[Antinuke Button Handler] Error:', error);
 		try {
-			await interaction.reply({ content: '❌ An error occurred: ' + error.message, ephemeral: true }).catch(() => {});
+			await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> An error occurred: ' + error.message, ephemeral: true }).catch(() => {});
 		} catch (e) {
 			console.error('[Antinuke Button Handler] Could not send error message:', e);
 		}
@@ -5645,7 +5645,7 @@ export default function registerButtonInteraction(client) {
 				const guildId = interaction.guildId;
 
 				if (!interaction.member.permissions.has(0x20n)) {
-					await interaction.reply({ content: '❌ You need **Manage Server** permission.', ephemeral: true }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You need **Manage Server** permission.', ephemeral: true }).catch(() => {});
 					return;
 				}
 
@@ -5856,7 +5856,7 @@ export default function registerButtonInteraction(client) {
                         });
 					} catch (error) {
 						console.error('[Automod Module Ignore] Error:', error);
-						await interaction.followUp({ content: '❌ Failed to load module ignore page. Please check bot logs.', ephemeral: true }).catch(() => {});
+						await interaction.followUp({ content: '<a:Emo_Loading:1566551264924405931> Failed to load module ignore page. Please check bot logs.', ephemeral: true }).catch(() => {});
 					}
 					return;
 				}
@@ -6074,7 +6074,7 @@ export default function registerButtonInteraction(client) {
 				if (customId === 'automod_words_remove') {
 					const words = config.modules?.badwords?.words || [];
 					if (words.length === 0) {
-						await interaction.reply({ content: '❌ No words to remove.', ephemeral: true }).catch(() => {});
+						await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No words to remove.', ephemeral: true }).catch(() => {});
 						return;
 					}
 					const container = new ContainerBuilder();
@@ -6186,7 +6186,7 @@ export default function registerButtonInteraction(client) {
 
 				if (customId === 'automod_logchannel') {
 					const container = new ContainerBuilder();
-					container.addTextDisplayComponents(td => td.setContent(`📋 **SET LOG CHANNEL**\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSelect where automod violations are logged`));
+					container.addTextDisplayComponents(td => td.setContent(`<:emoji_9:1566528847464108183> **SET LOG CHANNEL**\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSelect where automod violations are logged`));
 					const channelSelect = new ChannelSelectMenuBuilder()
 						.setCustomId('automod_logchannel_select')
 						.setPlaceholder('Select log channel...')
@@ -6210,7 +6210,7 @@ export default function registerButtonInteraction(client) {
 			} catch (error) {
 				console.error('[Automod Button Handler] Error:', error);
 				try {
-					await interaction.reply({ content: '❌ An error occurred: ' + error.message, ephemeral: true }).catch(() => {});
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> An error occurred: ' + error.message, ephemeral: true }).catch(() => {});
 				} catch (e) {}
 			}
 		}
@@ -6221,7 +6221,7 @@ export default function registerButtonInteraction(client) {
 				const member = interaction.guild?.members.cache.get(userId);
 
 				if (!member || !member.avatar) {
-					await interaction.reply({ content: '❌ This user no longer has a server avatar.', ephemeral: true });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> This user no longer has a server avatar.', ephemeral: true });
 					return;
 				}
 
@@ -6276,7 +6276,7 @@ export default function registerButtonInteraction(client) {
 				return;
 			} catch (error) {
 				console.error('[Avatar Server Button] Error:', error);
-				await interaction.reply({ content: '❌ Failed to load server avatar.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to load server avatar.', ephemeral: true }).catch(() => {});
 				return;
 			}
 		}
@@ -6289,7 +6289,7 @@ export default function registerButtonInteraction(client) {
 				const hasServerAvatar = member?.avatar ? true : false;
 
 				if (!user) {
-					await interaction.reply({ content: '❌ User not found.', ephemeral: true });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> User not found.', ephemeral: true });
 					return;
 				}
 
@@ -6346,7 +6346,7 @@ export default function registerButtonInteraction(client) {
 				return;
 			} catch (error) {
 				console.error('[Avatar Global Button] Error:', error);
-				await interaction.reply({ content: '❌ Failed to load global avatar.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to load global avatar.', ephemeral: true }).catch(() => {});
 				return;
 			}
 		}
@@ -6357,7 +6357,7 @@ export default function registerButtonInteraction(client) {
 				const member = interaction.guild?.members.cache.get(userId);
 
 				if (!member || !member.banner) {
-					await interaction.reply({ content: '❌ This user no longer has a server banner.', ephemeral: true });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> This user no longer has a server banner.', ephemeral: true });
 					return;
 				}
 
@@ -6412,7 +6412,7 @@ export default function registerButtonInteraction(client) {
 				return;
 			} catch (error) {
 				console.error('[Banner Server Button] Error:', error);
-				await interaction.reply({ content: '❌ Failed to load server banner.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to load server banner.', ephemeral: true }).catch(() => {});
 				return;
 			}
 		}
@@ -6425,7 +6425,7 @@ export default function registerButtonInteraction(client) {
 				const hasServerBanner = member?.banner ? true : false;
 
 				if (!user || !user.banner) {
-					await interaction.reply({ content: '❌ User no longer has a banner.', ephemeral: true });
+					await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> User no longer has a banner.', ephemeral: true });
 					return;
 				}
 
@@ -6482,13 +6482,13 @@ export default function registerButtonInteraction(client) {
 				return;
 			} catch (error) {
 				console.error('[Banner Global Button] Error:', error);
-				await interaction.reply({ content: '❌ Failed to load global banner.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to load global banner.', ephemeral: true }).catch(() => {});
 				return;
 			}
 		}
 
 		const rebuildBirthdayWizard = (config) => {
-			const statusEmoji = config.enabled ? (EMOJIS.success || '✅') : (EMOJIS.error || '❌');
+			const statusEmoji = config.enabled ? (EMOJIS.success || '✅') : (EMOJIS.error || '<a:Emo_Loading:1566551264924405931>');
 			const statusText = config.enabled ? 'Enabled' : 'Disabled';
 			const cmdChannel = config.commandChannel ? `<#${config.commandChannel}>` : '`Not Set`';
 			const wishChannel = config.wishChannel ? `<#${config.wishChannel}>` : '`Not Set`';
@@ -6496,7 +6496,7 @@ export default function registerButtonInteraction(client) {
 			const bdayRole = config.birthdayRole ? `<@&${config.birthdayRole}>` : '`Not Set`';
 
 			const container = new ContainerBuilder();
-			container.addTextDisplayComponents(td => td.setContent(`# 🎂 Birthday System Setup`));
+			container.addTextDisplayComponents(td => td.setContent(`# <:emoji_4:1566528582799458364> Birthday System Setup`));
 			container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 			container.addTextDisplayComponents(td => td.setContent(
 				`**Status:** ${statusEmoji} ${statusText}\n` +
@@ -6683,7 +6683,7 @@ export default function registerButtonInteraction(client) {
 					.setPlaceholder('What would you like to customize?')
 					.addOptions([
 						{ label: '📝 Message Content', value: 'message', description: 'Content, title, description, footer' },
-						{ label: '🎨 Appearance', value: 'appearance', description: 'Thumbnail, image, accent color' }
+						{ label: '<:emoji_7:1566528746461331606> Appearance', value: 'appearance', description: 'Thumbnail, image, accent color' }
 					]);
 				const row = new ActionRowBuilder().addComponents(menu);
 				await interaction.reply({ content: '**Select what to customize:**', components: [row], ephemeral: true });
@@ -6718,7 +6718,7 @@ export default function registerButtonInteraction(client) {
 						.setCustomId('title')
 						.setLabel('Title')
 						.setStyle(TextInputStyle.Short)
-						.setValue(msg.title || '🎂 Happy Birthday!')
+						.setValue(msg.title || '<:emoji_4:1566528582799458364> Happy Birthday!')
 						.setRequired(false);
 
 					const descInput = new TextInputBuilder()
@@ -6830,7 +6830,7 @@ export default function registerButtonInteraction(client) {
 		try {
 				const guildData = await client.db.findOne({ guildId }) || {};
 				const config = guildData.birthday_config || {};
-				const msg = config.wishMessage || { content: 'Happy Birthday {user}! ❤️', title: '🎂 Happy Birthday!' };
+				const msg = config.wishMessage || { content: 'Happy Birthday {user}! ❤️', title: '<:emoji_4:1566528582799458364> Happy Birthday!' };
 
 				const context = {
 					userMention: `<@${interaction.user.id}>`,
@@ -6918,7 +6918,7 @@ export default function registerButtonInteraction(client) {
 				});
 			} catch (err) {
 				console.error('[Birthday Preview]', err);
-				await interaction.reply({ content: '❌ Failed to generate preview.', ephemeral: true }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to generate preview.', ephemeral: true }).catch(() => {});
 			}
 			return;
 		}
@@ -6959,7 +6959,7 @@ export default function registerButtonInteraction(client) {
 				}).join('\n');
 
 				const container = new ContainerBuilder();
-				container.addTextDisplayComponents(td => td.setContent(`🎂 **Upcoming Birthdays** (Page ${safePage}/${totalPages})`));
+				container.addTextDisplayComponents(td => td.setContent(`<:emoji_4:1566528582799458364> **Upcoming Birthdays** (Page ${safePage}/${totalPages})`));
 				container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 				container.addTextDisplayComponents(td => td.setContent(list || 'No birthdays found.'));
 
@@ -7060,7 +7060,7 @@ export default function registerButtonInteraction(client) {
 				const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder: AR } = await import('discord.js');
 				const { embedSessions } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId) || {};
 				const modal = new ModalBuilder().setCustomId('embed_title_modal').setTitle('Set Embed Title');
@@ -7077,7 +7077,7 @@ export default function registerButtonInteraction(client) {
 				const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder: AR } = await import('discord.js');
 				const { embedSessions } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId) || {};
 				const modal = new ModalBuilder().setCustomId('embed_desc_modal').setTitle('Set Embed Description');
@@ -7094,7 +7094,7 @@ export default function registerButtonInteraction(client) {
 				const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder: AR } = await import('discord.js');
 				const { embedSessions } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId) || {};
 				const modal = new ModalBuilder().setCustomId('embed_color_modal').setTitle('Set Embed Color');
@@ -7111,7 +7111,7 @@ export default function registerButtonInteraction(client) {
 				const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder: AR } = await import('discord.js');
 				const { embedSessions } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId) || {};
 				const modal = new ModalBuilder().setCustomId('embed_url_modal').setTitle('Set Embed URL');
@@ -7128,7 +7128,7 @@ export default function registerButtonInteraction(client) {
 				const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder: AR } = await import('discord.js');
 				const { embedSessions } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId) || {};
 				const modal = new ModalBuilder().setCustomId('embed_author_modal').setTitle('Set Embed Author');
@@ -7147,7 +7147,7 @@ export default function registerButtonInteraction(client) {
 				const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder: AR } = await import('discord.js');
 				const { embedSessions } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId) || {};
 				const modal = new ModalBuilder().setCustomId('embed_footer_modal').setTitle('Set Embed Footer');
@@ -7165,7 +7165,7 @@ export default function registerButtonInteraction(client) {
 				const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder: AR } = await import('discord.js');
 				const { embedSessions } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId) || {};
 				const modal = new ModalBuilder().setCustomId('embed_thumb_modal').setTitle('Set Thumbnail');
@@ -7182,7 +7182,7 @@ export default function registerButtonInteraction(client) {
 				const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder: AR } = await import('discord.js');
 				const { embedSessions } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId) || {};
 				const modal = new ModalBuilder().setCustomId('embed_image_modal').setTitle('Set Image');
@@ -7198,7 +7198,7 @@ export default function registerButtonInteraction(client) {
 			try {
 				const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder: AR } = await import('discord.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const modal = new ModalBuilder().setCustomId('embed_field_modal').setTitle('Add Field');
 				modal.addComponents(
@@ -7215,7 +7215,7 @@ export default function registerButtonInteraction(client) {
 			try {
 				const { embedSessions, buildEmbedBuilderUI } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId) || {};
 				session.timestamp = !session.timestamp;
@@ -7231,11 +7231,11 @@ export default function registerButtonInteraction(client) {
 			try {
 				const { embedSessions, buildEmbed, replaceVariables } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId);
 				if (!session || (!session.title && !session.description && !session.image && !session.thumbnail)) {
-					return interaction.reply({ content: '❌ Your embed needs at least a title, description, or image.', flags: 64 });
+					return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Your embed needs at least a title, description, or image.', flags: 64 });
 				}
 
 				const context = { user: interaction.user, guild: interaction.guild, channel: interaction.channel };
@@ -7253,7 +7253,7 @@ export default function registerButtonInteraction(client) {
 				await interaction.reply({ content: '**Preview:**', embeds: [embed], flags: 64 });
 			} catch (err) {
 				console.error('[Embed Preview]', err);
-				await interaction.reply({ content: '❌ Error: ' + err.message, flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Error: ' + err.message, flags: 64 }).catch(() => {});
 			}
 			return;
 		}
@@ -7262,11 +7262,11 @@ export default function registerButtonInteraction(client) {
 			try {
 				const { embedSessions, generateEmbedCode } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const session = embedSessions.get(userId);
 				if (!session || (!session.title && !session.description && !session.image)) {
-					return interaction.reply({ content: '❌ Your embed is empty.', flags: 64 });
+					return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Your embed is empty.', flags: 64 });
 				}
 
 				const code = generateEmbedCode(session);
@@ -7279,7 +7279,7 @@ export default function registerButtonInteraction(client) {
 			try {
 				const { ChannelSelectMenuBuilder } = await import('discord.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents(td => td.setContent('**Select a channel to send your embed:**'));
@@ -7301,15 +7301,15 @@ export default function registerButtonInteraction(client) {
 			try {
 				const { embedSessions, buildEmbed, replaceVariables } = await import('../commands/prefix/miscellaneous/embed.js');
 				const userId = interaction.customId.split('_')[2];
-				if (interaction.user.id !== userId) return interaction.reply({ content: '❌ Not your session.', flags: 64 });
+				if (interaction.user.id !== userId) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Not your session.', flags: 64 });
 
 				const channelId = interaction.values[0];
 				const channel = interaction.guild.channels.cache.get(channelId);
-				if (!channel) return interaction.reply({ content: '❌ Channel not found.', flags: 64 });
+				if (!channel) return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Channel not found.', flags: 64 });
 
 				const session = embedSessions.get(userId);
 				if (!session || (!session.title && !session.description && !session.image)) {
-					return interaction.reply({ content: '❌ Your embed is empty.', flags: 64 });
+					return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Your embed is empty.', flags: 64 });
 				}
 
 				const context = { user: interaction.user, guild: interaction.guild, channel };
@@ -7328,7 +7328,7 @@ export default function registerButtonInteraction(client) {
 				await interaction.update({ content: `✅ Embed sent to ${channel}!`, components: [] });
 			} catch (err) {
 				console.error('[Embed SendTo]', err);
-				await interaction.reply({ content: '❌ Failed to send: ' + err.message, flags: 64 }).catch(() => {});
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to send: ' + err.message, flags: 64 }).catch(() => {});
 			}
 			return;
 		}
@@ -7348,7 +7348,7 @@ export default function registerButtonInteraction(client) {
                     const ownerId = parts[parts.length - 1];
 
                     if (ownerId && ownerId.match(/^\d+$/) && ownerId !== userId) {
-                        return interaction.reply({ content: '❌ You cannot control this builder.', flags: MessageFlags.Ephemeral });
+                        return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> You cannot control this builder.', flags: MessageFlags.Ephemeral });
                     }
 
                     if (!componentSessions.has(userId)) {
@@ -7419,7 +7419,7 @@ export default function registerButtonInteraction(client) {
                     else if (interaction.customId.startsWith('comp_preview_')) {
                         const rows = session.rows || [];
                         if (rows.length === 0) {
-                            return interaction.reply({ content: '❌ No components to preview.', flags: MessageFlags.Ephemeral });
+                            return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> No components to preview.', flags: MessageFlags.Ephemeral });
                         }
 
                         return interaction.reply({ content: 'Preview:', components: rows, flags: MessageFlags.Ephemeral });
@@ -7480,7 +7480,7 @@ export default function registerButtonInteraction(client) {
                 } catch (error) {
                     console.error('Component Builder Error:', error);
                     try {
-                        await interaction.reply({ content: '❌ An error occurred.', flags: MessageFlags.Ephemeral });
+                        await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> An error occurred.', flags: MessageFlags.Ephemeral });
                     } catch {}
                 }
             }

@@ -10,7 +10,7 @@ export default {
 		.setDMPermission(false),
 	async execute(interaction) {
 		if (!interaction.memberPermissions.has('ManageGuild') && !interaction.memberPermissions.has('Administrator')) {
-			return interaction.reply({ content: '❌ Manage Server is required.', ephemeral: true });
+			return interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Manage Server is required.', ephemeral: true });
 		}
 
 		const leveling = await ensureLevelingConfig(interaction.client.db, interaction.guildId);

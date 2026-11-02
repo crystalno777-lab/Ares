@@ -20,7 +20,7 @@ const buildNotice = (title, description) => {
 		category: 'Moderation',	async execute(message, args, client) {
 		if (args.length < 3) {
 			const container = buildNotice(
-				`# ${EMOJIS.error || '❌'} Missing Arguments`,
+				`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Missing Arguments`,
 				`Usage: \`${client.prefix}temprole <member> <duration> <role>\``
 			);
 			return message.reply({
@@ -36,7 +36,7 @@ const buildNotice = (title, description) => {
 			targetMember = await message.guild.members.fetch(memberId);
 		} catch {
 			const container = buildNotice(
-				`# ${EMOJIS.error || '❌'} Member Not Found`,
+				`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Member Not Found`,
 				'Could not find the specified member.'
 			);
 			return message.reply({
@@ -49,7 +49,7 @@ const buildNotice = (title, description) => {
 		const duration = parseTime(args[1]);
 		if (!duration) {
 			const container = buildNotice(
-				`# ${EMOJIS.error || '❌'} Invalid Duration`,
+				`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Invalid Duration`,
 				'Please provide a valid duration (e.g., 5m, 1h, 2d, 30s).'
 			);
 			return message.reply({
@@ -70,7 +70,7 @@ const buildNotice = (title, description) => {
 
 			if (!targetRole) {
 				const container = buildNotice(
-					`# ${EMOJIS.error || '❌'} Role Not Found`,
+					`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Role Not Found`,
 					'Could not find the specified role.'
 				);
 				return message.reply({
@@ -81,7 +81,7 @@ const buildNotice = (title, description) => {
 			}
 		} catch {
 			const container = buildNotice(
-				`# ${EMOJIS.error || '❌'} Role Not Found`,
+				`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Role Not Found`,
 				'Could not find the specified role.'
 			);
 			return message.reply({
@@ -93,7 +93,7 @@ const buildNotice = (title, description) => {
 
 		if (targetRole.permissions.has('Administrator') || targetRole.permissions.has('ManageGuild')) {
 			const container = buildNotice(
-				`# ${EMOJIS.error || '❌'} Cannot Assign Role`,
+				`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Cannot Assign Role`,
 				`I cannot assign roles with **Administrator** or **Manage Server** permissions. Please assign \`${targetRole.name}\` manually.`
 			);
 			return message.reply({
@@ -105,7 +105,7 @@ const buildNotice = (title, description) => {
 
 		if (!message.guild.members.me.permissions.has('ManageRoles')) {
 			const container = buildNotice(
-				`# ${EMOJIS.error || '❌'} Missing Permissions`,
+				`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Missing Permissions`,
 				'I don\'t have permission to manage roles.'
 			);
 			return message.reply({
@@ -117,7 +117,7 @@ const buildNotice = (title, description) => {
 
 		if (message.guild.members.me.roles.highest.position <= targetRole.position) {
 			const container = buildNotice(
-				`# ${EMOJIS.error || '❌'} Role Too High`,
+				`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Role Too High`,
 				'I cannot assign roles that are higher than or equal to my highest role.'
 			);
 			return message.reply({
@@ -129,7 +129,7 @@ const buildNotice = (title, description) => {
 
 		if (targetMember.roles.cache.has(targetRole.id)) {
 			const container = buildNotice(
-				`# ${EMOJIS.error || '❌'} Already Has Role`,
+				`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Already Has Role`,
 				`${targetMember.user.username} already has the ${targetRole.name} role.`
 			);
 			return message.reply({
@@ -192,7 +192,7 @@ const buildNotice = (title, description) => {
 		} catch (error) {
 			console.error('Error in temprole command:', error);
 			const container = buildNotice(
-				`# ${EMOJIS.error || '❌'} Error`,
+				`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Error`,
 				'Failed to assign the role. Please try again.'
 			);
 			return message.reply({

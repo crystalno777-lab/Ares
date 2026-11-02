@@ -18,7 +18,7 @@ export default {
 
 		if (memberIds.length === 0) {
 			const c = new ContainerBuilder();
-			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} No members to check.`));
+			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} No members to check.`));
 			return interaction.editReply({ components: [c], flags: MessageFlags.IsComponentsV2 });
 		}
 

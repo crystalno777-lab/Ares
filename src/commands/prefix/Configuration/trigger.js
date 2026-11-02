@@ -79,7 +79,7 @@ export default {
     async showHelp(message) {
         const container = new ContainerBuilder();
         container.addTextDisplayComponents(td =>
-            td.setContent(`# ${EMOJIS.settings || '⚙️'} Trigger System`)
+            td.setContent(`# ${EMOJIS.settings || '<a:gears:1566530875879989289>'} Trigger System`)
         );
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td =>
@@ -245,7 +245,7 @@ export default {
         const buildPage = (page) => {
             const container = new ContainerBuilder();
             container.addTextDisplayComponents(td =>
-                td.setContent(`# ${EMOJIS.list || '📋'} Server Triggers`)
+                td.setContent(`# ${EMOJIS.list || '<:emoji_9:1566528847464108183>'} Server Triggers`)
             );
             container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
             container.addTextDisplayComponents(td =>
@@ -281,7 +281,7 @@ export default {
 
         const container = new ContainerBuilder();
         container.addTextDisplayComponents(td =>
-            td.setContent(`# ${EMOJIS.list || '📋'} Server Triggers`)
+            td.setContent(`# ${EMOJIS.list || '<:emoji_9:1566528847464108183>'} Server Triggers`)
         );
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td =>
@@ -330,7 +330,7 @@ export default {
 
             const newContainer = new ContainerBuilder();
             newContainer.addTextDisplayComponents(td =>
-                td.setContent(`# ${EMOJIS.list || '📋'} Server Triggers`)
+                td.setContent(`# ${EMOJIS.list || '<:emoji_9:1566528847464108183>'} Server Triggers`)
             );
             newContainer.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
             newContainer.addTextDisplayComponents(td =>
@@ -469,7 +469,7 @@ export default {
         );
 
         const status = triggers[index].enabled ? 'Enabled' : 'Disabled';
-        const emoji = triggers[index].enabled ? '✅' : '❌';
+        const emoji = triggers[index].enabled ? '✅' : '<a:Emo_Loading:1566551264924405931>';
 
         const container = new ContainerBuilder();
         container.addTextDisplayComponents(td =>
@@ -571,7 +571,7 @@ export default {
     async sendError(message, errorText) {
         const container = new ContainerBuilder();
         container.addTextDisplayComponents(td =>
-            td.setContent(`# ❌ Error`)
+            td.setContent(`# <a:Emo_Loading:1566551264924405931> Error`)
         );
         container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
         container.addTextDisplayComponents(td =>

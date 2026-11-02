@@ -25,7 +25,7 @@ const buildAfkSetContainer = (reason) => {
 
 const buildAfkRemovedContainer = (duration, mentionsCount) => {
     const container = new ContainerBuilder();
-    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.afkremoved || '👋'} Welcome Back!`));
+    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.afkremoved || '<:MH_Blush:1566534747067515043>'} Welcome Back!`));
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
     let content = `You were AFK for **${duration}**`;
     if (mentionsCount > 0) {
@@ -108,7 +108,7 @@ export default {
 
             if (!member.permissions.has(PermissionFlagsBits.ManageMessages)) {
                 return message.reply({
-                    content: '❌ You need **Manage Messages** permission to remove someone\'s AFK.',
+                    content: '<a:Emo_Loading:1566551264924405931> You need **Manage Messages** permission to remove someone\'s AFK.',
                     allowedMentions: { repliedUser: false }
                 });
             }
@@ -116,14 +116,14 @@ export default {
             const targetUser = message.mentions.users.first();
             if (!targetUser) {
                 return message.reply({
-                    content: '❌ Please mention a user to remove their AFK.',
+                    content: '<a:Emo_Loading:1566551264924405931> Please mention a user to remove their AFK.',
                     allowedMentions: { repliedUser: false }
                 });
             }
 
             if (!afkUsers[targetUser.id]) {
                 return message.reply({
-                    content: `❌ <@${targetUser.id}> is not AFK.`,
+                    content: `<a:Emo_Loading:1566551264924405931> <@${targetUser.id}> is not AFK.`,
                     allowedMentions: { repliedUser: false, users: [] }
                 });
             }
@@ -144,7 +144,7 @@ export default {
             );
 
             const container = new ContainerBuilder();
-            container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.afkremoved || '👋'} AFK Removed`));
+            container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.afkremoved || '<:MH_Blush:1566534747067515043>'} AFK Removed`));
             container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
             container.addTextDisplayComponents(td => td.setContent(`Removed AFK status from <@${targetUser.id}>.`));
 

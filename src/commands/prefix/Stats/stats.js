@@ -37,7 +37,7 @@ function buildStatsPanel(guild, stats, serverStats, topMessages, topVoice, break
 		'',
 		`${EMOJIS.members || '👥'} **Members:** ${formatNumber(guild.memberCount)}`,
 		`${EMOJIS.users || '👤'} **Active Users:** ${formatNumber(serverStats.activeUsers)}`,
-		`${EMOJIS.channelstats || '📁'} **Active Channels:** ${formatNumber(serverStats.activeChannels)}`,
+		`${EMOJIS.channelstats || '<:emoji_5:1566528650411647178>'} **Active Channels:** ${formatNumber(serverStats.activeChannels)}`,
 		'',
 		`*Stats from the last ${serverStats.lookback} days*`
 	].join('\n');
@@ -385,7 +385,7 @@ const components = [
 			const [, authorId, view] = match;
 
 			if (interaction.user.id !== authorId) {
-				return interaction.reply({ content: `${EMOJIS.error || '❌'} This panel is locked to the invoker.`, ephemeral: true });
+				return interaction.reply({ content: `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This panel is locked to the invoker.`, ephemeral: true });
 			}
 
 			const { stats, serverStats, topMessages, topVoice, breakdown } = await getStatsData(interaction.client, interaction.guildId);
@@ -423,7 +423,7 @@ const components = [
 			const [, authorId, page] = match;
 
 			if (interaction.user.id !== authorId) {
-				return interaction.reply({ content: `${EMOJIS.error || '❌'} This panel is locked to the invoker.`, ephemeral: true });
+				return interaction.reply({ content: `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This panel is locked to the invoker.`, ephemeral: true });
 			}
 
 			const { stats, topMessages, topVoice } = await getStatsData(interaction.client, interaction.guildId);
@@ -438,7 +438,7 @@ const components = [
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 

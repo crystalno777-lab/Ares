@@ -5,7 +5,7 @@ import EMOJIS from '../utils/emojis.js';
 const recommendationCache = new Map();
 const expiredRecommendations = new Set();
 const BACKEND_UNAVAILABLE_PATTERN = /ECONNREFUSED|EHOSTUNREACH|ENOTFOUND|No nodes are available|No available nodes|No Lavalink node is currently connected|WebSocket is not open|connection refused/i;
-const VOICE_STATUS_FALLBACK_PREFIX = '🎵 ';
+const VOICE_STATUS_FALLBACK_PREFIX = '<:emoji_12:1566529131200512120> ';
 const VOICE_STATUS_PREFIX = `${String(EMOJIS?.ytmusic || EMOJIS?.nowplaying || '').trim() || VOICE_STATUS_FALLBACK_PREFIX.trim()} `;
 const VOICE_STATUS_MAX_LENGTH = 120;
 const IDLE_VOICE_STATUS_TEXT = '.play <song name /url> to play song';
@@ -214,7 +214,7 @@ export function initializeShoukaku(client, config) {
 
 	registerNodeEvents(shoukaku, client, config);
 
-	console.log(`🎵 [Lavalink] Starting with ${allNodes.length} node(s): ${allNodes.map((node) => node.name).join(', ')}`);
+	console.log(`<:emoji_12:1566529131200512120> [Lavalink] Starting with ${allNodes.length} node(s): ${allNodes.map((node) => node.name).join(', ')}`);
 
 	return shoukaku;
 }
@@ -388,7 +388,7 @@ function registerNodeEvents(shoukaku, client, config) {
 	});
 
 	shoukaku.on('error', (name, error) => {
-		console.error(`❌ [Lavalink] Error on ${name}:`, error?.message ?? error);
+		console.error(`<a:Emo_Loading:1566551264924405931> [Lavalink] Error on ${name}:`, error?.message ?? error);
 	});
 
 	shoukaku.on('debug', (name, info) => {
@@ -415,7 +415,7 @@ function attemptNodeFailover(shoukaku, disconnectedName, client, config) {
 	shoukaku._aresFailoverAttempts++;
 
 	if (shoukaku._aresFailoverAttempts > shoukaku._aresMaxFailoverCycles) {
-		console.error(`❌ [Lavalink] All ${shoukaku._aresFailoverAttempts} failover attempts exhausted. No nodes available.`);
+		console.error(`<a:Emo_Loading:1566551264924405931> [Lavalink] All ${shoukaku._aresFailoverAttempts} failover attempts exhausted. No nodes available.`);
 		return;
 	}
 
@@ -443,7 +443,7 @@ function attemptNodeFailover(shoukaku, disconnectedName, client, config) {
 			console.log(`ℹ️ [Lavalink] Node "${nextNode.name}" already in pool, Shoukaku will reconnect automatically.`);
 		}
 	} catch (err) {
-		console.error(`❌ [Lavalink] Failed to add fallback node "${nextNode.name}":`, err?.message);
+		console.error(`<a:Emo_Loading:1566551264924405931> [Lavalink] Failed to add fallback node "${nextNode.name}":`, err?.message);
 	}
 }
 
@@ -507,7 +507,7 @@ function onTrackStart(player, queue, event) {
 		queue.autoplayHistory = new Set();
 	}
 
-	console.log(`🎵 Now playing: ${track.info.title} [${formatDuration(track.info.length)}]`);
+	console.log(`<:emoji_12:1566529131200512120> Now playing: ${track.info.title} [${formatDuration(track.info.length)}]`);
 	setQueueVoiceStatus(queue, track.info.title).catch(() => null);
 
 	if (!queue.messageChannel) {
@@ -613,7 +613,7 @@ function onTrackEnd(player, queue, event) {
 		queue.tracks.removeOne(0);
 		if (queue.messageChannel) {
 			queue.messageChannel
-				.send(`❌ Failed to stream **${trackTitle}**. Skipping...`)
+				.send(`<a:Emo_Loading:1566551264924405931> Failed to stream **${trackTitle}**. Skipping...`)
 				.catch(() => null);
 		}
 		playNext(player, queue);
@@ -721,7 +721,7 @@ async function onTrackException(player, queue, event) {
 	const track = queue.tracks.peekAt(0);
 	const error = event.exception;
 
-	console.error(`❌ Track error on ${queue.guild.name}:`, error?.message);
+	console.error(`<a:Emo_Loading:1566551264924405931> Track error on ${queue.guild.name}:`, error?.message);
 
 	if (error?.message?.includes('requires login') || error?.message?.includes('age restricted')) {
 		console.log(`🔄 Attempting to find alternate source for: ${track?.info?.title}`);
@@ -740,7 +740,7 @@ async function onTrackException(player, queue, event) {
 
 	if (queue.messageChannel) {
 		queue.messageChannel
-			.send(`❌ Could not play: ${track?.info?.title || 'Unknown track'}\n${error?.message || 'Unknown error'}`)
+			.send(`<a:Emo_Loading:1566551264924405931> Could not play: ${track?.info?.title || 'Unknown track'}\n${error?.message || 'Unknown error'}`)
 			.catch(() => null);
 	}
 
@@ -806,7 +806,7 @@ async function onWebsocketClosed(player, queue, event) {
 				queue.disconnect();
 			}
 		} catch (err) {
-			console.error(`❌ [Voice] Failed to rejoin on ${queue.guild.name}:`, err?.message);
+			console.error(`<a:Emo_Loading:1566551264924405931> [Voice] Failed to rejoin on ${queue.guild.name}:`, err?.message);
 			if (queue.messageChannel) {
 				queue.messageChannel
 					.send('⚠️ Lost voice connection and failed to reconnect')
@@ -1048,7 +1048,7 @@ async function fetchAutoplayPlaylist(trackInfo, node, history, currentTrackUri) 
 		const primaryGenre = genres[0] ?? 'pop';
 		const primaryMood = moods[0] ?? 'chill';
 
-		console.log(`🎵 Detected: Language=${language}, Genre=${primaryGenre}, Mood=${primaryMood}`);
+		console.log(`<:emoji_12:1566529131200512120> Detected: Language=${language}, Genre=${primaryGenre}, Mood=${primaryMood}`);
 		console.log(`🔍 Autoplay: Searching Spotify for related playlists...`);
 
 		try {
@@ -1234,7 +1234,7 @@ async function fetchYouTubeStats(url) {
 		console.log(`📊 Stats for "${data.title}": Rating=${rating}, Trending=${isTrending}`);
 		return { rating, trending: isTrending };
 	} catch (error) {
-		console.error('❌ Failed to fetch YouTube stats:', error);
+		console.error('<a:Emo_Loading:1566551264924405931> Failed to fetch YouTube stats:', error);
 		return { rating: null, trending: false };
 	}
 }
@@ -1343,7 +1343,7 @@ async function fetchRecommendations(trackInfo, client, guildId) {
 		const sourceUri = trackInfo?.uri ?? '';
 
 		const { language, genres, moods } = detectLanguageAndGenre(songTitle, artist);
-		console.debug(`🎵 Detected: Language=${language}, Genres=${genres.join(', ')}, Moods=${moods.join(', ')}`);
+		console.debug(`<:emoji_12:1566529131200512120> Detected: Language=${language}, Genres=${genres.join(', ')}, Moods=${moods.join(', ')}`);
 
 		const primaryGenre = genres[0] ?? 'pop';
 		const primaryMood = moods[0] ?? 'popular';
@@ -1413,7 +1413,7 @@ async function fetchRecommendations(trackInfo, client, guildId) {
 			const search = query.trim();
 			if (!search.length) continue;
 
-			console.debug(`🎵 Searching: "${search}"`);
+			console.debug(`<:emoji_12:1566529131200512120> Searching: "${search}"`);
 
 			let result;
 			try {
@@ -1490,7 +1490,7 @@ async function fetchRecommendations(trackInfo, client, guildId) {
 			return [];
 		}
 
-		console.debug(`🎵 Compiled ${sorted.length} candidate recommendations`);
+		console.debug(`<:emoji_12:1566529131200512120> Compiled ${sorted.length} candidate recommendations`);
 		return sorted.slice(0, 5).map(({ track }) => track);
 	} catch (error) {
 		console.debug('Failed to fetch recommendations:', error.message);

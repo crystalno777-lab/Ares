@@ -51,7 +51,7 @@ export default {
                 .addTextDisplayComponents(t => t.setContent(`## ${EMOJIS.success} Snipe Data Cleared`))
                 .addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small))
                 .addTextDisplayComponents(t => t.setContent(
-                    `${EMOJIS.channels || '📁'} **Channel**\n> ${targetChannel}\n\n` +
+                    `${EMOJIS.channels || '<:emoji_5:1566528650411647178>'} **Channel**\n> ${targetChannel}\n\n` +
                     `${EMOJIS.logDelete || '🗑️'} Deleted messages, edits, and reaction removals have been cleared.`
                 ));
 

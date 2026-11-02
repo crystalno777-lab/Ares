@@ -14,7 +14,7 @@ const aliases = ['level', 'profile'];
 const requireEnabled = (message, leveling) => {
 	if (leveling.enabled) return true;
 	const c = new ContainerBuilder();
-	c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Leveling is disabled here.`));
+	c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Leveling is disabled here.`));
 	message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } }).catch(() => {});
 	return false;
 };

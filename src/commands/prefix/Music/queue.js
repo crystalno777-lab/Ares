@@ -11,7 +11,7 @@ export default {
 
 		if (!queue || queue.stopped || !queue.tracks.peekAt(0)) {
 			return message.reply({
-				content: '❌ I\'m not playing any music.',
+				content: '<a:Emo_Loading:1566551264924405931> I\'m not playing any music.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -56,7 +56,7 @@ export default {
 		} catch (error) {
 			console.error('Error in queue command:', error);
 			message.reply({
-				content: '❌ An error occurred while fetching the queue.',
+				content: '<a:Emo_Loading:1566551264924405931> An error occurred while fetching the queue.',
 				allowedMentions: { repliedUser: false }
 			});
 		}

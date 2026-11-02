@@ -146,7 +146,7 @@ export default {
                 return message.reply({ components: [responseContainer], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             } catch (err) {
                  const errorContainer = new ContainerBuilder();
-                errorContainer.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Error:** ${err.message}`));
+                errorContainer.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Error:** ${err.message}`));
                 return message.reply({ components: [errorContainer], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             }
         }
@@ -157,7 +157,7 @@ export default {
 **Command:** \`.component #channel {code}\`
 Create rich container messages using the code syntax below. Use \`$v\` to separate different sections.
 
-### 📚 Available Elements
+### <:Xieron_stolen_emoji_1784414611:1566532286306979871> Available Elements
 - **Color:** \`{color: #HexCode}\` (Sets the accent border color)
 - **Text:** \`{text: Your content here}\`
 - **Text & Thumbnail:** \`{text: Your content && https:
@@ -165,13 +165,13 @@ Create rich container messages using the code syntax below. Use \`$v\` to separa
 - **Separator:** \`{separator: small|large}\`
 - **New Line:** \`{\n}\`
 
-### ✨ Variables
+### <:emoji_6:1566530216359108629> Variables
 You can use these variables in your text:
 \`{user}\` (Name), \`{user.mention}\`, \`{user.avatar}\`
 \`{guild.name}\`, \`{guild.membercount}\`
 \`{timestamp.full}\`, \`{timestamp.relative}\`
 
-### 📋 Full Template Code
+### <:emoji_9:1566528847464108183> Full Template Code
 Copy and edit this to get started:
 \`\`\`
 .component {color: #5865F2} $v {text: # 🚀 Update Log} $v {separator: large} $v {text: We have added support for **Rich Containers**! \nNow you can create beautiful announcements. && https://cdn.discordapp.com/embed/avatars/0.png} $v {separator: small} $v {media: https://i.imgur.com/7gK7M3N.jpeg} $v {separator: small} $v {text: -# Sent by {user} • {timestamp.full}}

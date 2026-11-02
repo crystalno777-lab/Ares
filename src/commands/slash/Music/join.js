@@ -22,7 +22,7 @@ export default {
 			if (!interaction.member?.voice.channel) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ No Channel Specified`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> No Channel Specified`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)
@@ -45,7 +45,7 @@ export default {
 		if (!targetChannel || targetChannel.type !== ChannelType.GuildVoice) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Invalid Channel`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Invalid Channel`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -64,7 +64,7 @@ export default {
 		if (!interaction.guild.members.me?.permissions.has('Connect')) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Permission Denied`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Permission Denied`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -83,7 +83,7 @@ export default {
 		if (!interaction.guild.members.me?.permissionsIn(targetChannel).has('Connect')) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ No Access`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> No Access`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)

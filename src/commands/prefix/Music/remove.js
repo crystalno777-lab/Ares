@@ -11,7 +11,7 @@ export default {
 	async execute(message, args, client) {
 		if (!message.member?.voice.channel) {
 			return message.reply({
-				content: '❌ You must be in a voice channel to use this command.',
+				content: '<a:Emo_Loading:1566551264924405931> You must be in a voice channel to use this command.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -20,14 +20,14 @@ export default {
 
 		if (!queue || !queue.player || !queue.tracks || queue.tracks.size === 0) {
 			return message.reply({
-				content: '❌ I\'m not playing any music.',
+				content: '<a:Emo_Loading:1566551264924405931> I\'m not playing any music.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
 
 		if (message.member.voice.channelId !== queue.voiceChannel.id) {
 			return message.reply({
-				content: '❌ You must be in the same voice channel as me.',
+				content: '<a:Emo_Loading:1566551264924405931> You must be in the same voice channel as me.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -35,7 +35,7 @@ export default {
 		if (!args.length) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Missing Position`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Missing Position`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)
@@ -56,7 +56,7 @@ export default {
 		if (isNaN(position) || position < 1 || position > queue.tracks.size - 1) {
 			const container = new ContainerBuilder();
 			container.addTextDisplayComponents((textDisplay) =>
-				textDisplay.setContent(`# ❌ Invalid Position`)
+				textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Invalid Position`)
 			);
 			container.addSeparatorComponents((separator) =>
 				separator.setSpacing(SeparatorSpacingSize.Small)

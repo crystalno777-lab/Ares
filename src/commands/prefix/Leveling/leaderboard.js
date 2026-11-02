@@ -84,13 +84,13 @@ const components = [
 		execute: async (interaction) => {
 			const [, action, authorId, pageStr] = interaction.customId.match(/^level_lb_(prev|next|home):(\d+)(?::(-?\d+))?$/) || [];
 			if (interaction.user.id !== authorId) {
-				await interaction.reply({ content: '❌ This panel is locked to the invoker.', ephemeral: true });
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> This panel is locked to the invoker.', ephemeral: true });
 				return;
 			}
 			const page = action === 'home' ? 0 : (parseInt(pageStr, 10) || 0);
 			const leveling = await ensureLevelingConfig(interaction.client.db, interaction.guildId);
 			if (!leveling.enabled) {
-				await interaction.reply({ content: '❌ Leveling is disabled here.', ephemeral: true });
+				await interaction.reply({ content: '<a:Emo_Loading:1566551264924405931> Leveling is disabled here.', ephemeral: true });
 				return;
 			}
 			const panel = buildPage(leveling, page, authorId, interaction.guild, interaction.client.user.username);
@@ -103,7 +103,7 @@ async function execute(message, args, client) {
 	const leveling = await ensureLevelingConfig(client.db, message.guildId);
 	if (!leveling.enabled) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Leveling is disabled here.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Leveling is disabled here.`));
 		await message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 		return;
 	}

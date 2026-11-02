@@ -90,11 +90,11 @@ const buildServerInfoComponents = ({ guild, owner, iconUrl, bannerUrl, channelCo
   const infoText = `**${userName}**\n\n` +
     `${EMOJIS?.server || '🏷️'} **${displayName}**\n\n` +
     `${EMOJIS?.owner || '👑'} **Owner:** ${formatOwner(owner)}\n` +
-    `${EMOJIS?.channels || '📁'} **Text Channels:** ${formattedTextChannels}\n` +
+    `${EMOJIS?.channels || '<:emoji_5:1566528650411647178>'} **Text Channels:** ${formattedTextChannels}\n` +
     `${EMOJIS?.voice || '🎤'} **Voice Channels:** ${formattedVoiceChannels}\n` +
     `${EMOJIS?.members || '👥'} **Members:** ${memberCount}\n` +
     `${EMOJIS?.bot || '🤖'} **Bots:** ${formattedBotCount}\n` +
-    `${EMOJIS?.security || '🔒'} **Security Level:** ${formatVerificationLevel(guild.verificationLevel)}\n` +
+    `${EMOJIS?.security || '<:emoji_12:1566529085235134695>'} **Security Level:** ${formatVerificationLevel(guild.verificationLevel)}\n` +
     `${EMOJIS?.id || '🆔'} **Server ID:** ${guild.id}\n` +
     `${EMOJIS?.date || '📅'} **Creation Date:**\n${formatTimestamp(guild.createdTimestamp)}`;
 

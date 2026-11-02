@@ -18,7 +18,7 @@ export default {
 		const botMember = interaction.guild.members.me;
 		if (role.position >= botMember.roles.highest.position) {
 			const c = new ContainerBuilder();
-			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} I cannot assign ${role} as it's higher than or equal to my highest role.`));
+			c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} I cannot assign ${role} as it's higher than or equal to my highest role.`));
 			return interaction.reply({ components: [c], flags: MessageFlags.Ephemeral | MessageFlags.IsComponentsV2 });
 		}
 

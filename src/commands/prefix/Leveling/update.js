@@ -8,7 +8,7 @@ const aliases = ['update-level-role', 'levelrole-update', 'add-level-role', 'lev
 async function execute(message, args, client) {
 	if (!message.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} You need **Manage Server** permission.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Manage Server** permission.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 
@@ -17,21 +17,21 @@ async function execute(message, args, client) {
 
 	if (!roleId || isNaN(newLevel) || newLevel < 1 || newLevel > 1000) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Usage: \`levels-update <@role> <level>\` (1-1000)`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Usage: \`levels-update <@role> <level>\` (1-1000)`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 
 	const role = message.guild.roles.cache.get(roleId);
 	if (!role) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} Role not found.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Role not found.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 
 	const botMember = message.guild.members.me;
 	if (role.position >= botMember.roles.highest.position) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} I cannot manage ${role} - it's higher than my highest role.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} I cannot manage ${role} - it's higher than my highest role.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 	}
 

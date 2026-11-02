@@ -127,7 +127,7 @@ export async function bootstrap(client, __dirname) {
 
 				const { ContainerBuilder, SeparatorSpacingSize, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags } = await import('discord.js');
 				const container = new ContainerBuilder()
-					.addTextDisplayComponents(td => td.setContent(`# 🔒 Ticket Auto-Closed\nThe ticket owner <@${member.id}> left the server.`))
+					.addTextDisplayComponents(td => td.setContent(`# <:emoji_12:1566529085235134695> Ticket Auto-Closed\nThe ticket owner <@${member.id}> left the server.`))
 					.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 
 				const row = new ActionRowBuilder().addComponents(

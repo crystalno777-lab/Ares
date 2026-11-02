@@ -21,7 +21,7 @@ export default {
 	async execute(message, args, client) {
 		const container = new ContainerBuilder();
 		container.addTextDisplayComponents((textDisplay) =>
-			textDisplay.setContent(`# 📋 Log Events Reference`)
+			textDisplay.setContent(`# <:emoji_9:1566528847464108183> Log Events Reference`)
 		);
 		container.addSeparatorComponents((separator) =>
 			separator.setSpacing(SeparatorSpacingSize.Small)
@@ -83,11 +83,11 @@ function getCategoryEmoji(category) {
 		message: '💬',
 		member: '👥',
 		mod: '🔨',
-		server: '⚙️',
+		server: '<a:gears:1566530875879989289>',
 		voice: '🎤',
 		role: '🏷️',
-		channel: '📁',
+		channel: '<:emoji_5:1566528650411647178>',
 		emoji: '😀'
 	};
-	return emojis[category] || '📋';
+	return emojis[category] || '<:emoji_9:1566528847464108183>';
 }

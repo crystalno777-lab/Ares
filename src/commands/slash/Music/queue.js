@@ -16,7 +16,7 @@ export default {
 
 		if (!queue || queue.stopped || !queue.tracks.peekAt(0)) {
 			return interaction.reply({
-				content: '❌ I\'m not playing any music.',
+				content: '<a:Emo_Loading:1566551264924405931> I\'m not playing any music.',
 				ephemeral: true
 			});
 		}
@@ -60,7 +60,7 @@ export default {
 		} catch (error) {
 			console.error('Error in queue command:', error);
 			interaction.reply({
-				content: '❌ An error occurred while fetching the queue.',
+				content: '<a:Emo_Loading:1566551264924405931> An error occurred while fetching the queue.',
 				ephemeral: true
 			});
 		}

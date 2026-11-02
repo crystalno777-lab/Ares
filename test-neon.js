@@ -16,7 +16,7 @@ async function testConnection() {
 		
 		await client.end();
 	} catch (error) {
-		console.error('❌ Connection failed:', error.message);
+		console.error('<a:Emo_Loading:1566551264924405931> Connection failed:', error.message);
 		process.exit(1);
 	}
 }

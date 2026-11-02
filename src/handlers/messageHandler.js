@@ -346,7 +346,7 @@ export default function registerMessageHandler(discordClient) {
 						if (!hasPermission) {
 							const reqRoleName = customRoles.reqRole ? `<@&${customRoles.reqRole}>` : 'Manage Roles';
 							const container = new ContainerBuilder();
-							container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Permission Denied**`));
+							container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Permission Denied**`));
 							container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 							container.addTextDisplayComponents(td => td.setContent(`You need ${reqRoleName} to use this command.`));
 							return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
@@ -367,7 +367,7 @@ export default function registerMessageHandler(discordClient) {
 
 						if (role.position >= message.guild.members.me.roles.highest.position) {
 							const container = new ContainerBuilder();
-							container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Hierarchy Error**`));
+							container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Hierarchy Error**`));
 							container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 							container.addTextDisplayComponents(td => td.setContent('I cannot manage this role as it is higher than my highest role.'));
 							return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -426,7 +426,7 @@ export default function registerMessageHandler(discordClient) {
 						if (!hasPermission) {
 							const reqRoleName = customRoles.reqRole ? `<@&${customRoles.reqRole}>` : 'Manage Roles';
 							const container = new ContainerBuilder();
-							container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Permission Denied**`));
+							container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Permission Denied**`));
 							container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 							container.addTextDisplayComponents(td => td.setContent(`You need ${reqRoleName} to use this command.`));
 							return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
@@ -447,7 +447,7 @@ export default function registerMessageHandler(discordClient) {
 
 						if (role.position >= message.guild.members.me.roles.highest.position) {
 							const container = new ContainerBuilder();
-							container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **Hierarchy Error**`));
+							container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **Hierarchy Error**`));
 							container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
 							container.addTextDisplayComponents(td => td.setContent('I cannot manage this role as it is higher than my highest role.'));
 							return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -484,7 +484,7 @@ export default function registerMessageHandler(discordClient) {
 				if (disabledCmd) {
 					if (disabledCmd.includes('global') || disabledCmd.includes(message.channel.id)) {
 						if (shouldReply) {
-							const container = buildNotice(`# ${EMOJIS.error || '❌'} Disabled`, 'This command is disabled in this channel/server.');
+							const container = buildNotice(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Disabled`, 'This command is disabled in this channel/server.');
 							return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 						}
 						return;
@@ -496,7 +496,7 @@ export default function registerMessageHandler(discordClient) {
 					if (disabledCat) {
 						if (disabledCat.includes('global') || disabledCat.includes(message.channel.id)) {
 							if (shouldReply) {
-								const container = buildNotice(`# ${EMOJIS.error || '❌'} Disabled`, `The **${command.category}** module is disabled here.`);
+								const container = buildNotice(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Disabled`, `The **${command.category}** module is disabled here.`);
 								return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 							}
 							return;
@@ -529,7 +529,7 @@ export default function registerMessageHandler(discordClient) {
 							return permName ? permName.replace(/([A-Z])/g, ' $1').trim() : 'Unknown';
 						}).join(', ');
 
-						const container = buildNotice(`# ${EMOJIS.error || '❌'} Permission Denied`, `You need **${permNames}** permission to use this command.`);
+						const container = buildNotice(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Permission Denied`, `You need **${permNames}** permission to use this command.`);
 						return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
 					}
 				}

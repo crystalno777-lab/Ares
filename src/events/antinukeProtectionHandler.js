@@ -402,7 +402,7 @@ export default (client) => {
                         eventType: 'botadd',
                         executor: { id: executor.id, tag: executor.tag || executor.username },
                         target: `${member.user.tag} (${member.id})`,
-                        details: `❌ Unverified bot blocked\n\n⚠️ Strict verification is enabled\nAdded by: ${executor.tag}${isWhitelistedUser ? ' (Whitelisted)' : ''}\n\n✅ Bot was automatically removed`,
+                        details: `<a:Emo_Loading:1566551264924405931> Unverified bot blocked\n\n⚠️ Strict verification is enabled\nAdded by: ${executor.tag}${isWhitelistedUser ? ' (Whitelisted)' : ''}\n\n✅ Bot was automatically removed`,
                         action: 'UNVERIFIED_BOT_BLOCKED',
                         strikes: 0,
                         threshold: 0
@@ -417,7 +417,7 @@ export default (client) => {
                         eventType: 'botadd',
                         executor: { id: executor.id, tag: executor.tag || executor.username },
                         target: `${member.user.tag} (${member.id})`,
-                        details: `❌ Failed to remove unverified bot\n\nAdded by: ${executor.tag}${isWhitelistedUser ? ' (Whitelisted)' : ''}`,
+                        details: `<a:Emo_Loading:1566551264924405931> Failed to remove unverified bot\n\nAdded by: ${executor.tag}${isWhitelistedUser ? ' (Whitelisted)' : ''}`,
                         action: 'UNVERIFIED_BOT_BLOCKED',
                         strikes: 0,
                         threshold: 0
@@ -448,7 +448,7 @@ export default (client) => {
                     eventType: 'botadd',
                     executor: { id: executor.id, tag: executor.tag || executor.username },
                     target: `${member.user.tag} (${member.id})`,
-                    details: `❌ Failed to remove bot\n\nAdded by: ${executor.tag}`,
+                    details: `<a:Emo_Loading:1566551264924405931> Failed to remove bot\n\nAdded by: ${executor.tag}`,
                     action: 'BOT_ADD',
                     strikes: 0,
                     threshold: 0

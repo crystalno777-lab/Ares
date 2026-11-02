@@ -321,7 +321,7 @@ export default {
             const messageId = args[1];
             if (!messageId) {
                 const container = new ContainerBuilder();
-                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Usage Error`));
+                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Usage Error`));
                 container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                 container.addTextDisplayComponents(td => td.setContent('**Usage:** `.embed copy <messageId>`'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -348,7 +348,7 @@ export default {
 
                 if (!targetMsg) {
                     const container = new ContainerBuilder();
-                    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Message Not Found`));
+                    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Message Not Found`));
                     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                     container.addTextDisplayComponents(td => td.setContent('Could not find that message. Make sure the ID is correct.'));
                     return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -356,7 +356,7 @@ export default {
 
                 if (!targetMsg.embeds || targetMsg.embeds.length === 0) {
                     const container = new ContainerBuilder();
-                    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} No Embeds`));
+                    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} No Embeds`));
                     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                     container.addTextDisplayComponents(td => td.setContent('That message has no embeds to copy.'));
                     return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -376,7 +376,7 @@ export default {
                 });
             } catch (err) {
                 const container = new ContainerBuilder();
-                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Error`));
+                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Error`));
                 container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                 container.addTextDisplayComponents(td => td.setContent(err.message));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -389,7 +389,7 @@ export default {
 
             if (!messageId || !codeStart) {
                 const container = new ContainerBuilder();
-                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Usage Error`));
+                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Usage Error`));
                 container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                 container.addTextDisplayComponents(td => td.setContent('**Usage:** `.embed edit <messageId> {code}`'));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -416,7 +416,7 @@ export default {
 
                 if (!targetMsg) {
                     const container = new ContainerBuilder();
-                    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Message Not Found`));
+                    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Message Not Found`));
                     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                     container.addTextDisplayComponents(td => td.setContent('Could not find that message. Make sure the ID is correct.'));
                     return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -424,7 +424,7 @@ export default {
 
                 if (targetMsg.author.id !== client.user.id) {
                     const container = new ContainerBuilder();
-                    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Cannot Edit`));
+                    container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Cannot Edit`));
                     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                     container.addTextDisplayComponents(td => td.setContent('I can only edit my own messages.'));
                     return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -445,7 +445,7 @@ export default {
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
             } catch (err) {
                 const container = new ContainerBuilder();
-                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '❌'} Failed to Edit`));
+                container.addTextDisplayComponents(td => td.setContent(`# ${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Failed to Edit`));
                 container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
                 container.addTextDisplayComponents(td => td.setContent(err.message));
                 return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false } });
@@ -462,14 +462,14 @@ export default {
                 const sendChannel = targetChannel || channel;
 
                 if (!sendChannel.permissionsFor(message.member).has(PermissionFlagsBits.SendMessages)) {
-                    return message.reply({ content: '❌ You don\'t have permission to send messages in that channel.', allowedMentions: { repliedUser: false } });
+                    return message.reply({ content: '<a:Emo_Loading:1566551264924405931> You don\'t have permission to send messages in that channel.', allowedMentions: { repliedUser: false } });
                 }
 
                 const context = { user: author, guild, channel: sendChannel };
                 const embedData = parseEmbedCode(codeText, context);
 
                 if (!embedData.title && !embedData.description && !embedData.image && !embedData.thumbnail && !embedData.content) {
-                    return message.reply({ content: '❌ Your embed needs at least a title, description, image, or content.', allowedMentions: { repliedUser: false } });
+                    return message.reply({ content: '<a:Emo_Loading:1566551264924405931> Your embed needs at least a title, description, image, or content.', allowedMentions: { repliedUser: false } });
                 }
 
                 const embed = buildEmbed(embedData);
@@ -485,7 +485,7 @@ export default {
                         message.delete().catch(() => {});
                     }
                 } catch (err) {
-                    return message.reply({ content: '❌ Failed to send embed: ' + err.message, allowedMentions: { repliedUser: false } });
+                    return message.reply({ content: '<a:Emo_Loading:1566551264924405931> Failed to send embed: ' + err.message, allowedMentions: { repliedUser: false } });
                 }
                 return;
             }

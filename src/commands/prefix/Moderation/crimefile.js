@@ -24,11 +24,11 @@ const getActionEmoji = (type) => {
     ban: '🔨',
     mute: '🔇',
     unmute: '🔊',
-    unban: '📋',
+    unban: '<:emoji_9:1566528847464108183>',
     softban: '🔨',
     tempban: '⏰'
   };
-  return emojiMap[type] || '📋';
+  return emojiMap[type] || '<:emoji_9:1566528847464108183>';
 };
 
 export default {

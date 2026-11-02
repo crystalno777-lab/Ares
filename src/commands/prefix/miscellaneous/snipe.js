@@ -86,7 +86,7 @@ export default {
             container
                 .addSeparatorComponents(s => s.setSpacing(SeparatorSpacingSize.Small))
                 .addTextDisplayComponents(t => t.setContent(
-                    `-# 📋 Showing ${index + 1} of ${deletedMsgs.length} • Use \`.snipe [1-${deletedMsgs.length}]\` to view others`
+                    `-# <:emoji_9:1566528847464108183> Showing ${index + 1} of ${deletedMsgs.length} • Use \`.snipe [1-${deletedMsgs.length}]\` to view others`
                 ));
         }
 

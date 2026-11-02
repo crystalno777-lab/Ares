@@ -27,7 +27,7 @@ export default {
 
 		if (!args.length) {
 			return message.reply({
-				content: '❌ Please specify a user to unmute.\nUsage: `' + client.prefix + 'unmute <user> [reason]`',
+				content: '<a:Emo_Loading:1566551264924405931> Please specify a user to unmute.\nUsage: `' + client.prefix + 'unmute <user> [reason]`',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -35,14 +35,14 @@ export default {
 		const target = await parseUserInput(args[0], message.guild, client);
 		if (!target) {
 			return message.reply({
-				content: '❌ User not found.',
+				content: '<a:Emo_Loading:1566551264924405931> User not found.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
 
 		if (target.user.bot) {
 			return message.reply({
-				content: '❌ You cannot unmute a bot.',
+				content: '<a:Emo_Loading:1566551264924405931> You cannot unmute a bot.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -59,14 +59,14 @@ export default {
 
 		if (!permCheck.allowed) {
 			return message.reply({
-				content: `❌ ${getModerationPermissionErrors[permCheck.reason]}`,
+				content: `<a:Emo_Loading:1566551264924405931> ${getModerationPermissionErrors[permCheck.reason]}`,
 				allowedMentions: { repliedUser: false }
 			});
 		}
 
 		if (!message.guild.members.me.permissions.has('ModerateMembers')) {
 			return message.reply({
-				content: '❌ I don\'t have permission to modify timeouts.',
+				content: '<a:Emo_Loading:1566551264924405931> I don\'t have permission to modify timeouts.',
 				allowedMentions: { repliedUser: false }
 			});
 		}
@@ -76,7 +76,7 @@ export default {
 			if (!target.communicationDisabledUntil || Date.now() > target.communicationDisabledUntil) {
 				const container = new ContainerBuilder();
 				container.addTextDisplayComponents((textDisplay) =>
-					textDisplay.setContent(`# ❌ Not Muted`)
+					textDisplay.setContent(`# <a:Emo_Loading:1566551264924405931> Not Muted`)
 				);
 				container.addSeparatorComponents((separator) =>
 					separator.setSpacing(SeparatorSpacingSize.Small)

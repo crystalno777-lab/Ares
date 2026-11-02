@@ -71,7 +71,7 @@ function buildVoicePanel(guild, stats, serverStats, topUsers, topChannels, break
 
 	} else if (view === 'channels') {
 
-		container.addTextDisplayComponents(td => td.setContent(`### ${EMOJIS.channelstats || '📁'} Top Voice Channels`));
+		container.addTextDisplayComponents(td => td.setContent(`### ${EMOJIS.channelstats || '<:emoji_5:1566528650411647178>'} Top Voice Channels`));
 
 		if (topChannels.length > 0) {
 			const list = topChannels.slice(0, 10).map((c, i) =>
@@ -167,7 +167,7 @@ const components = [
 			const [, authorId, view] = match;
 
 			if (interaction.user.id !== authorId) {
-				return interaction.reply({ content: `${EMOJIS.error || '❌'} This panel is locked to the invoker.`, ephemeral: true });
+				return interaction.reply({ content: `${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This panel is locked to the invoker.`, ephemeral: true });
 			}
 
 			const data = await getVoiceData(interaction.client, interaction.guildId);
@@ -193,7 +193,7 @@ await interaction.update({ components: [panel], flags: MessageFlags.IsComponents
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 

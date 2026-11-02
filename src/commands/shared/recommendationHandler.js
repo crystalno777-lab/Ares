@@ -15,7 +15,7 @@ export default {
 
 		if (!queue) {
 			await interaction.editReply({
-				content: '❌ No active queue in this server.'
+				content: '<a:Emo_Loading:1566551264924405931> No active queue in this server.'
 			});
 			return;
 		}
@@ -33,14 +33,14 @@ export default {
 
 		if (expiredRecommendations.has(interaction.customId)) {
 			await interaction.editReply({
-				content: '❌ Recommendations have expired. Please play a new song to get fresh recommendations.'
+				content: '<a:Emo_Loading:1566551264924405931> Recommendations have expired. Please play a new song to get fresh recommendations.'
 			});
 			return;
 		}
 
 		if (!recommendations) {
 			await interaction.editReply({
-				content: '❌ Recommendations have expired. Please play a new song.'
+				content: '<a:Emo_Loading:1566551264924405931> Recommendations have expired. Please play a new song.'
 			});
 			return;
 		}
@@ -50,7 +50,7 @@ export default {
 
 		if (!selectedTrack) {
 			await interaction.editReply({
-				content: '❌ Selected recommendation not found.'
+				content: '<a:Emo_Loading:1566551264924405931> Selected recommendation not found.'
 			});
 			return;
 		}
@@ -62,7 +62,7 @@ export default {
 			const node = client.shoukaku?.getIdealNode();
 			if (!node) {
 				await interaction.editReply({
-					content: '❌ No Lavalink nodes available.'
+					content: '<a:Emo_Loading:1566551264924405931> No Lavalink nodes available.'
 				});
 				return;
 			}
@@ -82,7 +82,7 @@ export default {
 				const result = await node.rest.resolve(`ytsearch:${title} ${author}`);
 				if (!result?.data?.[0]) {
 					await interaction.editReply({
-						content: `❌ Could not find track: **${title}**`
+						content: `<a:Emo_Loading:1566551264924405931> Could not find track: **${title}**`
 					});
 					return;
 				}
@@ -162,7 +162,7 @@ export default {
 		} catch (error) {
 			console.error('Recommendation handler error:', error);
 			await interaction.editReply({
-				content: '❌ Failed to add track to queue.'
+				content: '<a:Emo_Loading:1566551264924405931> Failed to add track to queue.'
 			});
 		}
 	}

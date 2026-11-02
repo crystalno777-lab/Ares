@@ -13,13 +13,13 @@ const aliases = ['removemsgs', 'takemsgs', 'delmessages'];
 async function execute(message, args, client) {
 	if (!message.guild) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} This command can only be used in a server.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} This command can only be used in a server.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
 	if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
 		const c = new ContainerBuilder();
-		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} You need **Administrator** permission to use this command.`));
+		c.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} You need **Administrator** permission to use this command.`));
 		return message.reply({ components: [c], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 	}
 
@@ -32,7 +32,7 @@ async function execute(message, args, client) {
 
 	if (!targetUser) {
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} Please mention a user.\n\n` +
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please mention a user.\n\n` +
 			`**Usage:** \`.removemessages @user <amount>\``
 		));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
@@ -40,7 +40,7 @@ async function execute(message, args, client) {
 
 	if (isNaN(amount) || amount <= 0) {
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} Please provide a valid positive number.\n\n` +
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} Please provide a valid positive number.\n\n` +
 			`**Usage:** \`.removemessages @user <amount>\``
 		));
 		return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
@@ -51,7 +51,7 @@ async function execute(message, args, client) {
 
 		if (!stats.users[targetUser.id] || !stats.users[targetUser.id].messages?.length) {
 			container.addTextDisplayComponents(td => td.setContent(
-				`${EMOJIS.error || '❌'} **${targetUser.username}** has no message data to remove.`
+				`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **${targetUser.username}** has no message data to remove.`
 			));
 			return message.reply({ components: [container], flags: MessageFlags.IsComponentsV2, allowedMentions: { repliedUser: false, parse: [] } });
 		}
@@ -73,7 +73,7 @@ async function execute(message, args, client) {
 	} catch (error) {
 		console.error('[RemoveMessages] Error:', error);
 		container.addTextDisplayComponents(td => td.setContent(
-			`${EMOJIS.error || '❌'} An error occurred while removing messages.`
+			`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} An error occurred while removing messages.`
 		));
 	}
 

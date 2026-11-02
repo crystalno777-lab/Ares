@@ -21,7 +21,7 @@ const buildSuccess = (title, description) => {
 
 const buildError = (title, description) => {
     const container = new ContainerBuilder();
-    container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '❌'} **${title}**`));
+    container.addTextDisplayComponents(td => td.setContent(`${EMOJIS.error || '<a:Emo_Loading:1566551264924405931>'} **${title}**`));
     container.addSeparatorComponents(sep => sep.setSpacing(SeparatorSpacingSize.Small));
     container.addTextDisplayComponents(td => td.setContent(description));
     return container;
